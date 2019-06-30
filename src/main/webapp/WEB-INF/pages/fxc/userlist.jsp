@@ -12,8 +12,6 @@
         <meta name="format-detection" content="telephone=no">
         <script src="/statics/js/jQuery3.4.1.js" type="text/javascript"></script>
         <link rel="stylesheet" href="layui/css/layui.css" media="all" />
-        <link rel="stylesheet" href="//at.alicdn.com/t/font_tnyc012u2rlwstt9.css" media="all" />
-        <link rel="stylesheet" href="../../../statics/css/user.css" media="all" />
     </head>
     <body>
 
@@ -63,15 +61,15 @@
                 </thead>
                 <tbody class="users_content"></tbody>
                 <c:forEach  items="${list}" var="user">
-                <tr>
-                    <th><input type="radio" id="${user.id}"> </th>
-                    <th>${user.userName} </th>
-                    <th>${user.roleName}</th>
-                    <th>${user.userTypeName}</th>
-                    <th>${user.referCode}</th>
-                    <th><input type="checkbox" id="${user.id}"></th>
-                    <th>${user.lastUpdateTime}</th>
-                </tr>
+                    <tr>
+                        <th><input type="radio" id="${user.id}"> </th>
+                        <th>${user.userName} </th>
+                        <th>${user.roleName}</th>
+                        <th>${user.userTypeName}</th>
+                        <th>${user.referCode}</th>
+                        <th><input type="checkbox" id="${user.id}"></th>
+                        <th>${user.lastUpdateTime}</th>
+                    </tr>
                 </c:forEach>
             </table>
         </div>

@@ -1,157 +1,145 @@
-<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@ page language="java" import="java.util.*" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <!DOCTYPE html>
 <html lang="en">
-<head>
-	<meta charset="utf-8">
-	<title>SL会员商城</title>
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<meta name="description" content="Charisma, a fully featured, responsive, HTML5, Bootstrap admin template.">
-	<meta name="author" content="Muhammad Usman">
+    <head>
+        <meta charset="utf-8">
+        <title>SL会员商城</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="Charisma, a fully featured, responsive, HTML5, Bootstrap admin template.">
+        <meta name="author" content="Muhammad Usman">
+        <link rel="stylesheet" href="../../../statics/layui/css/layui.css" media="all">
+        <style type="text/css">
+            body {
+                padding-bottom: 40px;
+            }
 
-	<!-- The styles -->
-	<link href="/statics/css/bootstrap-cerulean.css" rel="stylesheet">
-	<style type="text/css">
-	  body {
-		padding-bottom: 40px;
-	  }
-	  .sidebar-nav {
-		padding: 9px 0;
-	  }
-	  .navbar .nav li a{
-	    border:0px;
-	}
-	.custom-setting{}
-	.clear{clear: both;}
-	div .modal-body label {
-		color:black;
-	}
-	</style>
-	<link href="/statics/css/bootstrap-responsive.css" rel="stylesheet">
-	<link href="/statics/css/charisma-app.css" rel="stylesheet">
-	<link href="/statics/css/jquery-ui-1.8.21.custom.css" rel="stylesheet">
-	<link href='/statics/css/fullcalendar.css' rel='stylesheet'>
-	<link href='/statics/css/fullcalendar.print.css' rel='stylesheet'  media='print'>
-	<link href='/statics/css/chosen.css' rel='stylesheet'>
-	<link href='/statics/css/uniform.default.css' rel='stylesheet'>
-	<link href='/statics/css/colorbox.css' rel='stylesheet'>
-	<link href='/statics/css/jquery.cleditor.css' rel='stylesheet'>
-	<link href='/statics/css/jquery.noty.css' rel='stylesheet'>
-	<link href='/statics/css/noty_theme_default.css' rel='stylesheet'>
-	<link href='/statics/css/elfinder.min.css' rel='stylesheet'>
-	<link href='/statics/css/elfinder.theme.css' rel='stylesheet'>
-	<link href='/statics/css/jquery.iphone.toggle.css' rel='stylesheet'>
-	<link href='/statics/css/opa-icons.css' rel='stylesheet'>
-	<link href='/statics/css/uploadify.css' rel='stylesheet'>
-	<!-- 华丽丽滴分割线 start -->
-	<!-- start-->
-	<link href='/statics/localcss/userlist.css' rel='stylesheet'>
-	<link href='/statics/localcss/rolelist.css' rel='stylesheet'>
-	<link href='/statics/localcss/authoritymanage.css' rel='stylesheet'>
-	<link href='/statics/localcss/dicmanage.css' rel='stylesheet'>
-	<link href='/statics/localcss/affiche.css' rel='stylesheet'>
-	<link href='/statics/localcss/information.css' rel='stylesheet'>
-	<link href='/statics/localcss/addgoodspack.css' rel='stylesheet'>
-	<link href='/statics/localcss/mymessage.css' rel='stylesheet'>
-	<link href='/statics/localcss/messagelist.css' rel='stylesheet'>
-	<!-- end-->
-	
-	<!-- 华丽丽滴分割线  end -->
-	<!-- The HTML5 shim, for IE6-8 support of HTML5 elements -->
-	<!--[if lt IE 9]>
-	  <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-	<![endif]-->
+            .sidebar-nav {
+                padding: 9px 0;
+            }
 
-	<!-- The fav icon -->
-	<link rel="shortcut icon" href="/statics/img/favicon.ico">
-	<script>
+            .navbar .nav li a {
+                border: 0px;
+            }
 
-		var tt = '${menus}';
+            .custom-setting {
+            }
 
-	</script>
-</head>
-<body>
-		<!-- topbar starts -->
-	<div class="navbar">
-		<div class="navbar-inner">
-			<div class="container-fluid">
-				<a class="btn btn-navbar" data-toggle="collapse" data-target=".top-nav.nav-collapse,.sidebar-nav.nav-collapse">
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-				</a>
-				<a class="brand" href="/main.html"> <img alt="Charisma Logo" src="/statics/img/logo20.png" /> <span>SL会员商城</span></a>
-				<div class="btn-group pull-right" >
-					<ul class="nav">
-						<li><a href="#">你好，${userSession.loginCode}</a></li>
-						<li><a href="#">角色：${userSession.roleName}</a></li>
-						<li><a href="/main.html">首页</a></li>
-						<li><a href="#">购物车</a></li>
-						<li><a href="#">留言板</a></li>
-						<li><a href="javascript:void();" class="btn-setting modifypwd">修改密码</a></li>
-						<li><a href="/logout.html">注销</a></li>
-					</ul>
-				</div>
-				<div class="modal hide fade" id="myModal">
-					<div class="modal-header">
-						<button type="button" class="close" data-dismiss="modal">×</button>
-						<h3>修改密码</h3>
-					</div>
-					<div class="modal-body">
-						<p>
-								<label>请输入原密码：</label>
-								  <input id="oldpassword"  type="password">
-								  <span style="color:red;font-weight: bold;">*</span>
-								<label>请输入新密码：</label>
-								  <input id="newpassword"  type="password">
-								  <span style="color:red;font-weight: bold;">*新密码必须6位以上</span>
-								<label>再次输入新密码：</label>
-								  <input id="aginpassword"  type="password">
-								  <span style="color:red;font-weight: bold;">*</span>
-						</p>
-						<p id="modifypwdtip">
-						</p>
-					</div>
-					<div class="modal-footer">
-						<a href="#" class="btn" data-dismiss="modal">取消</a>
-						<a href="#" id="modifySavePassword" class="btn btn-primary">修改</a>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-	<!-- topbar ends -->
-		<div class="container-fluid">
-		<div class="row-fluid">
-				
-			<!-- left menu starts -->
-			<div class="span2 main-menu-span">
-				<div class="well nav-collapse sidebar-nav">
+            .clear {
+                clear: both;
+            }
 
-					<!--左边菜单,通过脚本控制动态写入-->
-					<ul class="nav nav-tabs nav-stacked main-menu" id="menus">
+            div .modal-body label {
+                color: black;
+            }
+        </style>
+
+        <script>
+
+            var tt = '${menus}';
+
+        </script>
+    </head>
+    <body>
+        <!-- topbar starts -->
+        <div class="navbar">
+            <ul class="layui-nav" lay-filter="">
+                <li class="layui-nav-item"><a class="" href="/main.html"> <img alt="Charisma Logo"
+                                                                               src="/statics/img/logo20.png"/> <span>SL会员商城</span></a>
+                </li>
+                <li class="layui-nav-item"><a href="#">你好，${userSession.loginCode}</a></li>
+                <li class="layui-nav-item layui-this"><a href="#">角色：${userSession.roleName}</a></li>
+                <li class="layui-nav-item"><a href="/main.html">首页</a></li>
+                <li class="layui-nav-item"><a href="#">购物车</a></li>
+                <li class="layui-nav-item"><a href="#">留言板</a></li>
+                <li class="layui-nav-item">
+                    <div class="site-demo-button" id="layerDemo" style="margin-bottom: 0;">
+                        <button data-method="notice" class="layui-btn">修改密码</button>
+                    </div>
+                </li>
+                <li class="layui-nav-item"><a href="/logout.html">注销</a></li>
+            </ul>
+
+        </div>
 
 
 
+        <ul class="layui-nav layui-nav-tree layui-inline" lay-filter="demo" style="margin-right: 10px;">
+            <li class="layui-nav-item layui-nav-itemed">
+                <a href="javascript:;">默认展开</a>
+                <dl class="layui-nav-child">
+                    <dd><a href="javascript:;">选项一</a></dd>
+                    <dd><a href="javascript:;">选项二</a></dd>
+                    <dd><a href="javascript:;">选项三</a></dd>
+                    <dd><a href="">跳转项</a></dd>
+                </dl>
+            </li>
+            <li class="layui-nav-item">
+                <a href="javascript:;">解决方案</a>
+                <dl class="layui-nav-child">
+                    <dd><a href="">移动模块</a></dd>
+                    <dd><a href="">后台模版</a></dd>
+                    <dd><a href="">电商平台</a></dd>
+                </dl>
+            </li>
+            <li class="layui-nav-item"><a href="">云市场</a></li>
+            <li class="layui-nav-item"><a href="">社区</a></li>
+        </ul>
+    </body>
+    <script src="../../../statics/layui/layui.js" charset="utf-8"></script>
+    <script>
+        //注意：导航 依赖 element 模块，否则无法进行功能性操作
+        layui.use('element', function () {
+            var element = layui.element;
 
+            //…
+        });
+    </script>
 
+    <%--弹出表单--%>
 
+    <script>
+        layui.use('layer', function(){ //独立版的layer无需执行这一句
+            var $ = layui.jquery, layer = layui.layer; //独立版的layer无需执行这一句
 
-					</ul>
-					<!-- 
-					<label id="for-is-ajax" class="hidden-tablet" for="is-ajax"><input id="is-ajax" type="checkbox"> Ajax on menu</label>
-				 	-->
-				</div><!--/.well -->
-			</div><!--/span-->
-			<!-- left menu ends -->
-			
-			<noscript>
-				<div class="alert alert-block span10">
-					<h4 class="alert-heading">Warning!</h4>
-					<p>You need to have <a href="http://en.wikipedia.org/wiki/JavaScript" target="_blank">JavaScript</a> enabled to use this site.</p>
-				</div>
-			</noscript>
-			
-			<div id="content" class="span10">
-			<!-- content starts -->
+            //触发事件
+            var active = {
+
+                notice: function(){
+                    //示范一个公告层
+                    layer.open({
+                        type: 1
+                        ,title: false //不显示标题栏
+                        ,closeBtn: false
+                        ,area: '300px;'
+                        ,shade: 0.8
+                        ,id: 'LAY_layuipro' //设定一个id，防止重复弹出
+                        ,btn: ['提交', '取消']
+                        ,btnAlign: 'c'
+                        ,moveType: 1 //拖拽模式，0或者1
+                        ,content: '<form>\n' +
+                            '            请输入原密码<input id="oldpassword" type="password"><br>\n' +
+                            '            请输出新密码<input id="newpassword" type="password"><br>\n' +
+                            '            再次输入密码<input id="aginpassword" type="password"><br>\n' +
+                            '        </form>'
+                        ,success: function(layero){
+                            var btn = layero.find('.layui-layer-btn');
+                            btn.find('.layui-layer-btn0').attr({
+                                href: 'http://www.layui.com/'
+                                ,target: '_blank'
+                            });
+                        }
+                    });
+                }
+
+            };
+
+            $('#layerDemo .layui-btn').on('click', function(){
+                var othis = $(this), method = othis.data('method');
+                active[method] ? active[method].call(this, othis) : '';
+            });
+
+        });
+    </script>
+</html>

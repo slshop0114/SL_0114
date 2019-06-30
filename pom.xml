@@ -90,6 +90,9 @@
       <artifactId>fastjson</artifactId>
       <version>1.2.56</version>
     </dependency>
+
+
+
   </dependencies>
 
   <build>
@@ -151,7 +154,13 @@
           <include>**/*.xml</include>
         </includes>
       </resource>
+
+
     </resources>
+
+
+
+
 
   </build>
 </project>

@@ -32,7 +32,7 @@ public class LoginController {
     @RequestMapping("/main.html")
     public String toMain(){
 
-        return "main";
+        return "pages/fxc/userlist";
     }
 
     @RequestMapping("/login.html")

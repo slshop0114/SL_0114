@@ -9,7 +9,12 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="description" content="Charisma, a fully featured, responsive, HTML5, Bootstrap admin template.">
         <meta name="author" content="Muhammad Usman">
-        <link rel="stylesheet" href="../../../statics/layui/css/layui.css" media="all">
+        <link rel="stylesheet" href="/statics/layui/css/layui.css" media="all">
+        <link rel="stylesheet" href="/statics/localcss/main.css" media="all">
+        <link rel="stylesheet" href="/statics/localcss/userlist.css" media="all">
+
+        <script src="/statics/js/jQuery3.4.1.js" type="text/javascript"></script>
+
         <style type="text/css">
             body {
                 padding-bottom: 40px;
@@ -40,8 +45,10 @@
             var tt = '${menus}';
 
         </script>
+
     </head>
     <body>
+        <input type="hidden" value="'${userSession.id}'" id="userSessionid">
         <!-- topbar starts -->
         <div class="navbar">
             <ul class="layui-nav" lay-filter="">
@@ -63,83 +70,12 @@
 
         </div>
 
+     <ul id="headleft" class="layui-nav layui-nav-tree layui-inline" lay-filter="demo" style="margin-right: 10px;">
 
 
-        <ul class="layui-nav layui-nav-tree layui-inline" lay-filter="demo" style="margin-right: 10px;">
-            <li class="layui-nav-item layui-nav-itemed">
-                <a href="javascript:;">默认展开</a>
-                <dl class="layui-nav-child">
-                    <dd><a href="javascript:;">选项一</a></dd>
-                    <dd><a href="javascript:;">选项二</a></dd>
-                    <dd><a href="javascript:;">选项三</a></dd>
-                    <dd><a href="">跳转项</a></dd>
-                </dl>
-            </li>
-            <li class="layui-nav-item">
-                <a href="javascript:;">解决方案</a>
-                <dl class="layui-nav-child">
-                    <dd><a href="">移动模块</a></dd>
-                    <dd><a href="">后台模版</a></dd>
-                    <dd><a href="">电商平台</a></dd>
-                </dl>
-            </li>
-            <li class="layui-nav-item"><a href="">云市场</a></li>
-            <li class="layui-nav-item"><a href="">社区</a></li>
+
         </ul>
-    </body>
-    <script src="../../../statics/layui/layui.js" charset="utf-8"></script>
-    <script>
-        //注意：导航 依赖 element 模块，否则无法进行功能性操作
-        layui.use('element', function () {
-            var element = layui.element;
 
-            //…
-        });
-    </script>
 
-    <%--弹出表单--%>
 
-    <script>
-        layui.use('layer', function(){ //独立版的layer无需执行这一句
-            var $ = layui.jquery, layer = layui.layer; //独立版的layer无需执行这一句
 
-            //触发事件
-            var active = {
-
-                notice: function(){
-                    //示范一个公告层
-                    layer.open({
-                        type: 1
-                        ,title: false //不显示标题栏
-                        ,closeBtn: false
-                        ,area: '300px;'
-                        ,shade: 0.8
-                        ,id: 'LAY_layuipro' //设定一个id，防止重复弹出
-                        ,btn: ['提交', '取消']
-                        ,btnAlign: 'c'
-                        ,moveType: 1 //拖拽模式，0或者1
-                        ,content: '<form>\n' +
-                            '            请输入原密码<input id="oldpassword" type="password"><br>\n' +
-                            '            请输出新密码<input id="newpassword" type="password"><br>\n' +
-                            '            再次输入密码<input id="aginpassword" type="password"><br>\n' +
-                            '        </form>'
-                        ,success: function(layero){
-                            var btn = layero.find('.layui-layer-btn');
-                            btn.find('.layui-layer-btn0').attr({
-                                href: 'http://www.layui.com/'
-                                ,target: '_blank'
-                            });
-                        }
-                    });
-                }
-
-            };
-
-            $('#layerDemo .layui-btn').on('click', function(){
-                var othis = $(this), method = othis.data('method');
-                active[method] ? active[method].call(this, othis) : '';
-            });
-
-        });
-    </script>
-</html>

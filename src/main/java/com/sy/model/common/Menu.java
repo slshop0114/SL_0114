@@ -7,6 +7,8 @@ import java.util.List;
  */
 public class Menu {
 
+
+
     //主菜单
     private Function mainFunction;
 
@@ -29,4 +31,5 @@ public class Menu {
     public void setSubsFunction(List<Function> subsFunction) {
         this.subsFunction = subsFunction;
     }
+
 }

@@ -35,7 +35,7 @@ public class MenuService {
      * @return
      */
     public String makeMenus(int roleId) throws Exception{
-
+        System.out.println("makeMenus"+roleId);
         String key = "MENU"+roleId;
         //1.从redis查询该key
         boolean flag = redisAPI.exist(key);
@@ -74,7 +74,7 @@ public class MenuService {
      * @return
      */
    public void makeFunctions(int roleId) throws Exception{
-
+       System.out.println("makeFunctions"+roleId);
        String key = "FUN"+roleId;
 
        //1.从redis查询该key

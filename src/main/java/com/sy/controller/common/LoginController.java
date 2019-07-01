@@ -1,5 +1,7 @@
 package com.sy.controller.common;
 
+import com.alibaba.fastjson.JSON;
+import com.sy.model.common.Menu;
 import com.sy.model.common.User;
 import com.sy.service.common.MenuService;
 import com.sy.service.common.UserService;
@@ -10,6 +12,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpSession;
+import java.util.HashMap;
+import java.util.List;
 
 @Controller
 public class LoginController {
@@ -32,7 +36,7 @@ public class LoginController {
     @RequestMapping("/main.html")
     public String toMain(){
 
-        return "pages/fxc/userlist";
+        return "main";
     }
 
     @RequestMapping("/login.html")
@@ -42,6 +46,7 @@ public class LoginController {
             User findUser = userService.getLoginUser(user);
             if (findUser != null) {
                 String json = menuService.makeMenus(findUser.getRoleId());
+                System.out.println(json+"json");
                 menuService.makeFunctions(findUser.getRoleId());
                 session.setAttribute(Constants.SESSION_USER, findUser);
                 session.setAttribute("menus", json);

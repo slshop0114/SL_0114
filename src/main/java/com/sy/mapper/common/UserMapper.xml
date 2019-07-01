@@ -30,7 +30,7 @@
 			  and userType = #{userType}
 			</if>
 		 </trim>
-		 order by createTime desc limit #{starNum},#{pageSize}
+		 order by createTime desc
 	</select>
 
 	<!--分页:按条件查询用户记录数-->

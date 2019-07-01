@@ -219,4 +219,39 @@ public class User implements Serializable {
         this.lastLoginTime = lastLoginTime;
     }
 
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", loginCode='" + loginCode + '\'' +
+                ", password='" + password + '\'' +
+                ", password2='" + password2 + '\'' +
+                ", userName='" + userName + '\'' +
+                ", sex='" + sex + '\'' +
+                ", birthday=" + birthday +
+                ", cardType='" + cardType + '\'' +
+                ", cardTypeName='" + cardTypeName + '\'' +
+                ", idCard='" + idCard + '\'' +
+                ", country='" + country + '\'' +
+                ", mobile='" + mobile + '\'' +
+                ", email='" + email + '\'' +
+                ", userAddress='" + userAddress + '\'' +
+                ", postCode='" + postCode + '\'' +
+                ", createTime=" + createTime +
+                ", referId=" + referId +
+                ", referCode='" + referCode + '\'' +
+                ", roleId=" + roleId +
+                ", roleName='" + roleName + '\'' +
+                ", userType='" + userType + '\'' +
+                ", userTypeName='" + userTypeName + '\'' +
+                ", isStart=" + isStart +
+                ", lastUpdateTime=" + lastUpdateTime +
+                ", lastLoginTime=" + lastLoginTime +
+                ", bankName='" + bankName + '\'' +
+                ", accountHolder='" + accountHolder + '\'' +
+                ", bankAccount='" + bankAccount + '\'' +
+                ", idCardPicPath='" + idCardPicPath + '\'' +
+                ", bankPicPath='" + bankPicPath + '\'' +
+                '}';
+    }
 }

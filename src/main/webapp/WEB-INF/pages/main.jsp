@@ -1,23 +1,8 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<html >
-	<head>
-		<title>用户管理</title>
-		<meta name="renderer" content="webkit">
-		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-		<meta name="apple-mobile-web-app-status-bar-style" content="black">
-		<meta name="apple-mobile-web-app-capable" content="yes">
-		<meta name="format-detection" content="telephone=no">
-		<script src="/statics/js/jQuery3.4.1.js" type="text/javascript"></script>
-		<link rel="stylesheet" href="fxc/layui/css/layui.css" media="all" />
-		<link rel="stylesheet" href="//at.alicdn.com/t/font_tnyc012u2rlwstt9.css" media="all" />
-		<link rel="stylesheet" href="../../statics/css/user.css" media="all" />
-	</head>
-	<body>
+<%@include file="/WEB-INF/pages/common/head.jsp"%>
+<%@ page language="java" import="java.util.*" pageEncoding="UTF-8" %>
 
-		<blockquote class="layui-elem-quote news_search">
+		<blockquote class="layui-elem-quote main_search ">
 
 			<div class="layui-inline">
 				<a class="layui-btn layui-btn-normal usersAdd_btn">添加用户</a>
@@ -36,7 +21,7 @@
 				<a class="layui-btn search_btn">查询</a>
 			</div>
 
-		</blockquote>
+
 
 		<div class="layui-form users_list">
 			<table class="layui-table">
@@ -62,7 +47,7 @@
 				</tr>
 				</thead>
 				<tbody class="users_content"></tbody>
-				<c:forEach  items="${list}" var="user">
+				<<c:forEach  items="${list}" var="user">
 					<tr>
 						<th><input type="radio" id="${user.id}"> </th>
 						<th>${user.userName} </th>
@@ -75,9 +60,7 @@
 				</c:forEach>
 			</table>
 		</div>
+		</blockquote>
 		<div id="page"></div>
-		<script type="text/javascript" src="fxc/layui/layui.js"></script>
-		<script type="text/javascript" src="fxc/userManage.js"></script>
 
-	</body>
-</html>
+		<%@include file="/WEB-INF/pages/common/foot.jsp"%>

@@ -1,5 +1,6 @@
 package com.sy.controller.fxc;
 
+import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.mysql.cj.util.StringUtils;
 import com.sy.model.common.DataDictionary;
@@ -36,9 +37,9 @@ public class UserManageController {
 
 
     @RequestMapping("/userlist.html")
-    public String userManager( Model model,HttpSession session) throws Exception {
+    public String userManager(Model model, HttpSession session) throws Exception {
 
-        User user= (User)session.getAttribute(Constants.SESSION_USER);
+        User user = (User) session.getAttribute(Constants.SESSION_USER);
 
         System.out.println(user + "userlisthtml");
         User user1 = new User();
@@ -60,11 +61,11 @@ public class UserManageController {
             user.setLoginCode("%" + user.getLoginCode() + "%");
         if (null != user.getReferCode())
             user.setReferCode("%" + user.getReferCode() + "%");
-        if (!StringUtils.isNullOrEmpty(user.getIsStart()+""))
+        if (!StringUtils.isNullOrEmpty(user.getIsStart() + ""))
             user.setIsStart(Integer.valueOf(user.getIsStart()));
         else
             user.setIsStart(null);
-        if (!StringUtils.isNullOrEmpty(user.getRoleId()+""))
+        if (!StringUtils.isNullOrEmpty(user.getRoleId() + ""))
             user.setRoleId(Integer.valueOf(user.getRoleId()));
         else
             user.setRoleId(null);
@@ -75,12 +76,12 @@ public class UserManageController {
         List<User> userList = userService.getUserList(user);
         page.setItems(userList);
         model.addAttribute("page", page);
-        model.addAttribute("s_loginCode",  user.getLoginCode());
+        model.addAttribute("s_loginCode", user.getLoginCode());
         model.addAttribute("s_referCode", user.getReferCode());
         model.addAttribute("s_isStart", user.getIsStart());
         model.addAttribute("s_roleId", user.getRoleId());
-        model.addAttribute("roleList",roleList);
-        model.addAttribute("cardTypeList",cardTypeList);
+        model.addAttribute("roleList", roleList);
+        model.addAttribute("cardTypeList", cardTypeList);
 
 
         return "backend/userlist";
@@ -110,25 +111,38 @@ public class UserManageController {
 
     @RequestMapping("/backend/getuser.html")
     @ResponseBody
-    public Object getUser(String id){
-        String cjson = "";
-        if(null == id || "".equals(id)){
+    public Object getUser(String id) {
+        User user = new User();
+        if (null == id || "".equals(id)) {
             return "nodata";
-        }else{
+        } else {
             try {
-                User user = new User();
+
                 user.setId(Integer.valueOf(id));
                 user = userService.getUserById(user);
-                jsonConfig.registerJsonValueProcessor(Date.class,new JsonDateValueProcessor());
-                JSONObject jo = JSONObject.fromObject(user,jsonConfig);
-                cjson = jo.toString();
+
+
             } catch (Exception e) {
                 // TODO Auto-generated catch block
                 e.printStackTrace();
                 return "failed";
             }
-            return cjson;
+            return user;
         }
+    }
+    @RequestMapping("/loadUserTypeList.html")
+    @ResponseBody
+    public Object loadUserTypeList( String roleId){
+        try {
+            DataDictionary dataDictionary = new DataDictionary();
+            dataDictionary.setTypeCode("USER_TYPE");
+            List<DataDictionary> userTypeList = dataDictionaryService.getDataDictionaries(dataDictionary);
+            return userTypeList;
 
+        } catch (Exception e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        return null;
     }
 }

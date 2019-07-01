@@ -72,7 +72,7 @@ $('.viewuser').click(function(e){
                         }else if("nodata" == result){
                                 alert("没有数据！");
                         }else{
-                                m = eval('(' + result + ')');
+                                var m = result;
                                 $("#v_id").val(m.id);
                                 $("#v_logincode").val(m.loginCode);
                                 $("#v_username").val(m.userName);
@@ -332,15 +332,22 @@ $("#selectrole").change(function(){
         $("#selectusertype").append("<option value=\"\" selected=\"selected\">--请选择--</option>");
         var sel_role = $("#selectrole").val();
         if(sel_role == 2){
-                $.post("/backend/loadUserTypeList.html",{'s_role':sel_role},function(result){
-                        if(result != ""){
-                                for(var i=0;i<result.length;i++){
-                                        $("#selectusertype").append("<option value=\""+result[i].valueId+"\">"+result[i].valueName+"</option>");
+                $.ajax({
+                        url: "/backend/loadUserTypeList.html",
+                        data: {"roleId": sel_role},
+                        dataType: "json",
+                        type:"post",
+                        success: function (result) {
+                                console.log(result)
+                                if (result != "") {
+                                        for (var i = 0; i < result.length; i++) {
+                                                $("#selectusertype").append("<option value=\"" + result[i].valueId + "\">" + result[i].valueName + "</option>");
+                                        }
+                                } else {
+                                        alert("用户类型加载失败！");
                                 }
-                        }else{
-                                alert("用户类型加载失败！");
                         }
-                },'json');
+                });
         }
 });
 $("#a_logincode").blur(function(){

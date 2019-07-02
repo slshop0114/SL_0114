@@ -3,14 +3,25 @@
 
 
 <%--商品展示--%>
-<form class="layui-form fromrolesty" action="">
+<form class="layui-form fromrolesty" action="/backend/goodsinfolist.html" id="fromgoodslist">
+
+    <div class="layui-input-inline">
+        <input type="text" name="goodsName" placeholder="请输入名称" class="layui-input search_input">
+    </div>
     <button type="button" class="layui-btn" onclick="addauthority()">添加</button>
     <button type="button" class="layui-btn layui-btn-warm" onclick="modifyauthority()">修改</button>
     <button type="button" class="layui-btn layui-btn-danger" onclick="deauthority()">删除</button>
-    <button type="button" class="layui-btn layui-btn-normal" onclick="searchauthority()">查询</button>
-    <div class="layui-input-inline">
-        <input type="text" value="" placeholder="请输入关键字" class="layui-input search_input">
+
+    <div class="layui-form-item fl">
+        <div class="layui-input-block">
+            <button class="layui-btn" lay-submit="" lay-filter="searchgoodsinfo">查询</button>
+        </div>
     </div>
+
+
+
+
+
     <div class="layui-form">
         <table class="layui-table">
             <colgroup>
@@ -54,7 +65,7 @@
                         <div class="layui-form-item" pane="">
                             <div class="layui-input-block">
                                 <input type="radio" name="choosegoods" value="${goodsInfoList.id}"
-                                       lay-filter="choosegoods">
+                                       lay-filter="choosegoods" id="choosegoods">
                             </div>
                         </div>
                     </td>
@@ -140,7 +151,14 @@
 
 <%--修改商品--%>
 
-<form class="layui-form fromrolesty" action="/backend/addgoodsinfo.html" id="updategoodsinfo">
+<form class="layui-form fromrolesty" action="/backend/modifygoodsinfo.html" id="updategoodsinfo">
+    <div class="layui-form-item">
+
+        <div class="layui-input-block">
+            <input type="hidden" name="id" lay-verify="title" autocomplete="off" placeholder="请输入标题"
+                   class="layui-input" id="goodsInfo1idr">
+        </div>
+    </div>
     <div class="layui-form-item">
         <label class="layui-form-label">商品名称</label>
         <div class="layui-input-block">
@@ -277,6 +295,10 @@
             alert("添加成功");
 
         });
+        form.on('submit(searchgoodsinfo)', function (data) {
+            alert("查询成功");
+
+        });
         form.on('submit(updaterole)', function (data) {
             alert("修改成功");
 
@@ -290,7 +312,8 @@
                 data: {"id": goodsid},
                 success: function (result) {
                     $("#goodsInfo1goodsName").val(result.goodsName)
-                    $("#goodsInfo1id").val(result.id)
+                    $("#goodsInfo1id").val(result.goodsSN)
+                    $("#goodsInfo1idr").val(result.id)
                     $("#goodsInfo1marketPrice").val(result.marketPrice)
                     $("#goodsInfo1realPrice").val(result.realPrice)
                     $("#goodsInfo1num").val(result.num)

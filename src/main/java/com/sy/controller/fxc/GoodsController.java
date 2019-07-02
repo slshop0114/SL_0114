@@ -23,18 +23,16 @@ public class GoodsController {
 
     @RequestMapping("/backend/getgoodsinfo.html")
     @ResponseBody
-    public GoodsInfo getGoodsInfo( GoodsInfo goodsInfo,Model model){
-       GoodsInfo goodsInfo1=new GoodsInfo();
-            try {
-                goodsInfo1 = goodsInfoService.getGoodsInfoById(goodsInfo);
-                model.addAttribute(goodsInfo1);
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-          return goodsInfo1;
+    public GoodsInfo getGoodsInfo(GoodsInfo goodsInfo, Model model) {
+        GoodsInfo goodsInfo1 = new GoodsInfo();
+        try {
+            goodsInfo1 = goodsInfoService.getGoodsInfoById(goodsInfo);
+            model.addAttribute(goodsInfo1);
+        } catch (Exception e) {
+            e.printStackTrace();
         }
-
-
+        return goodsInfo1;
+    }
 
 
     @RequestMapping("/backend/goodsinfolist.html")
@@ -42,6 +40,9 @@ public class GoodsController {
         List<GoodsInfo> goodsInfoList = null;
 
         GoodsInfo goodsInfo = new GoodsInfo();
+        if (goods.getGoodsName()!=null){
+            goodsInfo.setGoodsName("%"+goods.getGoodsName()+"%");
+        }
 
         try {
             goodsInfoList = goodsInfoService.getGoodsInfoList(goodsInfo);
@@ -55,7 +56,6 @@ public class GoodsController {
 
     @RequestMapping("/backend/addgoodsinfo.html")
     public String addGoodsInfo(HttpSession session, GoodsInfo addGoodsInfo) {
-        System.out.println(addGoodsInfo + "addGoodsInfo");
         addGoodsInfo.setCreateTime(new Date());
         addGoodsInfo.setCreatedBy(((User) session.getAttribute(Constants.SESSION_USER)).getLoginCode());
         addGoodsInfo.setLastUpdateTime(new Date());
@@ -80,6 +80,18 @@ public class GoodsController {
         return "forward:/backend/goodsinfolist.html";
     }
 
+    @RequestMapping("/backend/delgoodsinfo.html")
+    @ResponseBody
+    public String delGoodsInfo(GoodsInfo goodsInfo) {
+        System.out.println("delgoodsinfodelgoodsinfo");
+        try {
+          goodsInfoService.deleteGoodsInfo(goodsInfo);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return "1";
+    }
 }
 
 

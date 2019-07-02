@@ -101,5 +101,22 @@ public class GoodsInfo extends Base{
 		this.lastUpdateTime = lastUpdateTime;
 	}
 
-	
+	@Override
+	public String toString() {
+		return "GoodsInfo{" +
+				"id=" + id +
+				", goodsSN='" + goodsSN + '\'' +
+				", goodsName='" + goodsName + '\'' +
+				", goodsFormat='" + goodsFormat + '\'' +
+				", marketPrice=" + marketPrice +
+				", realPrice=" + realPrice +
+				", state=" + state +
+				", note='" + note + '\'' +
+				", num=" + num +
+				", unit='" + unit + '\'' +
+				", createdBy='" + createdBy + '\'' +
+				", createTime=" + createTime +
+				", lastUpdateTime=" + lastUpdateTime +
+				'}';
+	}
 }

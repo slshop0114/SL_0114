@@ -4,6 +4,12 @@ function adduser(){
         $("#foradduser").css('display','block');
 }
 
+function updateuser(){
+
+    $("#modifyUserDiv").css('display','block');
+    $("#foradduser").css('display','block');
+}
+
 
 function checkEmail(str){
         var reg = /^([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+@([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+\.[a-zA-Z]{2,3}$/;

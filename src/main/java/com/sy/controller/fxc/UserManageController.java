@@ -1,8 +1,7 @@
 package com.sy.controller.fxc;
 
-import com.alibaba.fastjson.JSONArray;
+
 import com.alibaba.fastjson.JSONObject;
-import com.mysql.cj.util.StringUtils;
 import com.sy.model.common.DataDictionary;
 import com.sy.model.common.Role;
 import com.sy.model.common.User;
@@ -17,16 +16,14 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.context.annotation.SessionScope;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpSession;
 import java.util.Date;
 import java.util.List;
-import java.util.Map;
 
 @Controller
-@RequestMapping("/backend")
+
 public class UserManageController {
     @Autowired
     private UserService userService;
@@ -36,7 +33,7 @@ public class UserManageController {
     private DataDictionaryService dataDictionaryService;
 
 
-    @RequestMapping("/userlist.html")
+    @RequestMapping("/backend/userlist.html")
     public String userManager(Model model, HttpSession session) throws Exception {
 
         User user = (User) session.getAttribute(Constants.SESSION_USER);
@@ -57,7 +54,7 @@ public class UserManageController {
             e2.printStackTrace();
         }
 
-        if (null != user.getLoginCode())
+      /*  if (null != user.getLoginCode())
             user.setLoginCode("%" + user.getLoginCode() + "%");
         if (null != user.getReferCode())
             user.setReferCode("%" + user.getReferCode() + "%");
@@ -69,7 +66,7 @@ public class UserManageController {
             user.setRoleId(Integer.valueOf(user.getRoleId()));
         else
             user.setRoleId(null);
-
+*/
         //pages
         PageSupport page = new PageSupport();
 
@@ -87,7 +84,7 @@ public class UserManageController {
         return "backend/userlist";
     }
 
-    @RequestMapping("/adduser.html")
+    @RequestMapping("/backend/adduser.html")
     public ModelAndView addUser(HttpSession session, User addUser) {
         System.out.println(addUser + "adduser");
         try {
@@ -130,9 +127,10 @@ public class UserManageController {
             return user;
         }
     }
-    @RequestMapping("/loadUserTypeList.html")
+
+    @RequestMapping("/backend/loadUserTypeList.html")
     @ResponseBody
-    public Object loadUserTypeList( String roleId){
+    public Object loadUserTypeList(String roleId) {
         try {
             DataDictionary dataDictionary = new DataDictionary();
             dataDictionary.setTypeCode("USER_TYPE");
@@ -145,4 +143,13 @@ public class UserManageController {
         }
         return null;
     }
+
+
+
+
 }
+
+
+
+
+

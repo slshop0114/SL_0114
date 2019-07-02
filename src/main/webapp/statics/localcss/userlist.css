@@ -1,3 +1,9 @@
+.main_search{
+	float: right;
+	width: 60%;
+	text-align: left;
+}
+
 #addUserDiv{
 	width: 1000px; /*宽度*/
 	height: 800px; /*高度*/
@@ -19,5 +25,17 @@
 	left: 0; /*定位*/
 	display: none; /*隐藏*/
 	z-index: 1; /*覆盖*/
+
+}
+
+#modifyUserDiv{
+	width: 1000px; /*宽度*/
+	height: 800px; /*高度*/
+	background: #fff; /*背景色*/
+	display: none; /*隐藏*/
+	z-index: 2; /*覆盖*/
+	position: absolute;
+	top: 100px;
+	left: 400px; /* 定位*/
 
 }

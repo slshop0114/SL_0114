@@ -12,6 +12,8 @@
         <link rel="stylesheet" href="/statics/layui/css/layui.css" media="all">
         <link rel="stylesheet" href="/statics/localcss/main.css" media="all">
         <link rel="stylesheet" href="/statics/localcss/userlist.css" media="all">
+        <link rel="stylesheet" href="/statics/localcss/rolelist.css" media="all">
+        <link rel="stylesheet" href="/statics/localcss/goodsinfolist.css" media="all">
 
         <script src="/statics/js/jQuery3.4.1.js" type="text/javascript"></script>
 
@@ -20,23 +22,19 @@
                 padding-bottom: 40px;
             }
 
-            .sidebar-nav {
-                padding: 9px 0;
-            }
+
 
             .navbar .nav li a {
                 border: 0px;
             }
 
-            .custom-setting {
-            }
 
-            .clear {
-                clear: both;
-            }
 
             div .modal-body label {
                 color: black;
+            }
+            #headleft{
+                float: left;
             }
         </style>
 

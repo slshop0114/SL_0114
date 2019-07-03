@@ -2,6 +2,8 @@ package com.sy.service.fxc;
 
 
 import com.sy.model.common.DataDictionary;
+import com.sy.tools.PageSupport;
+
 import java.util.List;
 
 /**
@@ -14,6 +16,8 @@ public interface DataDictionaryService {
 	 * @return dataDictionary
 	 */
 	public List<DataDictionary> getDataDictionaries(DataDictionary dataDictionary) throws Exception;
+
+	public List<DataDictionary> getDataDictionariesWithpage(DataDictionary dataDictionary, PageSupport pageSupport) throws Exception;
 	/**
 	 * getDataDictionariesCategory
 	 * @param

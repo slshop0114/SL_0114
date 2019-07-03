@@ -1,6 +1,7 @@
 package com.sy.model.common;
 
 import java.util.Date;
+import java.util.List;
 
 /**
  * GoodsPack
@@ -20,15 +21,17 @@ public class GoodsPack extends Base{
 	private Date createTime;
 	private Date lastUpdateTime;
 	
-	private String goodsJson;
-	
-	
-	public String getGoodsJson() {
-		return goodsJson;
+	private List<GoodsInfo> goodsInfos;
+
+
+	public List<GoodsInfo> getGoodsInfos() {
+		return goodsInfos;
 	}
-	public void setGoodsJson(String goodsJson) {
-		this.goodsJson = goodsJson;
+
+	public void setGoodsInfos(List<GoodsInfo> goodsInfos) {
+		this.goodsInfos = goodsInfos;
 	}
+
 	public Integer getId() {
 		return id;
 	}

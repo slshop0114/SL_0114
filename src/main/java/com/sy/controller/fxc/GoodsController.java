@@ -40,9 +40,7 @@ public class GoodsController {
         List<GoodsInfo> goodsInfoList = null;
 
         GoodsInfo goodsInfo = new GoodsInfo();
-        if (goods.getGoodsName()!=null){
-            goodsInfo.setGoodsName("%"+goods.getGoodsName()+"%");
-        }
+
 
         try {
             goodsInfoList = goodsInfoService.getGoodsInfoList(goodsInfo);
@@ -64,7 +62,7 @@ public class GoodsController {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return "forward:/backend/goodsinfolist.html";
+        return "redirect:/backend/goodsinfolist.html";
     }
 
 
@@ -77,7 +75,7 @@ public class GoodsController {
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
-        return "forward:/backend/goodsinfolist.html";
+        return "redirect:/backend/goodsinfolist.html";
     }
 
     @RequestMapping("/backend/delgoodsinfo.html")

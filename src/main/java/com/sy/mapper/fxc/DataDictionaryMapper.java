@@ -1,6 +1,8 @@
 package com.sy.mapper.fxc;
 
 import com.sy.model.common.DataDictionary;
+import com.sy.tools.PageSupport;
+
 import java.util.List;
 
 /**
@@ -15,6 +17,9 @@ public interface DataDictionaryMapper {
 	 * @return dataDictionary
 	 */
 	public List<DataDictionary> getDataDictionaries(DataDictionary dataDictionary) throws Exception;
+
+
+	public List<DataDictionary> getDataDictionariesWithpage(DataDictionary dataDictionary) throws Exception;
 	/**
 	 * getDataDictionariesNotIn
 	 * sql:SELECT * FROM data_dictionary WHERE  typeCode = 'CARD_TYPE' AND typeCode NOT IN (SELECT typecode FROM data_dictionary WHERE typecode = 'INFO_TYPE')

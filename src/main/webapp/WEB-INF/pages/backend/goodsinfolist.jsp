@@ -3,22 +3,18 @@
 
 
 <%--商品展示--%>
-<form class="layui-form fromrolesty" action="/backend/goodsinfolist.html" id="fromgoodslist">
+<form class="layui-form fromrolesty" action="/backend/getgoodsinfo.html" id="fromgoodslist">
+
+
+    <button type="button" class="layui-btn" onclick="addgoodsinfo()">添加</button>
+    <button type="button" class="layui-btn layui-btn-warm" onclick="modifygoodsinfo()">修改</button>
+    <button type="button" class="layui-btn layui-btn-danger" onclick="degoodsinfo()">删除</button>
+    <button type="button" class="layui-btn layui-btn-danger" onclick="searchgoodsinfo()">查询</button>
+
 
     <div class="layui-input-inline">
-        <input type="text" name="goodsName" placeholder="请输入名称" class="layui-input search_input">
+        <input type="text" name="id" placeholder="请输入名称" class="layui-input search_input" id="searchgoodsinput">
     </div>
-    <button type="button" class="layui-btn" onclick="addauthority()">添加</button>
-    <button type="button" class="layui-btn layui-btn-warm" onclick="modifyauthority()">修改</button>
-    <button type="button" class="layui-btn layui-btn-danger" onclick="deauthority()">删除</button>
-
-    <div class="layui-form-item fl">
-        <div class="layui-input-block">
-            <button class="layui-btn" lay-submit="" lay-filter="searchgoodsinfo">查询</button>
-        </div>
-    </div>
-
-
 
 
 
@@ -149,6 +145,7 @@
 </form>
 
 
+
 <%--修改商品--%>
 
 <form class="layui-form fromrolesty" action="/backend/modifygoodsinfo.html" id="updategoodsinfo">
@@ -223,65 +220,96 @@
     </div>
     <div class="layui-form-item">
         <div class="layui-input-block">
-            <button class="layui-btn" lay-submit="" lay-filter="subgoodsinfo">立即提交</button>
+            <button class="layui-btn" lay-submit="" lay-filter="updategoodsinfo">立即提交</button>
             <a href="/backend/goodsinfolist.html" class="layui-btn layui-btn-primary">重置</a>
         </div>
     </div>
 </form>
-<%--
+
+
+<%--查询商品--%>
+
+<form class="layui-form fromrolesty" action="/backend/modifygoodsinfo.html" id="searchgoodsinfo">
+    <div class="layui-form-item">
+
+        <div class="layui-input-block">
+            <input type="hidden" name="id" lay-verify="title" autocomplete="off" placeholder="请输入标题"
+                   class="layui-input" id="goodsInfo2idr" disabled="disabled">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">商品名称</label>
+        <div class="layui-input-block">
+            <input type="text" name="goodsName" lay-verify="title" autocomplete="off" placeholder="请输入标题"
+                   class="layui-input" id="goodsInfo2goodsName" disabled="disabled">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">商品编号</label>
+        <div class="layui-input-block">
+            <input type="text" name="goodsSN" lay-verify="title" autocomplete="off" placeholder="请输入标题"
+                   class="layui-input" id="goodsInfo2id" disabled="disabled">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">市场价</label>
+        <div class="layui-input-block">
+            <input type="text" name="marketPrice" lay-verify="title" autocomplete="off" placeholder="请输入标题"
+                   class="layui-input" id="goodsInfo2marketPrice" disabled="disabled">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">优惠价</label>
+        <div class="layui-input-block">
+            <input type="text" name="realPrice" lay-verify="title" autocomplete="off" placeholder="请输入标题"
+                   class="layui-input" id="goodsInfo2realPrice" disabled="disabled">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">库存</label>
+        <div class="layui-input-block">
+            <input type="text" name="num" lay-verify="title" autocomplete="off" placeholder="请输入标题" class="layui-input"
+                   id="goodsInfo2num" disabled="disabled">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">单位</label>
+        <div class="layui-input-block">
+            <input type="text" name="unit" lay-verify="title" autocomplete="off" placeholder="请输入标题"
+                   class="layui-input" id="goodsInfo2uni" disabled="disabled">
+        </div>
+    </div>
+
+    <div class="layui-form-item">
+        <label class="layui-form-label">状态</label>
+        <div class="layui-input-block">
+            <input type="radio" name="state" value="1" title="上架" checked="">
+            <input type="radio" name="state" value="2" title="下架">
+        </div>
+    </div>
+    <div class="layui-form-item layui-form-text">
+        <label class="layui-form-label">商品规格</label>
+        <div class="layui-input-block">
+            <textarea name="goodsFormat" placeholder="请输入内容" class="layui-textarea" id="goodsInfo2formate" disabled="disabled"></textarea>
+        </div>
+    </div>
+    <div class="layui-form-item layui-form-text">
+        <label class="layui-form-label">商品说明</label>
+        <div class="layui-input-block">
+            <textarea name="note" placeholder="请输入内容" class="layui-textarea" id="goodsInfo2note" disabled="disabled"></textarea>
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <div class="layui-input-block">
+            <a href="/backend/goodsinfolist.html" class="layui-btn layui-btn-primary">返回</a>
+        </div>
+    </div>
+</form>
 
 
 
-<div class="modal hide fade" id="viewGoodsInfoDiv">
-    <div class="modal-header">
-        <button type="button" class="close viewgoodsinfocancel" data-dismiss="modal">×</button>
-        <h3>查看商品信息</h3>
-    </div>
-    <div class="modal-body">
-        <ul class="topul">
-            <li>
-                <label>商品名称：</label><input type="text" id="v_goodsName" name="goodsName" readonly="readonly"/>
-            </li>
-            <li>
-                <label>商品编号：</label><input type="text" id="v_goodsSN" name="goodsSN" readonly="readonly"/>
-            </li>
-            <li>
-                <label>市场价：</label><input type="text" id="v_marketPrice" name="marketPrice" readonly="readonly"/>
-            </li>
-            <li>
-                <label>优惠价：</label>
-                <input type="text" id="v_realPrice" name="realPrice" readonly="readonly"/>
-            </li>
-            <li>
-                <label>库存量：</label><input type="text" id="v_num" name="num" readonly="readonly"/>
-            </li>
-            <li>
-                <label>单位：</label>
-                <input type="text" id="v_unit" name="unit" readonly="readonly"/>
-            </li>
-            <li>
-                <label>状态：</label>
-                <span id="v_state"></span>
-            </li>
-        </ul>
-        <div class="clear"></div>
-        <ul class="downul">
-            <li>
-                <span>商品规格：</span> <br/>
-                <div id="v_goodsFormat" readonly="readonly" rows="3"></div>
-            </li>
-        </ul>
-        <ul class="downul">
-            <li>
-                <span>商品说明：</span> <br/>
-                <div id="v_note" readonly="readonly" rows="3"></div>
-            </li>
-        </ul>
-    </div>
-    <div class="modal-footer">
-        <a href="#" class="btn viewgoodsinfocancel" data-dismiss="modal">关闭</a>
-    </div>
-</div>--%>
+
+
 <div id="foraddgoodsinfo"></div>
 <%@include file="/WEB-INF/pages/common/foot.jsp" %>
 <script type="text/javascript" src="/statics/localjs/goodsinfolist.js"></script>
@@ -295,11 +323,8 @@
             alert("添加成功");
 
         });
-        form.on('submit(searchgoodsinfo)', function (data) {
-            alert("查询成功");
 
-        });
-        form.on('submit(updaterole)', function (data) {
+        form.on('submit(updategoodsinfo)', function (data) {
             alert("修改成功");
 
         });
@@ -321,7 +346,7 @@
                     $("#goodsInfo1formate").val(result.goodsFormat)
                     $("#goodsInfo1note").val(result.note)
                 }
-            })
+            });
         });
 
     });

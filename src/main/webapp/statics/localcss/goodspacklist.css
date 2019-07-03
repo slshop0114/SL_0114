@@ -1,4 +1,4 @@
-#foradddicmanage {
+#forgoodspacklist {
     opacity: 0.8; /*透明度*/
     width: 100%; /*宽度*/
     height: 2300px; /*高度，不能百分百*/
@@ -10,7 +10,7 @@
     z-index: 1; /*覆盖*/
 }
 
-#adddicfrom {
+#addgoodspack {
     width: 800px; /*宽度*/
     height: 1000px; /*高度*/
     background: #fff; /*背景色*/
@@ -22,7 +22,7 @@
 
 }
 
-#updategoodsinfo {
+#updategoodspack {
     width: 800px; /*宽度*/
     height: 1000px; /*高度*/
     background: #fff; /*背景色*/
@@ -34,7 +34,8 @@
 
 }
 
-#updatedicfrom {
+
+#searchgoodspack {
     width: 800px; /*宽度*/
     height: 1000px; /*高度*/
     background: #fff; /*背景色*/

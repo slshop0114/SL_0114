@@ -131,6 +131,7 @@ public class UserManageController {
     @RequestMapping("/backend/loadUserTypeList.html")
     @ResponseBody
     public Object loadUserTypeList(String roleId) {
+        PageSupport pageSupport=new PageSupport();
         try {
             DataDictionary dataDictionary = new DataDictionary();
             dataDictionary.setTypeCode("USER_TYPE");

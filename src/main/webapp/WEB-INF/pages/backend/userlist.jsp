@@ -65,8 +65,140 @@
 </form>
 
 
-<%--增加表单--%>
+<%--增加用户--%>
 
+
+<form class="layui-form fromrolesty" action="/backend/adduser.html" id="addUserform">
+    <div class="layui-form-item">
+        <label class="layui-form-label">角色</label>
+        <div class="layui-input-block">
+            <select name="city" lay-verify="required">
+                <option value=""></option>
+                <option value="2">会员</option>
+                <option value="1">管理员</option>
+            </select>
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">会员类型</label>
+        <div class="layui-input-block">
+            <select name="city" lay-verify="required">
+                <option value=""></option>
+                <option value="2">注册会员</option>
+                <option value="1">消费会员</option>
+                <option value="1">VIP会员</option>
+                <option value="1">加盟店</option>
+            </select>
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">用户名</label>
+        <div class="layui-input-block">
+            <input type="text" name="" lay-verify="title" autocomplete="off" placeholder="请输入标题"
+                   class="layui-input">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">姓名</label>
+        <div class="layui-input-block">
+            <input type="text" name="" lay-verify="title" autocomplete="off" placeholder="请输入标题"
+                   class="layui-input">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">证件类型</label>
+        <div class="layui-input-block">
+            <select name="city" lay-verify="required">
+                <option value=""></option>
+                <option value="2">二代身份证</option>
+                <option value="1">护照</option>
+                <option value="0">军官证</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="layui-form-item">
+        <label class="layui-form-label">证件号码</label>
+        <div class="layui-input-block">
+            <input type="text" name="" lay-verify="title" autocomplete="off" placeholder="请输入标题"
+                   class="layui-input">
+        </div>
+    </div>
+
+    <div class="layui-form-item">
+        <label class="layui-form-label">收货地址</label>
+        <div class="layui-input-block">
+            <select name="city" lay-verify="required">
+                <option value=""></option>
+                <option value="2">注册会员</option>
+                <option value="1">消费会员</option>
+                <option value="1">VIP会员</option>
+                <option value="1">加盟店</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="layui-form-item">
+        <label class="layui-form-label">移动电话</label>
+        <div class="layui-input-block">
+            <input type="text" name="" lay-verify="title" autocomplete="off" placeholder="请输入标题"
+                   class="layui-input">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">电子邮箱</label>
+        <div class="layui-input-block">
+            <input type="text" name="" lay-verify="title" autocomplete="off" placeholder="请输入标题"
+                   class="layui-input">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">邮政编码</label>
+        <div class="layui-input-block">
+            <input type="text" name="" lay-verify="title" autocomplete="off" placeholder="请输入标题"
+                   class="layui-input">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">收货地址</label>
+        <div class="layui-input-block">
+            <input type="text" name="" lay-verify="title" autocomplete="off" placeholder="请输入标题"
+                   class="layui-input">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">开户行</label>
+        <div class="layui-input-block">
+            <input type="text" name="" lay-verify="title" autocomplete="off" placeholder="请输入标题"
+                   class="layui-input">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">卡号</label>
+        <div class="layui-input-block">
+            <input type="text" name="" lay-verify="title" autocomplete="off" placeholder="请输入标题"
+                   class="layui-input">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">开户人</label>
+        <div class="layui-input-block">
+            <input type="text" name="" lay-verify="title" autocomplete="off" placeholder="请输入标题"
+                   class="layui-input">
+        </div>
+    </div>
+
+    <button type="button" class="layui-btn" id="test1">上传图片</button>
+
+
+
+    <div class="layui-form-item">
+        <div class="layui-input-block">
+            <button class="layui-btn" lay-submit="" lay-filter="adduser">立即提交</button>
+            <a class="layui-btn layui-btn-primary" href="/backend/userlist.html">重置</a>
+        </div>
+    </div>
+</form>
 
 
 
@@ -77,11 +209,12 @@
 <div id="foradduser"></div>
 <%@include file="/WEB-INF/pages/common/foot.jsp" %>
 <script>
-    layui.use('form', function () {
+    layui.use(['form','upload'], function () {
         var form = layui.form;
+        var upload = layui.upload;
 
 //监听提交
-        form.on('submit()', function (data) {
+        form.on('submit(adduser)', function (data) {
             alert("添加成功");
 
         });

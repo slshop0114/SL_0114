@@ -56,7 +56,7 @@
 
 </div>
 <%-------------------------------------------------------------------------------------------------------%>
-<%--添加商品--%>
+<%--添加字典--%>
 
 
 <form class="layui-form fromrolesty" action="/backend/addDic.html" id="adddicfrom">
@@ -99,7 +99,7 @@
 </form>
 
 
-<%--修改商品--%>
+<%--修改字典--%>
 
 
 <form class="layui-form fromrolesty" action="/backend/modifylDic.html" id="updatedicfrom">

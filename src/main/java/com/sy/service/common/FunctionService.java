@@ -51,4 +51,6 @@ public interface FunctionService {
      * @throws Exception
      */
     public List<Function> getFunctionListByRoId(Authority authority) throws Exception;
+
+    public List<Function> getAllFunction() throws Exception;
 }

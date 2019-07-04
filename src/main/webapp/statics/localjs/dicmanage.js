@@ -1,3 +1,4 @@
+
 function adddclist() {
 
     $("#adddicfrom").css('display', 'block');
@@ -17,8 +18,9 @@ function dedicmanage() {
         method: "post",
         data: {"id": dicid},
         dataType: "json",
-        success: function (result) {
+        complete: function (result) {
             window.location.href = "/backend/dicmanage.html"
         }
     })
 }
+

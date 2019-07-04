@@ -37,7 +37,7 @@ public class GoodspackController {
 
         try {
             GoodsInfo goodsInfo = new GoodsInfo();
-            goodsInfoList = goodsInfoService.getGoodsInfoList(goodsInfo);
+            goodsInfoList = goodsInfoService.getGoodsInfoList(goodsInfo,0);
             goodsPackList = goodsPackService.getGoodsPackList(goodsPack);
             model.addAttribute("goodsPackList", goodsPackList);
             model.addAttribute("goodsInfoListforpack", goodsInfoList);

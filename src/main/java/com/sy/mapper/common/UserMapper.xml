@@ -166,7 +166,7 @@
 		select * from au_user 
 		<trim prefix="where" prefixOverrides="and | or">
 			<if test="userName != null">
-			 and userName like #{userName}
+			 and userName like CONCAT('%',#{userName},'%')
 			</if>
 			<if test="loginCode != null">
 			 and loginCode like #{loginCode}

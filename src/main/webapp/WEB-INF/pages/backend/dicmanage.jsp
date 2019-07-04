@@ -29,7 +29,7 @@
             </thead>
             <tbody>
 
-            <c:forEach items="${dicmanagelist}" var="dicmanagelist">
+            <c:forEach items="${dicmanagelist}" var="dicmanagelist" >
                 <tr>
                     <td class="center">
                         <div class="layui-form-item" pane="">
@@ -50,11 +50,11 @@
     </div>
 </form>
 
-<div style="clear: both">
-<a class="layui-btn layui-btn-warm" onclick="changepagedic()" href="/backend/dicmanage.html?pagechange=1">下一页</a>
-<a class="layui-btn layui-btn-warm" onclick="changepagedic()" href="/backend/dicmanage.html?pagechange=2">下一页</a>
+<div style="clear: both"></div>
+<a   class="layui-btn layui-btn-warm"  href="/backend/dicmanage.html?pagechange=1">下一页</a>
+<a   class="layui-btn layui-btn-warm"  href="/backend/dicmanage.html?pagechange=2">上一页</a>
 
-</div>
+
 <%-------------------------------------------------------------------------------------------------------%>
 <%--添加字典--%>
 

@@ -11,7 +11,7 @@ import java.util.List;
 public interface GoodsInfoService {
 	
 
-	public List<GoodsInfo> getGoodsInfoList(GoodsInfo goodsInfo) throws Exception;
+	public List<GoodsInfo> getGoodsInfoList(GoodsInfo goodsInfo,Integer pagestar) throws Exception;
 	
 
 	public int count(GoodsInfo goodsInfo) throws Exception;

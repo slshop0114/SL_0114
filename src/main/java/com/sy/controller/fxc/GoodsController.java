@@ -21,6 +21,8 @@ public class GoodsController {
     @Autowired
     GoodsInfoService goodsInfoService;
 
+    private static int pagestar = 1;
+
     @RequestMapping("/backend/getgoodsinfo.html")
     @ResponseBody
     public GoodsInfo getGoodsInfo(GoodsInfo goodsInfo, Model model) {
@@ -36,14 +38,30 @@ public class GoodsController {
 
 
     @RequestMapping("/backend/goodsinfolist.html")
-    public String goodsList(GoodsInfo goods, Model model) {
-        List<GoodsInfo> goodsInfoList = null;
+    public String goodsList(GoodsInfo goods, Model model,Integer pagechange) {
+        if (pagechange != null) {
 
+            if (pagechange == 1) {
+                pagestar+=1;
+                System.out.println(pagestar);
+            }
+            if (pagechange == 2) {
+                pagestar-=1;
+                if (pagestar < 1) {
+                    pagestar=1;
+                }
+            }
+        }
+        List<GoodsInfo> goodsInfoList = null;
         GoodsInfo goodsInfo = new GoodsInfo();
 
-
         try {
-            goodsInfoList = goodsInfoService.getGoodsInfoList(goodsInfo);
+            goodsInfoList = goodsInfoService.getGoodsInfoList(goodsInfo,pagestar);
+            if (goodsInfoList.size() == 0) {
+                pagestar-=1;
+                goodsInfoList = goodsInfoService.getGoodsInfoList(goodsInfo, pagestar);
+            }
+
             model.addAttribute(goodsInfoList);
         } catch (Exception e) {
             e.printStackTrace();

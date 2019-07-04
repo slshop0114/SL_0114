@@ -45,4 +45,10 @@ public class FunctionServiceImpl implements FunctionService {
     public List<Function> getFunctionListByRoId(Authority authority) throws Exception {
         return functionMapper.getFunctionListByRoId(authority);
     }
+
+    @Override
+    public List<Function> getAllFunction() throws Exception {
+        return functionMapper.getAllFunction();
+    }
+
 }

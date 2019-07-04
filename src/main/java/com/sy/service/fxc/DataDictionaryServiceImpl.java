@@ -25,8 +25,10 @@ public class DataDictionaryServiceImpl implements DataDictionaryService{
 	private DataDictionaryMapper mapper;
 
 	@Override
-	public List<DataDictionary> getDataDictionariesWithpage(DataDictionary dataDictionary, PageSupport pageSupport) throws Exception {
-		Page page= PageHelper.startPage(pageSupport.getPage(),pageSupport.getPageSize());
+	public List<DataDictionary> getDataDictionariesWithpage(DataDictionary dataDictionary, Integer pagestar) throws Exception {
+
+
+		Page page= PageHelper.startPage(pagestar,10);
 		return mapper.getDataDictionariesWithpage(dataDictionary);
 	}
 

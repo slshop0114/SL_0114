@@ -34,9 +34,7 @@
 	<delete id="deleteAuthority" parameterType="authority">
 		delete from au_authority
 		<trim prefix="where" prefixOverrides="and | or">
-			<if test=" id != null">
-				and id = #{id}
-			</if>
+
 			<if test = "roleId != null ">
 				and roleId = #{roleId}
 			</if>

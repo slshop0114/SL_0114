@@ -7,6 +7,7 @@ import com.sy.service.fxc.DataDictionaryService;
 import com.sy.tools.PageSupport;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -19,28 +20,33 @@ public class DicmanageController {
     @Autowired
     DataDictionaryService dataDictionaryService;
 
+    private static int pagestar = 1;
+
     @RequestMapping("/backend/dicmanage.html")
-    public String Todicmanage(DataDictionary dataDictionary, HttpSession session, Integer pagechange) {
-        PageSupport pageSupport = new PageSupport();
+    public String Todicmanage(DataDictionary dataDictionary, Model model, Integer pagechange) {
+
         if (pagechange != null) {
 
             if (pagechange == 1) {
-                pageSupport.getNext();
+                pagestar+=1;
+                System.out.println(pagestar);
             }
             if (pagechange == 2) {
-                pageSupport.getPrev();
-                if (pageSupport.getPage() < 1) {
-                    pageSupport.setPage(1);
+                pagestar-=1;
+                if (pagestar < 1) {
+                    pagestar=1;
                 }
             }
         }
         List<DataDictionary> dicmanagelist = null;
         try {
-            dicmanagelist = dataDictionaryService.getDataDictionariesWithpage(dataDictionary, pageSupport);
+            dicmanagelist = dataDictionaryService.getDataDictionariesWithpage(dataDictionary, pagestar);
             if (dicmanagelist.size() == 0) {
-                return null;
+                pagestar-=1;
+                dicmanagelist = dataDictionaryService.getDataDictionariesWithpage(dataDictionary, pagestar);
             }
-            session.setAttribute("dicmanagelist", dicmanagelist);
+
+            model.addAttribute("dicmanagelist", dicmanagelist);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -49,7 +55,7 @@ public class DicmanageController {
     }
 
 
-    @RequestMapping("/backend/getJsonDic.html")
+ /*   @RequestMapping("/backend/getJsonDic.html")
     @ResponseBody
     public Object getJsonDic(@RequestParam String tcode, PageSupport pageSupport) {
 
@@ -63,7 +69,7 @@ public class DicmanageController {
             e.printStackTrace();
         }
         return "failed";
-    }
+    }*/
 
 
     @RequestMapping("/backend/addDic.html")

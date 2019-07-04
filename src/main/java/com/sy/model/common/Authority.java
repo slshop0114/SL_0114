@@ -46,4 +46,14 @@ public class Authority {
         this.creationTime = creationTime;
     }
 
+    @Override
+    public String toString() {
+        return "Authority{" +
+                "roleId=" + roleId +
+                ", functionId=" + functionId +
+                ", userTypeId=" + userTypeId +
+                ", creationTime=" + creationTime +
+                ", createdBy='" + createdBy + '\'' +
+                '}';
+    }
 }

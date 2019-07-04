@@ -1,6 +1,8 @@
 package com.sy.service.fxc;
 
 
+import com.github.pagehelper.Page;
+import com.github.pagehelper.PageHelper;
 import com.sy.mapper.fxc.GoodsInfoMapper;
 import com.sy.model.common.GoodsInfo;
 import org.springframework.stereotype.Service;
@@ -21,9 +23,10 @@ public class GoodsInfoServiceImpl implements GoodsInfoService{
 	@Resource
 	private GoodsInfoMapper mapper;
 
-	public List<GoodsInfo> getGoodsInfoList(GoodsInfo goodsInfo)
+	public List<GoodsInfo> getGoodsInfoList(GoodsInfo goodsInfo,Integer pagestar)
 			throws Exception {
 		// TODO Auto-generated method stub
+		Page page= PageHelper.startPage(pagestar,10);
 		return mapper.getGoodsInfoList(goodsInfo);
 	}
 

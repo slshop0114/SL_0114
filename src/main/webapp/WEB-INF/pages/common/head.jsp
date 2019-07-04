@@ -16,6 +16,7 @@
         <link rel="stylesheet" href="/statics/localcss/goodsinfolist.css" media="all">
         <link rel="stylesheet" href="/statics/localcss/dicmanage.css" media="all">
         <link rel="stylesheet" href="/statics/localcss/goodspacklist.css" media="all">
+        <link rel="stylesheet" href="/statics/localcss/authoritymanage.css" media="all">
 
         <script src="/statics/js/jQuery3.4.1.js" type="text/javascript"></script>
 

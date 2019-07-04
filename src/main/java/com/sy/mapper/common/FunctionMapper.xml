@@ -32,4 +32,9 @@
 			SELECT functionId FROM au_authority WHERE parentId = 0 and roleId = #{roleId}
 		)
 	</select>
+
+	<!--查询所有-->
+	<select id="getAllFunction" resultType="function">
+		select * from au_function
+	</select>
 </mapper>  

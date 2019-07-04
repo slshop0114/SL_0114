@@ -17,7 +17,7 @@ public interface DataDictionaryService {
 	 */
 	public List<DataDictionary> getDataDictionaries(DataDictionary dataDictionary) throws Exception;
 
-	public List<DataDictionary> getDataDictionariesWithpage(DataDictionary dataDictionary, PageSupport pageSupport) throws Exception;
+	public List<DataDictionary> getDataDictionariesWithpage(DataDictionary dataDictionary, Integer pagestar) throws Exception;
 	/**
 	 * getDataDictionariesCategory
 	 * @param

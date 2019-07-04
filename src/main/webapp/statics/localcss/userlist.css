@@ -1,12 +1,6 @@
-.main_search{
-	float: right;
-	width: 60%;
-	text-align: left;
-}
-
 #addUserform{
-	width: 1000px; /*宽度*/
-	height: 800px; /*高度*/
+	width: 600px; /*宽度*/
+	height: 1000px; /*高度*/
 	background: #fff; /*背景色*/
 	display: none; /*隐藏*/
 	z-index: 2; /*覆盖*/
@@ -28,9 +22,9 @@
 
 }
 
-#modifyUserDiv{
-	width: 1000px; /*宽度*/
-	height: 800px; /*高度*/
+#updateUserform{
+	width: 600px; /*宽度*/
+	height: 1000px; /*高度*/
 	background: #fff; /*背景色*/
 	display: none; /*隐藏*/
 	z-index: 2; /*覆盖*/

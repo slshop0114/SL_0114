@@ -55,5 +55,8 @@ public interface FunctionMapper {
 	 * @throws Exception
 	 */
 	public List<Function> getFunctionListByRoId(Authority authority) throws Exception;
+
+//	查询所有
+	public List<Function> getAllFunction() throws Exception;
 	
 }

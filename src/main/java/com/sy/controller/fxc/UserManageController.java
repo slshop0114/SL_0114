@@ -1,7 +1,6 @@
 package com.sy.controller.fxc;
 
 
-import com.alibaba.fastjson.JSONObject;
 import com.sy.model.common.DataDictionary;
 import com.sy.model.common.Role;
 import com.sy.model.common.User;
@@ -16,11 +15,12 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 
 @Controller
 
@@ -36,57 +36,44 @@ public class UserManageController {
     @RequestMapping("/backend/userlist.html")
     public String userManager(Model model, HttpSession session) throws Exception {
 
-        User user = (User) session.getAttribute(Constants.SESSION_USER);
-
-        System.out.println(user + "userlisthtml");
         User user1 = new User();
         List<User> list = userService.getUserList(user1);
         model.addAttribute("list", list);
-        DataDictionary dataDictionary = new DataDictionary();
-        dataDictionary.setTypeCode("CARD_TYPE");
-        List<Role> roleList = null;
-        List<DataDictionary> cardTypeList = null;
-        try {
-            roleList = roleService.getRoleIdAndNameList();
-            cardTypeList = dataDictionaryService.getDataDictionaries(dataDictionary);
-        } catch (Exception e2) {
-            // TODO Auto-generated catch block
-            e2.printStackTrace();
-        }
-
-      /*  if (null != user.getLoginCode())
-            user.setLoginCode("%" + user.getLoginCode() + "%");
-        if (null != user.getReferCode())
-            user.setReferCode("%" + user.getReferCode() + "%");
-        if (!StringUtils.isNullOrEmpty(user.getIsStart() + ""))
-            user.setIsStart(Integer.valueOf(user.getIsStart()));
-        else
-            user.setIsStart(null);
-        if (!StringUtils.isNullOrEmpty(user.getRoleId() + ""))
-            user.setRoleId(Integer.valueOf(user.getRoleId()));
-        else
-            user.setRoleId(null);
-*/
-        //pages
-        PageSupport page = new PageSupport();
-
-        List<User> userList = userService.getUserList(user);
-        page.setItems(userList);
-        model.addAttribute("page", page);
-        model.addAttribute("s_loginCode", user.getLoginCode());
-        model.addAttribute("s_referCode", user.getReferCode());
-        model.addAttribute("s_isStart", user.getIsStart());
-        model.addAttribute("s_roleId", user.getRoleId());
-        model.addAttribute("roleList", roleList);
-        model.addAttribute("cardTypeList", cardTypeList);
-
 
         return "backend/userlist";
     }
 
     @RequestMapping("/backend/adduser.html")
     public ModelAndView addUser(HttpSession session, User addUser) {
-        System.out.println(addUser + "adduser");
+        if ("1".equals(addUser.getCardType())) {
+            addUser.setCardTypeName("二代身份证");
+        }
+        if ("3".equals(addUser.getCardType())) {
+            addUser.setCardTypeName("军官证");
+        }
+        if ("4".equals(addUser.getCardType())) {
+            addUser.setCardTypeName("护照");
+        }
+        if(addUser.getRoleId()==1){
+            addUser.setRoleName("管理员");
+        }
+        if(addUser.getRoleId()==2){
+            addUser.setRoleName("会员");
+        }
+        if ("1".equals(addUser.getUserType())) {
+            addUser.setUserTypeName("注册会员");
+        }
+        if ("2".equals(addUser.getUserType())) {
+            addUser.setUserTypeName("消费会员");
+        }
+        if ("3".equals(addUser.getUserType())) {
+            addUser.setUserTypeName("VIP会员");
+        }
+        if ("4".equals(addUser.getUserType())) {
+            addUser.setUserTypeName("加盟店");
+        }
+        addUser.setIsStart(1);
+
         try {
             String idCard = addUser.getIdCard();
 
@@ -108,46 +95,70 @@ public class UserManageController {
 
     @RequestMapping("/backend/getuser.html")
     @ResponseBody
-    public Object getUser(String id) {
-        User user = new User();
-        if (null == id || "".equals(id)) {
-            return "nodata";
-        } else {
-            try {
-
-                user.setId(Integer.valueOf(id));
-                user = userService.getUserById(user);
-
-
-            } catch (Exception e) {
-                // TODO Auto-generated catch block
-                e.printStackTrace();
-                return "failed";
-            }
-            return user;
-        }
-    }
-
-    @RequestMapping("/backend/loadUserTypeList.html")
-    @ResponseBody
-    public Object loadUserTypeList(String roleId) {
-        PageSupport pageSupport=new PageSupport();
+    public Object getUser(User user) {
+        User user1 =new User();
         try {
-            DataDictionary dataDictionary = new DataDictionary();
-            dataDictionary.setTypeCode("USER_TYPE");
-            List<DataDictionary> userTypeList = dataDictionaryService.getDataDictionaries(dataDictionary);
-            return userTypeList;
+             user1=userService.getUserById(user);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return user1;
+        }
+
+
+
+
+    @RequestMapping("/backend/deluser.html")
+    @ResponseBody
+    public String delUser(User user) {
+
+        try {
+            userService.deleteUser(user);
 
         } catch (Exception e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
-        return null;
+        return "success";
+    }
+
+    @RequestMapping("/backend/loadUserTypeList.html")
+    public String getUserListBySearch(User user,Model model){
+        try {
+
+            List<User> userList=userService.getUserListBySearch(user);
+            model.addAttribute("list",userList);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return "backend/userlist";
     }
 
 
+    @RequestMapping("/backend/upload.html")
+    @ResponseBody
+    public Map<String,Object> uploadUrl(MultipartFile uploadFile){
+        //1.保存图片到本地
+        String fileoriname=null;//原名称
+        String filenowname=null;//系统生成的名称
+        if(uploadFile != null){
+            fileoriname = uploadFile.getOriginalFilename();//获取原名字
+            System.out.println(fileoriname);
+            String uuid = UUID.randomUUID().toString().replace("-", "");
+
+            filenowname = uuid+ "."+FilenameUtils.getExtension(fileoriname);//UUID生成新的唯一名字+文件扩展名
+        }
+
+        try {
+            FileHandleUtil.uploadSpringMVCFile(file, "trainPicture", filenowname);
+        } catch (Exception e) {
+            logger.error("保存培养方案图片出错",e);
+        }
 
 
+        Map<String,Object> map = new HashMap<>();
+        return map;
+    }
 }
 
 

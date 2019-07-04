@@ -20,6 +20,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.io.File;
 import java.util.*;
 
 @Controller
@@ -54,10 +55,10 @@ public class UserManageController {
         if ("4".equals(addUser.getCardType())) {
             addUser.setCardTypeName("护照");
         }
-        if(addUser.getRoleId()==1){
+        if (addUser.getRoleId() == 1) {
             addUser.setRoleName("管理员");
         }
-        if(addUser.getRoleId()==2){
+        if (addUser.getRoleId() == 2) {
             addUser.setRoleName("会员");
         }
         if ("1".equals(addUser.getUserType())) {
@@ -96,16 +97,14 @@ public class UserManageController {
     @RequestMapping("/backend/getuser.html")
     @ResponseBody
     public Object getUser(User user) {
-        User user1 =new User();
+        User user1 = new User();
         try {
-             user1=userService.getUserById(user);
+            user1 = userService.getUserById(user);
         } catch (Exception e) {
             e.printStackTrace();
         }
         return user1;
-        }
-
-
+    }
 
 
     @RequestMapping("/backend/deluser.html")
@@ -123,11 +122,11 @@ public class UserManageController {
     }
 
     @RequestMapping("/backend/loadUserTypeList.html")
-    public String getUserListBySearch(User user,Model model){
+    public String getUserListBySearch(User user, Model model) {
         try {
 
-            List<User> userList=userService.getUserListBySearch(user);
-            model.addAttribute("list",userList);
+            List<User> userList = userService.getUserListBySearch(user);
+            model.addAttribute("list", userList);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -137,26 +136,31 @@ public class UserManageController {
 
     @RequestMapping("/backend/upload.html")
     @ResponseBody
-    public Map<String,Object> uploadUrl(MultipartFile uploadFile){
+    public Map<String, Object> uploadUrl(MultipartFile uploadFile) {
         //1.保存图片到本地
-        String fileoriname=null;//原名称
-        String filenowname=null;//系统生成的名称
-        if(uploadFile != null){
+        String fileoriname = null;//原名称
+        String filenowname = null;//系统生成的名称
+        if (uploadFile != null) {
             fileoriname = uploadFile.getOriginalFilename();//获取原名字
-            System.out.println(fileoriname);
+            System.out.println(fileoriname+"----fileoriname");
             String uuid = UUID.randomUUID().toString().replace("-", "");
-
-            filenowname = uuid+ "."+FilenameUtils.getExtension(fileoriname);//UUID生成新的唯一名字+文件扩展名
+            //获得扩展名
+            String suffix = fileoriname.substring(fileoriname.lastIndexOf(".") + 1);
+            filenowname = uuid + "." + suffix;//UUID生成新的唯一名字+文件扩展名
+            System.out.println(filenowname+"----filenowname");
         }
 
         try {
-            FileHandleUtil.uploadSpringMVCFile(file, "trainPicture", filenowname);
+            String path = "D:/roots/" + filenowname;
+            System.out.println(path);
+            File newFile=new File(path);
+            uploadFile.transferTo(newFile);
         } catch (Exception e) {
-            logger.error("保存培养方案图片出错",e);
+
         }
 
-
-        Map<String,Object> map = new HashMap<>();
+        Map<String, Object> map = new HashMap<>();
+        map.put("success","success");
         return map;
     }
 }

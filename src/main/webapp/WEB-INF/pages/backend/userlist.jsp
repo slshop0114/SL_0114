@@ -194,17 +194,20 @@
     </div>
 
     <button type="button" class="layui-btn" id="updateusercard">上传身份证</button>
-    <div class="layui-upload-list">
-        <img class="layui-upload-img" id="idcardview">
+    <div class="layui-upload">
+        <div class="layui-upload-list">
+            <img class="layui-upload-img" id="idcardview">
 
+        </div>
     </div>
     <br>
     <button type="button" class="layui-btn" id="updateuserbankcard">上传银行卡</button>
-    <div class="layui-upload-list">
-        <img class="layui-upload-img" id="bankcardview">
+    <div class="layui-upload">
+        <div class="layui-upload-list">
+            <img class="layui-upload-img" id="bankcardview">
 
+        </div>
     </div>
-
     <br><br>
     <div class="layui-form-item">
         <div class="layui-input-block">
@@ -339,18 +342,22 @@
         </div>
     </div>
 
-    <button type="button" class="layui-btn" id="updateusercard2">上传身份证</button><br>
-    <div class="layui-upload-list">
-        <img class="layui-upload-img" id="idcardview2">
+    <button type="button" class="layui-btn" id="updateusercard2">上传身份证</button>
+    <br>
+    <div class="layui-upload">
+        <div class="layui-upload-list">
+            <img class="layui-upload-img" id="idcardview2">
 
+        </div>
     </div>
 
     <button type="button" class="layui-btn" id="updateuserbankcard2">上传银行卡</button>
-    <div class="layui-upload-list">
-        <img class="layui-upload-img" id="bankcardview2">
+    <div class="layui-upload">
+        <div class="layui-upload-list">
+            <img class="layui-upload-img" id="bankcardview2">
 
+        </div>
     </div>
-
 
     <br><br>
     <div class="layui-form-item">

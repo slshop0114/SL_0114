@@ -34,7 +34,7 @@ public class UserManageController {
 
     @RequestMapping("/backend/userlist.html")
     public String userManager(Model model, HttpSession session) throws Exception {
-
+        System.out.println("sa");
         User user1 = new User();
         List<User> list = userService.getUserList(user1);
         model.addAttribute("list", list);

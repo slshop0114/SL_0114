@@ -15,7 +15,7 @@ layui.use(['form', 'upload'], function () {
         }
         , done: function (res) {
             //上传完毕回调
-            alert("成功")
+
             $("#idCardPicPath").val(res.file)
         }
         , error: function () {
@@ -35,14 +35,13 @@ layui.use(['form', 'upload'], function () {
         }
         , done: function (res) {
             //上传完毕回调
-            alert("成功")
+
             $("#bankCardPicPath").val(res.file)
         }
         , error: function () {
             //请求异常回调
         }
     });
-
 
 
     // 上传身份证2
@@ -58,7 +57,7 @@ layui.use(['form', 'upload'], function () {
         }
         , done: function (res) {
             //上传完毕回调
-            alert("成功")
+
             $("#idCardPicPath2").val(res.file)
         }
         , error: function () {
@@ -78,7 +77,7 @@ layui.use(['form', 'upload'], function () {
         }
         , done: function (res) {
             //上传完毕回调
-            alert("成功")
+
             $("#bankCardPicPath2").val(res.file)
         }
         , error: function () {
@@ -113,6 +112,7 @@ layui.use(['form', 'upload'], function () {
                 $("#idCard2").val(result.idCard)
                 $("#mobile2").val(result.mobile)
                 $("#email2").val(result.email)
+                $("#userAddress2").val(result.userAddress)
                 $("#postCode2").val(result.postCode)
                 $("#bankName2").val(result.bankName)
                 $("#bankAccount2").val(result.bankAccount)
@@ -140,16 +140,22 @@ function updateuser() {
 
 
 function deleteuser() {
+    if (window.confirm("确定删除？")) {
+
+    }
 
     var deid = $("#formforuser input:radio:checked").val();
-    alert("deid")
+
     $.ajax({
         url: "/backend/deluser.html",
         method: "post",
         data: {"id": deid},
-        dataType: "json",
+        dataType: "text",
         success: function (result) {
-            window.location.reload();
+            if ("success" == result) {
+                location.href = "/backend/userlist.html";
+            }
+
         }
     })
 }

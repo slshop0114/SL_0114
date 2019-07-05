@@ -3,20 +3,24 @@
 
 
 <%--商品展示--%>
-<form class="layui-form fromrolesty" action="/backend/getgoodsinfo.html" id="fromgoodslist">
+<form class="layui-form fromrolesty" action="/backend/goodsinfolist.html" id="fromgoodslist">
 
 
     <button type="button" class="layui-btn" onclick="addgoodsinfo()">添加</button>
     <button type="button" class="layui-btn layui-btn-warm" onclick="modifygoodsinfo()">修改</button>
     <button type="button" class="layui-btn layui-btn-danger" onclick="degoodsinfo()">删除</button>
-    <button type="button" class="layui-btn layui-btn-danger" onclick="searchgoodsinfo()">查询</button>
+    <button type="button" class="layui-btn layui-btn-danger" onclick="searchgoodsinfo()">查看</button>
 
 
     <div class="layui-input-inline">
-        <input type="text" name="id" placeholder="请输入名称" class="layui-input search_input" id="searchgoodsinput">
+        <input type="text" name="goodsName" placeholder="请输入名称" class="layui-input search_input" id="searchgoodsinput">
     </div>
 
-
+    <div class="layui-form-item fl">
+        <div class="layui-input-block">
+            <button class="layui-btn" lay-submit="" lay-filter="searchforgoods">查询</button>
+        </div>
+    </div>
 
     <div class="layui-form">
         <table class="layui-table">
@@ -70,6 +74,8 @@
             </tbody>
         </table>
     </div>
+    <a   class="layui-btn layui-btn-warm"  href="/backend/goodsinfolist.html?pagechange=1">下一页</a>
+    <a   class="layui-btn layui-btn-warm"  href="/backend/goodsinfolist.html?pagechange=2">上一页</a>
 </form>
 <%-------------------------------------------------------------------------------------------------------%>
 <%--添加商品--%>
@@ -127,13 +133,13 @@
     <div class="layui-form-item layui-form-text">
         <label class="layui-form-label">商品规格</label>
         <div class="layui-input-block">
-            <textarea name="goodsFormat" placeholder="请输入内容" class="layui-textarea"></textarea>
+            <textarea name="goodsFormat" id="richtextgoods11" placeholder="请输入内容" class="layui-textarea"></textarea>
         </div>
     </div>
     <div class="layui-form-item layui-form-text">
         <label class="layui-form-label">商品说明</label>
         <div class="layui-input-block">
-            <textarea name="note" placeholder="请输入内容" class="layui-textarea"></textarea>
+            <textarea name="note" id="richtextgoods12" placeholder="请输入内容" class="layui-textarea"></textarea>
         </div>
     </div>
     <div class="layui-form-item">
@@ -307,8 +313,7 @@
 </form>
 
 <div style="clear: both"></div>
-<a   class="layui-btn layui-btn-warm"  href="/backend/goodsinfolist.html?pagechange=1">下一页</a>
-<a   class="layui-btn layui-btn-warm"  href="/backend/goodsinfolist.html?pagechange=2">上一页</a>
+
 
 
 
@@ -317,9 +322,11 @@
 <script type="text/javascript" src="/statics/localjs/goodsinfolist.js"></script>
 
 <script>
-    layui.use('form', function () {
+    layui.use(['form','layedit'], function () {
         var form = layui.form;
-
+        var layedit = layui.layedit;
+        var index = layedit.build('richtextgoods11');
+        var index = layedit.build('richtextgoods12');
 //监听提交
         form.on('submit(subgoodsinfo)', function (data) {
             alert("添加成功");
@@ -328,6 +335,10 @@
 
         form.on('submit(updategoodsinfo)', function (data) {
             alert("修改成功");
+
+        });
+        form.on('submit(searchforgoods)', function (data) {
+
 
         });
         form.on("radio(choosegoods)", function (data) {

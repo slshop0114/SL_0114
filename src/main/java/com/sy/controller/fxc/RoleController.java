@@ -10,7 +10,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpSession;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Controller
 public class RoleController {
@@ -68,10 +70,25 @@ public class RoleController {
         } catch (Exception e) {
             e.printStackTrace();
         }
-
         return "1";
-
-
     }
+    @RequestMapping("/backend/blurrole.html")
+    @ResponseBody
+    public  Map<String,Object> blurrole(Role role){
+        Map<String,Object> map = new HashMap<>();
+        try {
+            Role role1=roleService.getRole(role);
+            if (role1!=null){
+                map.put("key","fault");
+                map.put("role",role1);
+                return map;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        map.put("key","success");
+
+        return map;
     }
+}
 

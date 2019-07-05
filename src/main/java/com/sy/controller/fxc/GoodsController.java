@@ -29,7 +29,6 @@ public class GoodsController {
         GoodsInfo goodsInfo1 = new GoodsInfo();
         try {
             goodsInfo1 = goodsInfoService.getGoodsInfoById(goodsInfo);
-            model.addAttribute(goodsInfo1);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -54,7 +53,7 @@ public class GoodsController {
         }
         List<GoodsInfo> goodsInfoList = null;
         GoodsInfo goodsInfo = new GoodsInfo();
-
+        goodsInfo.setGoodsName(goods.getGoodsName());
         try {
             goodsInfoList = goodsInfoService.getGoodsInfoList(goodsInfo,pagestar);
             if (goodsInfoList.size() == 0) {

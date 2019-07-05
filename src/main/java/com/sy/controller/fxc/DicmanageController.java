@@ -100,7 +100,7 @@ public class DicmanageController {
 
     @RequestMapping("/backend/modifylDic.html")
     public String modifylDic(HttpSession session, DataDictionary dataDictionary) {
-
+        System.out.println(dataDictionary);
         try {
             dataDictionaryService.modifyDataDictionarys(dataDictionary);
             return "redirect:/backend/dicmanage.html";

@@ -90,6 +90,7 @@
         <div class="layui-input-block">
             <select name="userType" lay-verify="required">
                 <option value=""></option>
+                <option value="0">管理员</option>
                 <option value="1">注册会员</option>
                 <option value="2">消费会员</option>
                 <option value="3">VIP会员</option>
@@ -196,7 +197,7 @@
     <button type="button" class="layui-btn" id="updateusercard">上传身份证</button>
     <div class="layui-upload">
         <div class="layui-upload-list">
-            <img class="layui-upload-img" id="idcardview">
+            <img class="layui-upload-img" id="idcardview" style="width: 100px;height: 100px">
 
         </div>
     </div>
@@ -204,7 +205,7 @@
     <button type="button" class="layui-btn" id="updateuserbankcard">上传银行卡</button>
     <div class="layui-upload">
         <div class="layui-upload-list">
-            <img class="layui-upload-img" id="bankcardview">
+            <img class="layui-upload-img" id="bankcardview" style="width: 100px;height: 100px">
 
         </div>
     </div>
@@ -239,6 +240,7 @@
         <div class="layui-input-block">
             <select name="userType" lay-verify="required">
                 <option value=""></option>
+                <option value="0">管理员</option>
                 <option value="1">注册会员</option>
                 <option value="2">消费会员</option>
                 <option value="3">VIP会员</option>
@@ -346,7 +348,7 @@
     <br>
     <div class="layui-upload">
         <div class="layui-upload-list">
-            <img class="layui-upload-img" id="idcardview2">
+            <img class="layui-upload-img" id="idcardview2" style="width: 100px;height: 100px">
 
         </div>
     </div>
@@ -354,7 +356,7 @@
     <button type="button" class="layui-btn" id="updateuserbankcard2">上传银行卡</button>
     <div class="layui-upload">
         <div class="layui-upload-list">
-            <img class="layui-upload-img" id="bankcardview2">
+            <img class="layui-upload-img" id="bankcardview2" style="width: 100px;height: 100px">
 
         </div>
     </div>
@@ -363,7 +365,7 @@
     <div class="layui-form-item">
         <div class="layui-input-block">
             <button class="layui-btn" lay-submit="" lay-filter="updateuser">立即提交</button>
-            <a class="layui-btn layui-btn-primary" href="/backend/userlist.html">重置</a>
+            <a class="layui-btn layui-btn-primary" href="/backend/userlist.html" id="retouserliset">重置</a>
         </div>
     </div>
 </form>

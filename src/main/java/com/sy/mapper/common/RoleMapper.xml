@@ -27,7 +27,7 @@
 				and id = #{id}
 			</if>
 			<if test = "roleCode != null ">
-				and roleCode = #{roleCode}
+				and roleCode like #{roleCode}
 			</if>
 		</trim>
 	</select>

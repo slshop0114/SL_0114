@@ -12,12 +12,15 @@ function modifydclist() {
 }
 
 function dedicmanage() {
+    if (window.confirm("确定删除？")) {
+
+    }
     var dicid = $('#fromdicmanagelist input:radio:checked').val();
     $.ajax({
         url: "/backend/delgoodsinfo.html",
         method: "post",
         data: {"id": dicid},
-        dataType: "json",
+        dataType: "text",
         complete: function (result) {
             window.location.href = "/backend/dicmanage.html"
         }

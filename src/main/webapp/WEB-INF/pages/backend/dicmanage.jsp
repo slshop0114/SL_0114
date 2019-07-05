@@ -103,6 +103,7 @@
 
 
 <form class="layui-form fromrolesty" action="/backend/modifylDic.html" id="updatedicfrom">
+    <input type="hidden" id="dicid2" name="id">
     <div class="layui-form-item">
         <label class="layui-form-label">类型</label>
         <div class="layui-input-block">
@@ -166,6 +167,7 @@
 
         form.on("radio(choosedicmanage)", function (data) {
             var dicsid = data.value;
+            $("#dicid2").val(dicsid)
             $.ajax({
                 url: "/backend/typecodeisexit.html",
                 dataType: "json",

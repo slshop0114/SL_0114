@@ -9,7 +9,7 @@
 		select * from goods_info  
 		<trim prefix="where" prefixOverrides="and | or">
 			<if test="goodsName != null">
-			 and goodsName like #{goodsName}
+			 and goodsName like concat('%',#{goodsName},'%')
 			</if>
 			<if test="state != null">
 			  and state = #{state}

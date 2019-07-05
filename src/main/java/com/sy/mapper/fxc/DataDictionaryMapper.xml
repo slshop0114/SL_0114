@@ -67,7 +67,7 @@
     where id = #{id}
   </update>
   <update id ="modifyDataDictionarys" parameterType="dataDictionary">
-		update data_dictionary set typeCode = #{typeCode},typeName = #{typeName} where typeCode = #{valueName}
+		update data_dictionary set typeCode = #{typeCode},typeName = #{typeName},valueId=#{valueId},valueName=#{valueName} where id = #{id}
 	</update>
   <select id="maxValueId" parameterType="dataDictionary" resultType="int">
 		select max(valueId) from data_dictionary where typeCode = #{typeCode}

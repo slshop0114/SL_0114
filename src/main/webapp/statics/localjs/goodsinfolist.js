@@ -11,14 +11,16 @@ function modifygoodsinfo() {
 }
 
 function degoodsinfo() {
+    if (window.confirm("确定删除？")) {
 
+    }
     var deid = $("#fromgoodslist input:radio:checked").val();
-    alert("删除")
+
     $.ajax({
         url: "/backend/delgoodsinfo.html",
         method: "post",
         data: {"id": deid},
-        dataType: "json",
+        dataType: "text",
         success: function (result) {
 
             window.location.href = "/backend/goodsinfolist.html"
@@ -27,7 +29,7 @@ function degoodsinfo() {
 }
 
 function searchgoodsinfo() {
-    var goodsid = $("#searchgoodsinput").val();
+    var goodsid = $("#choosegoods").val();
     $("#foraddgoodsinfo").css('display', 'block');
     $("#searchgoodsinfo").css('display', 'block');
     $.ajax({
@@ -36,14 +38,15 @@ function searchgoodsinfo() {
         method: "post",
         data: {"id": goodsid},
         success: function (result) {
-            $("#goodsInfo2goodsName").val(result.goodsName)
-            $("#goodsInfo2id").val(result.goodsSN)
-            $("#goodsInfo2idr").val(result.id)
-            $("#goodsInfo2marketPrice").val(result.marketPrice)
-            $("#goodsInfo2realPrice").val(result.realPrice)
-            $("#goodsInfo2num").val(result.num)
-            $("#goodsInfo2uni").val(result.unit)
-            $("#goodsInfo2formate").val(result.goodsFormat)
+            console.log(result)
+            $("#goodsInfo2goodsName").val(result.goodsName);
+            $("#goodsInfo2id").val(result.goodsSN);
+            $("#goodsInfo2idr").val(result.id);
+            $("#goodsInfo2marketPrice").val(result.marketPrice);
+            $("#goodsInfo2realPrice").val(result.realPrice);
+            $("#goodsInfo2num").val(result.num);
+            $("#goodsInfo2uni").val(result.unit);
+            $("#goodsInfo2formate").val(result.goodsFormat);
             $("#goodsInfo2note").val(result.note)
         }
     })

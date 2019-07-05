@@ -44,7 +44,7 @@
                     <td class="center">
                         <div class="layui-form-item" pane="">
                             <div class="layui-input-block">
-                                <input type="radio" name="chooserole" value="${role.id}">
+                                <input type="radio" name="chooserole" value="${role.id}" lay-filter="chooseroleid">
                             </div>
                         </div>
                     </td>
@@ -66,7 +66,8 @@
     <div class="layui-form-item">
         <label class="layui-form-label">角色代码</label>
         <div class="layui-input-block">
-            <input type="text" name="roleCode" required lay-verify="required" autocomplete="off" class="layui-input">
+            <input type="text" id="roleCodeblur" name="roleCode" required lay-verify="required" autocomplete="off" class="layui-input">
+            <div style="display: none" id="hiddenrolecode">rolecode重复</div>
         </div>
     </div>
     <div class="layui-form-item">
@@ -95,13 +96,14 @@
     <div class="layui-form-item">
         <label class="layui-form-label">角色代码</label>
         <div class="layui-input-block">
-            <input type="text" name="roleCode" required lay-verify="required" autocomplete="off" class="layui-input">
+            <input type="text" id="roleCodeblur2" name="roleCode" required lay-verify="required" autocomplete="off" class="layui-input">
+            <div style="display: none" id="hiddenrolecode2">rolecode重复</div>
         </div>
     </div>
     <div class="layui-form-item">
         <label class="layui-form-label">角色名称</label>
         <div class="layui-input-block">
-            <input type="text" name="roleName" required lay-verify="required" autocomplete="off" class="layui-input">
+            <input type="text" id="rolename2" name="roleName" required lay-verify="required" autocomplete="off" class="layui-input">
         </div>
     </div>
 
@@ -131,6 +133,23 @@
         form.on('submit(updaterole)', function (data) {
             alert("修改成功");
 
+        });
+
+        form.on("radio(chooseroleid)", function (data) {
+            var roleid = data.value;
+            $.ajax({
+                url: "/backend/blurrole.html",
+                dataType: "json",
+                method: "post",
+                data: {"id": roleid},
+                success: function (result) {
+                    console.log(result)
+                    $("#roleCodeblur2").val(result.role.roleCode);
+                    $("#rolename2").val(result.role.roleName);
+
+
+                }
+            });
         });
     });
 </script>

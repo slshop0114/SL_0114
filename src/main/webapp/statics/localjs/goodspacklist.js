@@ -11,12 +11,15 @@ function modifygoodspack() {
 }
 
 function degoodspack() {
+    if (window.confirm("确定删除？")) {
+
+    }
     var dicid = $('#fromgoodspacklist input:radio:checked').val();
     $.ajax({
         url: "/backend/delgoodspack.html",
         method: "post",
         data: {"id": dicid},
-        dataType: "json",
+        dataType: "text",
         success: function (result) {
             window.location.href = "/backend/goodspacklist.html"
         }

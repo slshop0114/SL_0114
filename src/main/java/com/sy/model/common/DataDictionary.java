@@ -43,6 +43,15 @@ public class DataDictionary extends Base{
 	public void setValueName(String valueName) {
 		this.valueName = valueName;
 	}
-	
-	
+
+	@Override
+	public String toString() {
+		return "DataDictionary{" +
+				"id=" + id +
+				", typeCode='" + typeCode + '\'' +
+				", typeName='" + typeName + '\'' +
+				", valueId=" + valueId +
+				", valueName='" + valueName + '\'' +
+				'}';
+	}
 }

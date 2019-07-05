@@ -175,7 +175,7 @@
                     <td>
                     <div class="layui-form-item">
                         <div class="layui-input-block">
-                            <input type="text" name="GoodsInfos[${i.count}].num" lay-verify="title" autocomplete="off" placeholder="请输入数量"
+                            <input type="text" name="GoodsInfos[${i.count}].num" lay-verify="number" autocomplete="off" placeholder="请输入数量"
                                    class="layui-input" style="width: 100px">
                         </div>
                     </div>
@@ -300,7 +300,7 @@
                     <td>
                         <div class="layui-form-item">
                             <div class="layui-input-block">
-                                <input type="text" name="GoodsInfos[${i.count}].num" lay-verify="title" autocomplete="off" placeholder="请输入数量"
+                                <input type="text" name="GoodsInfos[${i.count}].num" lay-verify="number" autocomplete="off" placeholder="请输入数量"
                                        class="layui-input" style="width: 100px">
                             </div>
                         </div>
@@ -424,7 +424,7 @@
                     <td>
                         <div class="layui-form-item">
                             <div class="layui-input-block">
-                                <input type="text" name="GoodsInfos[${i.count}].num" lay-verify="title" autocomplete="off" placeholder="请输入数量"
+                                <input type="text" name="GoodsInfos[${i.count}].num" lay-verify="number" autocomplete="off" placeholder="请输入数量"
                                        class="layui-input" style="width: 100px"  disabled="disabled">
                             </div>
                         </div>
@@ -476,7 +476,6 @@
 
         });
         form.on('submit(serachgoospack)', function (data) {
-            alert("查询");
 
         });
         form.on("radio(choosegoodspack)", function (data) {

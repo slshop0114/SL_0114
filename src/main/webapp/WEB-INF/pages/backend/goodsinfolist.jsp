@@ -327,6 +327,8 @@
         var layedit = layui.layedit;
         var index = layedit.build('richtextgoods11');
         var index = layedit.build('richtextgoods12');
+        var index = layedit.build('goodsInfo1formate');
+        var index = layedit.build('goodsInfo1note');
 //监听提交
         form.on('submit(subgoodsinfo)', function (data) {
             alert("添加成功");

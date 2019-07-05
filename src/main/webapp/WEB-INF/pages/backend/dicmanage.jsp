@@ -63,28 +63,28 @@
     <div class="layui-form-item">
         <label class="layui-form-label">类型</label>
         <div class="layui-input-block">
-            <input type="text" name="typeName" lay-verify="title" autocomplete="off" placeholder="请输入标题"
+            <input type="text" name="typeName" lay-verify="required" autocomplete="off" placeholder="请输入标题"
                    class="layui-input">
         </div>
     </div>
     <div class="layui-form-item">
         <label class="layui-form-label">名称</label>
         <div class="layui-input-block">
-            <input type="text" name="valueName" lay-verify="title" autocomplete="off" placeholder="请输入标题"
+            <input type="text" name="valueName" lay-verify="required" autocomplete="off" placeholder="请输入标题"
                    class="layui-input">
         </div>
     </div>
     <div class="layui-form-item">
         <label class="layui-form-label">编码</label>
         <div class="layui-input-block">
-            <input type="text" name="typeCode" lay-verify="title" autocomplete="off" placeholder="请输入标题"
+            <input type="text" name="typeCode" lay-verify="required" autocomplete="off" placeholder="请输入标题"
                    class="layui-input">
         </div>
     </div>
     <div class="layui-form-item">
         <label class="layui-form-label">数据值</label>
         <div class="layui-input-block">
-            <input type="text" name="valueId" lay-verify="title" autocomplete="off" placeholder="请输入标题"
+            <input type="text" name="valueId" lay-verify="number" autocomplete="off" placeholder="请输入标题"
                    class="layui-input">
         </div>
     </div>
@@ -106,28 +106,28 @@
     <div class="layui-form-item">
         <label class="layui-form-label">类型</label>
         <div class="layui-input-block">
-            <input type="text" name="typeName" lay-verify="title" autocomplete="off" placeholder="请输入标题"
+            <input type="text" name="typeName" lay-verify="required" autocomplete="off" placeholder="请输入标题"
                    class="layui-input" id="updatedicfromtypeName">
         </div>
     </div>
     <div class="layui-form-item">
         <label class="layui-form-label">名称</label>
         <div class="layui-input-block">
-            <input type="text" name="valueName" lay-verify="title" autocomplete="off" placeholder="请输入标题"
+            <input type="text" name="valueName" lay-verify="required" autocomplete="off" placeholder="请输入标题"
                    class="layui-input" id="updatedicfromvalueName">
         </div>
     </div>
     <div class="layui-form-item">
         <label class="layui-form-label">编码</label>
         <div class="layui-input-block">
-            <input type="text" name="typeCode" lay-verify="title" autocomplete="off" placeholder="请输入标题"
+            <input type="text" name="typeCode" lay-verify="required" autocomplete="off" placeholder="请输入标题"
                    class="layui-input" id="updatedicfromtypeCode">
         </div>
     </div>
     <div class="layui-form-item">
         <label class="layui-form-label">数据值</label>
         <div class="layui-input-block">
-            <input type="text" name="valueId" lay-verify="title" autocomplete="off" placeholder="请输入标题"
+            <input type="text" name="valueId" lay-verify="number" autocomplete="off" placeholder="请输入标题"
                    class="layui-input" id="updatedicfromvalueId">
         </div>
     </div>

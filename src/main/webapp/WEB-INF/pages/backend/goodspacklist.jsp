@@ -87,7 +87,7 @@
 <form class="layui-form fromrolesty" action="/backend/addgoodspack.html" id="addgoodspack">
     <div class="layui-form-item">
         <div class="layui-input-block">
-            <input type="hidden" name="createdBy" lay-verify="title" autocomplete="off" placeholder="请输入标题"
+            <input type="hidden" name="createdBy"  autocomplete="off" placeholder="请输入标题"
                    class="layui-input" value="${userSession.loginCode}">
         </div>
     </div>
@@ -95,14 +95,14 @@
     <div class="layui-form-item">
         <label class="layui-form-label">套餐名称</label>
         <div class="layui-input-block">
-            <input type="text" name="goodsPackName" lay-verify="title" autocomplete="off" placeholder="请输入标题"
+            <input type="text" name="goodsPackName" lay-verify="required" autocomplete="off" placeholder="请输入标题"
                    class="layui-input">
         </div>
     </div>
     <div class="layui-form-item">
         <label class="layui-form-label">编号</label>
         <div class="layui-input-block">
-            <input type="text" name="goodsPackCode" lay-verify="title" autocomplete="off" placeholder="请输入标题"
+            <input type="text" name="goodsPackCode" lay-verify="required" autocomplete="off" placeholder="请输入标题"
                    class="layui-input">
         </div>
     </div>
@@ -124,7 +124,7 @@
     <div class="layui-form-item">
         <label class="layui-form-label">优惠价</label>
         <div class="layui-input-block">
-            <input type="text" name="totalPrice" lay-verify="title" autocomplete="off" placeholder="请输入标题"
+            <input type="text" name="totalPrice" lay-verify="number" autocomplete="off" placeholder="请输入标题"
                    class="layui-input">
         </div>
     </div>
@@ -220,14 +220,14 @@
     <div class="layui-form-item">
         <label class="layui-form-label">套餐名称</label>
         <div class="layui-input-block">
-            <input type="text" name="goodsPackName" lay-verify="title" autocomplete="off" placeholder="请输入标题"
+            <input type="text" name="goodsPackName" lay-verify="required" autocomplete="off" placeholder="请输入标题"
                    class="layui-input" id="goodsPackName">
         </div>
     </div>
     <div class="layui-form-item">
         <label class="layui-form-label">编号</label>
         <div class="layui-input-block">
-            <input type="text" name="goodsPackCode" lay-verify="title" autocomplete="off" placeholder="请输入标题"
+            <input type="text" name="goodsPackCode" lay-verify="required" autocomplete="off" placeholder="请输入标题"
                    class="layui-input" id="goodsPackCode">
         </div>
     </div>
@@ -249,7 +249,7 @@
     <div class="layui-form-item">
         <label class="layui-form-label">优惠价</label>
         <div class="layui-input-block">
-            <input type="text" name="totalPrice" lay-verify="title" autocomplete="off" placeholder="请输入标题"
+            <input type="text" name="totalPrice" lay-verify="number" autocomplete="off" placeholder="请输入标题"
                    class="layui-input" id="goodspacktotalPrice">
         </div>
     </div>

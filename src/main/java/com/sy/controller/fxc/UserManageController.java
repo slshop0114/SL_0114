@@ -12,9 +12,7 @@ import com.sy.tools.PageSupport;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -94,6 +92,8 @@ public class UserManageController {
         return new ModelAndView("redirect:/backend/userlist.html");
     }
 
+    //查询单个用户
+
     @RequestMapping("/backend/getuser.html")
     @ResponseBody
     public Object getUser(User user) {
@@ -121,6 +121,7 @@ public class UserManageController {
         return "success";
     }
 
+    //搜索框搜索用户
     @RequestMapping("/backend/loadUserTypeList.html")
     public String getUserListBySearch(User user, Model model) {
         try {
@@ -137,32 +138,40 @@ public class UserManageController {
     @RequestMapping("/backend/upload.html")
     @ResponseBody
     public Map<String, Object> uploadUrl(MultipartFile uploadFile) {
+        Map<String, Object> map = new HashMap<>();
         //1.保存图片到本地
         String fileoriname = null;//原名称
         String filenowname = null;//系统生成的名称
         if (uploadFile != null) {
             fileoriname = uploadFile.getOriginalFilename();//获取原名字
-            System.out.println(fileoriname+"----fileoriname");
+            System.out.println(fileoriname + "----fileoriname");
             String uuid = UUID.randomUUID().toString().replace("-", "");
             //获得扩展名
             String suffix = fileoriname.substring(fileoriname.lastIndexOf(".") + 1);
             filenowname = uuid + "." + suffix;//UUID生成新的唯一名字+文件扩展名
-            System.out.println(filenowname+"----filenowname");
+            System.out.println(filenowname + "----filenowname");
         }
 
         try {
             String path = "D:/roots/" + filenowname;
-            System.out.println(path);
-            File newFile=new File(path);
+            File newFile = new File(path);
             uploadFile.transferTo(newFile);
+            map.put("file", newFile);
         } catch (Exception e) {
 
         }
-
-        Map<String, Object> map = new HashMap<>();
-        map.put("success","success");
         return map;
     }
+
+    @RequestMapping("/backend/modifyuser.html")
+    public String modifyUser(User user){
+
+
+                userService.modifyUser(user);
+
+            return"redirect:/backend/userlist.html";
+        }
+
 }
 
 

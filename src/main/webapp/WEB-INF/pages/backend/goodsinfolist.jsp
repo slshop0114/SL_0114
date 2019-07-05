@@ -78,41 +78,41 @@
     <div class="layui-form-item">
         <label class="layui-form-label">商品名称</label>
         <div class="layui-input-block">
-            <input type="text" name="goodsName" lay-verify="title" autocomplete="off" placeholder="请输入标题"
+            <input type="text" name="goodsName" lay-verify="required" autocomplete="off" placeholder="请输入标题"
                    class="layui-input">
         </div>
     </div>
     <div class="layui-form-item">
         <label class="layui-form-label">商品编号</label>
         <div class="layui-input-block">
-            <input type="text" name="goodsSN" lay-verify="title" autocomplete="off" placeholder="请输入标题"
+            <input type="text" name="goodsSN" lay-verify="required" autocomplete="off" placeholder="请输入标题"
                    class="layui-input">
         </div>
     </div>
     <div class="layui-form-item">
         <label class="layui-form-label">市场价</label>
         <div class="layui-input-block">
-            <input type="text" name="marketPrice" lay-verify="title" autocomplete="off" placeholder="请输入标题"
+            <input type="text" name="marketPrice" lay-verify="number" autocomplete="off" placeholder="请输入标题"
                    class="layui-input">
         </div>
     </div>
     <div class="layui-form-item">
         <label class="layui-form-label">优惠价</label>
         <div class="layui-input-block">
-            <input type="text" name="realPrice" lay-verify="title" autocomplete="off" placeholder="请输入标题"
+            <input type="text" name="realPrice" lay-verify="number" autocomplete="off" placeholder="请输入标题"
                    class="layui-input">
         </div>
     </div>
     <div class="layui-form-item">
         <label class="layui-form-label">库存</label>
         <div class="layui-input-block">
-            <input type="text" name="num" lay-verify="title" autocomplete="off" placeholder="请输入标题" class="layui-input">
+            <input type="text" name="num" lay-verify="number" autocomplete="off" placeholder="请输入标题" class="layui-input">
         </div>
     </div>
     <div class="layui-form-item">
         <label class="layui-form-label">单位</label>
         <div class="layui-input-block">
-            <input type="text" name="unit" lay-verify="title" autocomplete="off" placeholder="请输入标题"
+            <input type="text" name="unit" lay-verify="required" autocomplete="off" placeholder="请输入标题"
                    class="layui-input">
         </div>
     </div>
@@ -159,42 +159,42 @@
     <div class="layui-form-item">
         <label class="layui-form-label">商品名称</label>
         <div class="layui-input-block">
-            <input type="text" name="goodsName" lay-verify="title" autocomplete="off" placeholder="请输入标题"
+            <input type="text" name="goodsName" lay-verify="required" autocomplete="off" placeholder="请输入标题"
                    class="layui-input" id="goodsInfo1goodsName">
         </div>
     </div>
     <div class="layui-form-item">
         <label class="layui-form-label">商品编号</label>
         <div class="layui-input-block">
-            <input type="text" name="goodsSN" lay-verify="title" autocomplete="off" placeholder="请输入标题"
+            <input type="text" name="goodsSN" lay-verify="required" autocomplete="off" placeholder="请输入标题"
                    class="layui-input" id="goodsInfo1id">
         </div>
     </div>
     <div class="layui-form-item">
         <label class="layui-form-label">市场价</label>
         <div class="layui-input-block">
-            <input type="text" name="marketPrice" lay-verify="title" autocomplete="off" placeholder="请输入标题"
+            <input type="text" name="marketPrice" lay-verify="number" autocomplete="off" placeholder="请输入标题"
                    class="layui-input" id="goodsInfo1marketPrice">
         </div>
     </div>
     <div class="layui-form-item">
         <label class="layui-form-label">优惠价</label>
         <div class="layui-input-block">
-            <input type="text" name="realPrice" lay-verify="title" autocomplete="off" placeholder="请输入标题"
+            <input type="text" name="realPrice" lay-verify="number" autocomplete="off" placeholder="请输入标题"
                    class="layui-input" id="goodsInfo1realPrice">
         </div>
     </div>
     <div class="layui-form-item">
         <label class="layui-form-label">库存</label>
         <div class="layui-input-block">
-            <input type="text" name="num" lay-verify="title" autocomplete="off" placeholder="请输入标题" class="layui-input"
+            <input type="text" name="num" lay-verify="number" autocomplete="off" placeholder="请输入标题" class="layui-input"
                    id="goodsInfo1num">
         </div>
     </div>
     <div class="layui-form-item">
         <label class="layui-form-label">单位</label>
         <div class="layui-input-block">
-            <input type="text" name="unit" lay-verify="title" autocomplete="off" placeholder="请输入标题"
+            <input type="text" name="unit" lay-verify="required" autocomplete="off" placeholder="请输入标题"
                    class="layui-input" id="goodsInfo1uni}">
         </div>
     </div>

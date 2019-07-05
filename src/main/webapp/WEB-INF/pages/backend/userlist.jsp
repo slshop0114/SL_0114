@@ -73,6 +73,8 @@
 
 
 <form class="layui-form fromrolesty" action="/backend/adduser.html" id="addUserform">
+    <input name="idCardPicPath" type="hidden" value="" id="idCardPicPath">
+    <input name="bankPicPath" type="hidden" value="" id="bankCardPicPath">
     <div class="layui-form-item">
         <label class="layui-form-label">角色</label>
         <div class="layui-input-block">
@@ -98,14 +100,14 @@
     <div class="layui-form-item">
         <label class="layui-form-label">用户名</label>
         <div class="layui-input-block">
-            <input type="text" name="loginCode" lay-verify="title" autocomplete="off" placeholder="请输入标题"
+            <input type="text" name="loginCode" lay-verify="required" autocomplete="off" placeholder="请输入标题"
                    class="layui-input">
         </div>
     </div>
     <div class="layui-form-item">
         <label class="layui-form-label">姓名</label>
         <div class="layui-input-block">
-            <input type="text" name="userName" lay-verify="title" autocomplete="off" placeholder="请输入标题"
+            <input type="text" name="userName" lay-verify="required" autocomplete="off" placeholder="请输入标题"
                    class="layui-input">
         </div>
     </div>
@@ -124,7 +126,7 @@
     <div class="layui-form-item">
         <label class="layui-form-label">证件号码</label>
         <div class="layui-input-block">
-            <input type="text" name="idCard" lay-verify="title" autocomplete="off" placeholder="请输入标题"
+            <input type="text" name="idCard" lay-verify="identity" autocomplete="off" placeholder="请输入标题"
                    class="layui-input">
         </div>
     </div>
@@ -144,55 +146,64 @@
     <div class="layui-form-item">
         <label class="layui-form-label">移动电话</label>
         <div class="layui-input-block">
-            <input type="text" name="mobile" lay-verify="title" autocomplete="off" placeholder="请输入标题"
+            <input type="text" name="mobile" lay-verify="phone" autocomplete="off" placeholder="请输入标题"
                    class="layui-input">
         </div>
     </div>
     <div class="layui-form-item">
         <label class="layui-form-label">电子邮箱</label>
         <div class="layui-input-block">
-            <input type="text" name="email" lay-verify="title" autocomplete="off" placeholder="请输入标题"
+            <input type="text" name="email" lay-verify="email" autocomplete="off" placeholder="请输入标题"
                    class="layui-input">
         </div>
     </div>
     <div class="layui-form-item">
         <label class="layui-form-label">邮政编码</label>
         <div class="layui-input-block">
-            <input type="text" name="postCode" lay-verify="title" autocomplete="off" placeholder="请输入标题"
+            <input type="text" name="postCode" lay-verify="required" autocomplete="off" placeholder="请输入标题"
                    class="layui-input">
         </div>
     </div>
     <div class="layui-form-item">
         <label class="layui-form-label">收货地址</label>
         <div class="layui-input-block">
-            <input type="text" name="userAddress" lay-verify="title" autocomplete="off" placeholder="请输入标题"
+            <input type="text" name="userAddress" lay-verify="required" autocomplete="off" placeholder="请输入标题"
                    class="layui-input">
         </div>
     </div>
     <div class="layui-form-item">
         <label class="layui-form-label">开户行</label>
         <div class="layui-input-block">
-            <input type="text" name="bankName" lay-verify="title" autocomplete="off" placeholder="请输入标题"
+            <input type="text" name="bankName" lay-verify="required" autocomplete="off" placeholder="请输入标题"
                    class="layui-input">
         </div>
     </div>
     <div class="layui-form-item">
         <label class="layui-form-label">卡号</label>
         <div class="layui-input-block">
-            <input type="text" name="bankAccount" lay-verify="title" autocomplete="off" placeholder="请输入标题"
+            <input type="text" name="bankAccount" lay-verify="number" autocomplete="off" placeholder="请输入标题"
                    class="layui-input">
         </div>
     </div>
     <div class="layui-form-item">
         <label class="layui-form-label">开户人</label>
         <div class="layui-input-block">
-            <input type="text" name="accountHolder" lay-verify="title" autocomplete="off" placeholder="请输入标题"
+            <input type="text" name="accountHolder" lay-verify="required" autocomplete="off" placeholder="请输入标题"
                    class="layui-input">
         </div>
     </div>
 
-    <button type="button" class="layui-btn" id="updateusercard">上传身份证</button><br>
+    <button type="button" class="layui-btn" id="updateusercard">上传身份证</button>
+    <div class="layui-upload-list">
+        <img class="layui-upload-img" id="idcardview">
+
+    </div>
+    <br>
     <button type="button" class="layui-btn" id="updateuserbankcard">上传银行卡</button>
+    <div class="layui-upload-list">
+        <img class="layui-upload-img" id="bankcardview">
+
+    </div>
 
     <br><br>
     <div class="layui-form-item">
@@ -205,7 +216,11 @@
 
 
 <%--修改用户--%>
-<form class="layui-form fromrolesty" action="" id="updateUserform">
+<form class="layui-form fromrolesty" action="/backend/modifyuser.html" id="updateUserform">
+    <input name="id" type="hidden" value="" id="useridhidden">
+    <%--银行卡身份证链接地址--%>
+    <input name="idCardPicPath" type="hidden" value="" id="idCardPicPath2">
+    <input name="bankPicPath" type="hidden" value="" id="bankCardPicPath2">
     <div class="layui-form-item">
         <label class="layui-form-label">角色</label>
         <div class="layui-input-block">
@@ -231,14 +246,14 @@
     <div class="layui-form-item">
         <label class="layui-form-label">用户名</label>
         <div class="layui-input-block">
-            <input type="text" name="loginCode" lay-verify="title" autocomplete="off" placeholder="请输入标题"
+            <input type="text" name="loginCode" lay-verify="required" autocomplete="off" placeholder="请输入标题"
                    class="layui-input" id="loginCode2">
         </div>
     </div>
     <div class="layui-form-item">
         <label class="layui-form-label">姓名</label>
         <div class="layui-input-block">
-            <input type="text" name="userName" lay-verify="title" autocomplete="off" placeholder="请输入标题"
+            <input type="text" name="userName" lay-verify="required" autocomplete="off" placeholder="请输入标题"
                    class="layui-input" id="userName2">
         </div>
     </div>
@@ -257,7 +272,7 @@
     <div class="layui-form-item">
         <label class="layui-form-label">证件号码</label>
         <div class="layui-input-block">
-            <input type="text" name="idCard" lay-verify="title" autocomplete="off" placeholder="请输入标题"
+            <input type="text" name="idCard" lay-verify="identity" autocomplete="off" placeholder="请输入标题"
                    class="layui-input" id="idCard2">
         </div>
     </div>
@@ -277,35 +292,35 @@
     <div class="layui-form-item">
         <label class="layui-form-label">移动电话</label>
         <div class="layui-input-block">
-            <input type="text" name="mobile" lay-verify="title" autocomplete="off" placeholder="请输入标题"
+            <input type="text" name="mobile" lay-verify="phone" autocomplete="off" placeholder="请输入标题"
                    class="layui-input" id="mobile2">
         </div>
     </div>
     <div class="layui-form-item">
         <label class="layui-form-label">电子邮箱</label>
         <div class="layui-input-block">
-            <input type="text" name="email" lay-verify="title" autocomplete="off" placeholder="请输入标题"
+            <input type="text" name="email" lay-verify="email" autocomplete="off" placeholder="请输入标题"
                    class="layui-input" id="email2">
         </div>
     </div>
     <div class="layui-form-item">
         <label class="layui-form-label">邮政编码</label>
         <div class="layui-input-block">
-            <input type="text" name="postCode" lay-verify="title" autocomplete="off" placeholder="请输入标题"
+            <input type="text" name="postCode" lay-verify="required" autocomplete="off" placeholder="请输入标题"
                    class="layui-input" id="postCode2">
         </div>
     </div>
     <div class="layui-form-item">
         <label class="layui-form-label">收货地址</label>
         <div class="layui-input-block">
-            <input type="text" name="userAddress" lay-verify="title" autocomplete="off" placeholder="请输入标题"
+            <input type="text" name="userAddress" lay-verify="required" autocomplete="off" placeholder="请输入标题"
                    class="layui-input" id="userAddress2">
         </div>
     </div>
     <div class="layui-form-item">
         <label class="layui-form-label">开户行</label>
         <div class="layui-input-block">
-            <input type="text" name="bankName" lay-verify="title" autocomplete="off" placeholder="请输入标题"
+            <input type="text" name="bankName" lay-verify="required" autocomplete="off" placeholder="请输入标题"
                    class="layui-input" id="bankName2">
         </div>
     </div>
@@ -319,13 +334,23 @@
     <div class="layui-form-item">
         <label class="layui-form-label">开户人</label>
         <div class="layui-input-block">
-            <input type="text" name="accountHolder" lay-verify="title" autocomplete="off" placeholder="请输入标题"
+            <input type="text" name="accountHolder" lay-verify="number" autocomplete="off" placeholder="请输入标题"
                    class="layui-input" id="accountHolder2">
         </div>
     </div>
 
     <button type="button" class="layui-btn" id="updateusercard2">上传身份证</button><br>
+    <div class="layui-upload-list">
+        <img class="layui-upload-img" id="idcardview2">
+
+    </div>
+
     <button type="button" class="layui-btn" id="updateuserbankcard2">上传银行卡</button>
+    <div class="layui-upload-list">
+        <img class="layui-upload-img" id="bankcardview2">
+
+    </div>
+
 
     <br><br>
     <div class="layui-form-item">

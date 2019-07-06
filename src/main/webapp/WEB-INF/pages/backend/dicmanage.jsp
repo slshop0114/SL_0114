@@ -48,11 +48,12 @@
             </tbody>
         </table>
     </div>
+    <a   class="layui-btn layui-btn-warm"  href="/backend/dicmanage.html?pagechange=1">下一页</a>
+    <a   class="layui-btn layui-btn-warm"  href="/backend/dicmanage.html?pagechange=2">上一页</a>
 </form>
 
 <div style="clear: both"></div>
-<a   class="layui-btn layui-btn-warm"  href="/backend/dicmanage.html?pagechange=1">下一页</a>
-<a   class="layui-btn layui-btn-warm"  href="/backend/dicmanage.html?pagechange=2">上一页</a>
+
 
 
 <%-------------------------------------------------------------------------------------------------------%>

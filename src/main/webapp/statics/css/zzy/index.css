@@ -1,0 +1,132 @@
+
+html{
+    width: 579px;
+    height: 411px;
+    padding: 0 20px 40px;
+    
+}
+body {
+    padding-top: 0;
+    padding-right: 20px;
+    padding-left: 20px;
+    margin: 0;
+    font-size: 13px;
+    line-height: 18px;
+    color: #555555;
+    background-color: #ffffff;
+}
+div.center,p.center,img.center{
+    margin-left: auto !important;
+    margin-right: auto !important;
+    float:none !important;
+    display: block;
+    text-align:center;
+}
+div.container-fluid{
+    width: 539px;
+    height: 371px;
+    margin: 0;
+    padding: 0;
+}
+div.login-header{
+    width: 539px;
+    height: 120px;
+    padding-top: 30px;
+}
+h2{
+    margin: 0;
+    width: 539px;
+    height:36px;
+    font-weight: bold;
+    color: #317eac;
+}
+div.login-box{
+    width: 539px;
+    height: 231px;
+    
+}
+.well{
+    padding: 19px;
+    margin-bottom:20px;
+    background:#F5F5F5 ;
+}
+.alert-info {
+    background-color: #edebe1;
+    border-color: #e0d9cb;
+    color: #817b58;
+}
+.alert{
+    padding: 8px 35px 8px 14px;
+    margin-bottom: 18px;
+}
+
+fieldset{
+    width: 499px;
+    height: 137px;
+}
+
+input-prepend{
+    width: 204px;
+    height: 28px;
+    display: inline-block;
+    
+}
+
+.login-box .input-prepend {
+    margin-bottom: 10px;
+}
+span .add-on{
+    width: 28px;
+    height: 28px;
+    text-align: center;
+    background-color: #f5f5f5;
+    border: 1px solid #ccc;
+}
+i .icon-user{
+    width: 14px;
+    height: 14px;
+}
+.form-horizontal{
+    border-radius: 0;
+    display: block;
+}
+.form-horizontal input{
+    width: 178px;
+    height: 28px;
+    margin-bottom: 0;
+    position: relative;
+    border-radius: 0 3px 3px 0;
+}
+
+ul.formtip{
+    list-style: disc;
+    padding: 0;
+    margin: 0 0 9px 25px;
+    display: block;
+    color: red;
+}
+p {
+    width: 499px;
+    height: 43px;
+    margin: 0 0 9px;
+}
+.login-box .btn {
+    margin-top: 15px;
+    width: 100%;
+}
+.btn-primary{
+    background-color: #43a1da;
+    color: #ffffff;
+    
+}
+.btn{
+    display: inline-block;
+    padding: 4px 10px 4px;
+    margin-bottom: 0;
+    font-size: 13px;
+    line-height: 18px;
+    vertical-align: middle;
+    border: 1px solid #cccccc;
+    border-radius: 4px;
+    
+}

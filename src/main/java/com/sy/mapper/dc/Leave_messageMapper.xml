@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sy.mapper.dc.Leave_messageMapper">
+<!--查询留言-->
+<select id="getLeavemessageall" resultType="leave_message">
+    select * from leave_message order by  createTime desc
+</select>
+    <!--新增留言-->
+<insert id="insertLeave_messageMapper" parameterType="leave_message">
+    INSERT INTO
+     leave_message
+     (createdBy, messageCode,messageTitle,messageContent,state,createTime)
+    VALUES
+    (#{createdBy}, #{messageCode}, #{messageTitle}, #{messageContent}, #{state}, #{createTime});
+</insert>
+
+    <!--查询指定留言id-->
+    <select id="getLeave_messageid" parameterType="int" resultType="leave_message">
+        select * from leave_message where id=#{id}
+    </select>
+    <!--更改留言状态-->
+    <update id="updatestate" parameterType="int">
+      update  leave_message set state=1 where id=#{id}
+    </update>
+    <!--删除留言-->
+    <delete id="deleteLeave_message" parameterType="int">
+        delete from leave_message where id=#{id}
+    </delete>
+</mapper>

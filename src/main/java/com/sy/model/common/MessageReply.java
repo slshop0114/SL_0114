@@ -1,5 +1,7 @@
 package com.sy.model.common;
 
+import com.sy.model.dc.Reply;
+
 import java.util.List;
 
 /**

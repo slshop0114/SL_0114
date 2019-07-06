@@ -1,0 +1,138 @@
+.bodyall{
+    width: 80%;
+    position: absolute;
+    left:20%;
+    top:10%;
+
+}
+table {
+    max-width: 100%;
+    background-color: transparent;
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+.table {
+    width: 100%;
+    margin-bottom: 18px;
+}
+.table th,
+.table td {
+    padding: 8px;
+    line-height: 18px;
+    text-align: left;
+    vertical-align: top;
+    border-top: 1px solid #6DB847;
+}
+.table th {
+    font-weight: bold;
+}
+.table thead th {
+    vertical-align: bottom;
+}
+.table caption + thead tr:first-child th,
+.table caption + thead tr:first-child td,
+.table colgroup + thead tr:first-child th,
+.table colgroup + thead tr:first-child td,
+.table thead:first-child tr:first-child th,
+.table thead:first-child tr:first-child td {
+    border-top: 0;
+}
+.table tbody + tbody {
+    border-top: 2px solid #6DB847;
+}
+.table-condensed th,
+.table-condensed td {
+    padding: 4px 5px;
+}
+.table-bordered {
+    border: 1px solid #6DB847;
+    border-collapse: separate;
+    *border-collapse: collapsed;
+    border-left: 0;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+}
+.table-bordered th,
+.table-bordered td {
+    border-left: 1px solid #6DB847;
+}
+.trgreen{
+    background-color: #DFEACA;
+}
+/*设置奇数行颜色*/
+table #list tr:nth-child(odd)
+{
+    background: #FFFFFF;
+}
+/*设置偶数行颜色*/
+table #list tr:nth-child(even)
+{
+    background: #F1F3F4;
+}
+
+
+
+.box-content .searcharea{
+    padding:5px;
+}
+.box-content .searcharea input,.box-content .searcharea select{
+    width:150px;
+    margin-right: 10px;
+}
+.box-content .searcharea button{
+    position:relative;
+    top:-5px;
+}
+.modal {
+    background-color: white;
+    border: 1px solid #0C0C0C;
+    position:fixed;
+    top: 100px;
+    right: 10px;
+    left: 10px;
+    width: 80%;
+    margin: 0;
+}
+
+#a_idPic,#a_bankPic,#m_idPic,#m_bankPic{
+    height:125px;
+    overflow: hidden;
+}
+#a_idPic img, #a_bankPic img,#m_idPic img, #m_bankPic img,#v_idPic img, #v_bankPic img{margin:5px;border:1px solid #ccc;}
+#a_idPic,#a_bankPic,#m_idPic,#m_bankPic,#v_idPic, #v_bankPic p{
+    width:200px;
+    float: left;
+    height:125px;
+    overflow:hidden;
+    position: relative;
+}
+#a_idPic p span,#a_bankPic p span,#m_idPic p span,#m_bankPic p span {
+    position: absolute;
+    color:red;
+    z-index: 999;
+    left:190px;
+    top:3px;
+    font-weight: bold;
+    font-size:14px;
+    cursor: pointer;
+}
+
+.modifymemberinfo{
+    padding:5px;
+    padding-right:100px;
+    text-align:right;
+}
+.hide{
+    display:none
+    
+}
+.fade{
+    top:10%;
+    width: 60%;
+    left: 20%;
+   }
+.left{
+    width: 80%;
+    float: left;
+}

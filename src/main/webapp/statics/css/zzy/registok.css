@@ -1,0 +1,49 @@
+.bodyall{
+    width: 80%;
+    position:fixed;
+    left:25%;
+    top:15%;
+}
+
+.row-fluid{
+    width:700px;
+}
+.box-content{
+    font-size: 16px;
+}
+.icon-info-sign{
+    text-align: center;
+    
+}
+.breadcrumb li{
+    width: 90%
+}
+.green{
+    color: #006600;
+    text-align: center;
+    line-height: normal;
+}
+.icon-info-sign{
+    font-size: 18px;
+    color: #006600;;
+}
+.box-content p{
+    
+}
+.userregist li{
+    color: #FF0000;
+    text-align: left;
+    line-height: 20px;
+}
+.btn{
+    width: 70px;
+    height: 23px;
+    color:#333333;
+    text-decoration:none;
+    background-color: #DFEACA;
+    float: right;
+}
+.btn-primary:hover{
+    background-color:#5FB023;
+    *background-color:#639840;
+}

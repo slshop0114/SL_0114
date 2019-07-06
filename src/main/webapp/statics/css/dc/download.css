@@ -1,0 +1,69 @@
+.tou{
+    width: 700px;
+    height: 30px;
+    line-height: 30px;
+    margin: 20px 20px;
+    border-bottom: #DADADA solid 1px;
+}
+.wenbenxuanrna{
+    width: 700px;
+    height: 300px;
+    margin-left: 20px;
+}
+.fenye{
+    margin-left: 500px;
+}
+
+/*详情*/
+#all_light { /*整个弹窗的页面*/
+    opacity: 0.8; /*透明度*/
+    width: 100%; /*宽度*/
+    height: 2300px; /*高度，不能百分百*/
+    background: #000; /*背景色*/
+    position: absolute;
+    top: 0;
+    left: 0; /*定位*/
+    display: none; /*隐藏*/
+    z-index: 1; /*覆盖*/
+}
+
+#contes { /* 弹框的页面*/
+    width: 800px; /*宽度*/
+    height: 550px; /*高度*/
+    background: #fff; /*背景色*/
+    display: none; /*隐藏*/
+    z-index: 2; /*覆盖*/
+    position: absolute;
+    top: 100px;
+    left: 200px; /* 定位*/
+}
+.tou3{
+    width: 700px;
+    height: 30px;
+    line-height: 30px;
+    margin: 20px 20px;
+    border-bottom: #DADADA solid 1px;
+}
+.wenzitou3{
+    width: 600px;
+    margin: 20px 70px;
+    height: 50px;
+    border-bottom: #DADADA solid 1px;
+}
+
+.wenzitouneir3{
+    text-align: center;
+}
+.wenbenkuang3{
+    width: 600px;
+    margin: 20px 70px;
+    height: 300px;
+    border-bottom: #DADADA solid 1px;
+}
+.xiazai3{
+    margin-left: 100px;
+    float: left;
+}
+.fanhui3{
+    margin-left: 400px;
+}

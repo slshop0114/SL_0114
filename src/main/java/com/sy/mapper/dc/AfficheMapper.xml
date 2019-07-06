@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sy.mapper.dc.AfficheMapper">
+
+    <!--  查询所有时间在生效时间与失效时间之间的公告-->
+    <select id="getafficelist" parameterType="affiche" resultType="affiche">
+         select * from affiche   where endTime is null or	TO_DAYS(SYSDATE())  BETWEEN	  TO_DAYS(startTime) and TO_DAYS(endTime) order by  publishTime desc
+    </select>
+
+    <!--新增公告-->
+    <insert id="insertaffice" parameterType="affiche">
+    INSERT INTO
+    affiche(title,content,publisher,publishTime,startTime,endTime)
+	VALUES
+	(#{title},#{content},#{publisher},#{publishTime},#{startTime},#{endTime})
+	</insert>
+
+<!--修改公告-->
+    <update id="updateaffice" parameterType="affiche">
+        update affiche
+        <set>
+            <if test="title != null"> title = #{title},</if>
+            <if test="content != null"> content = #{content},</if>
+            <if test="publishTime != null"> publishTime = #{publishTime},</if>
+            <if test="startTime != null"> startTime = #{startTime},</if>
+            <if test="endTime != null"> endTime = #{endTime},</if>
+        </set>
+        where id = #{id}
+    </update>
+
+    <!--删除公告-->
+    <delete id="delectafficeid" parameterType="int">
+      DELETE FROM affiche WHERE id=#{id}
+    </delete>
+
+    <!--查询详细页-->
+    <select id="getaffichexx" parameterType="int" resultType="affiche">
+        select * from affiche  where id=#{id}
+    </select>
+</mapper>

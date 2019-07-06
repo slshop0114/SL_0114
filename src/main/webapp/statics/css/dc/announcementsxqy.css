@@ -1,0 +1,26 @@
+.dingbu{
+    height: 30px;
+    margin: 10px auto;
+    border-bottom:#DADADA 1px solid;
+    padding-left: 10px;
+    line-height: 30px;
+}
+.toubu{
+    text-align: center;
+    font-size: 20px;
+}
+.wenben{
+    width: 1000px;
+    margin: 0 auto;
+    height: 400px;
+    text-align: left;
+    font-size: 14px;
+}
+.luokuan{
+    float: right;
+    margin-right: 150px;
+}
+.anniu{
+    margin-left: 200px;
+
+}

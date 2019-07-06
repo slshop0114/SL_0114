@@ -1,0 +1,24 @@
+.bodyall{
+    width: 80%;
+    position:fixed;
+    left:20%;
+    top:15%;
+}
+
+.tablea{
+    width: 80%;
+    
+}
+
+input{
+    width: 120px;
+}
+.select {
+    border:1px solid #cccccc;
+    display: inline;
+    width:100px;
+}
+.left{
+    float: left;
+    width: 80%;
+}

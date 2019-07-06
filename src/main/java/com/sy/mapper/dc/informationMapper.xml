@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sy.mapper.dc.informationMapper">
+
+    <!--查询所有资讯-->
+    <select id="selectInformation" parameterType="information" resultType="information">
+   SELECT * FROM information order by  uploadTime desc
+    </select>
+
+
+    <!--新增资讯-->
+    <insert id="insertinformation" parameterType="information">
+    INSERT INTO
+    information
+    (title, content, state, publisher, publishTime, typeId, typeName, fileName, filePath, fileSize, uploadTime, download)
+     VALUES (
+    #{title}, #{content}, #{state}, #{publisher}, #{publishTime}, #{typeId}, #{typeName}, #{fileName}, #{filePath}, #{fileSize}, #{uploadTime},0
+    );
+    </insert>
+
+    <!--//    修改资讯-->
+    <update id="updateinformation">
+UPDATE information
+        <set>
+            <if test="title != null"> title = #{title},</if>
+            <if test="content != null"> content = #{content},</if>
+            <if test="typeId != null"> typeId = #{typeId},</if>
+            <if test="typeName != null"> typeName = #{typeName},</if>
+
+            <if test="filePath != null"> filePath = #{filePath},</if>
+            <if test="fileSize != null"> fileSize = #{fileSize},</if>
+            <if test="uploadTime != null"> uploadTime = #{uploadTime},</if>
+        </set>
+   WHERE id= #{id};
+    </update>
+
+    <!--//    删除资讯-->
+    <delete id="deleteinformation" parameterType="int">
+      delete FROM	information where id=#{id}
+    </delete>
+
+
+    <!--//    修改发布状态-->
+   <update id="updateInformationstate" parameterType="information" >
+      update information set STATE=#{state} where id=#{id}
+   </update>
+
+    <!--查询所有资讯发布状态为发布的-->
+    <select id="selectInformationstate" parameterType="information" resultType="information">
+      SELECT * FROM information where state=1 order by  uploadTime desc
+    </select>
+
+    <!--查询指定资讯详情-->
+    <select id="getinformationid" parameterType="information" resultType="information">
+        select * from  information where id=#{id};
+    </select>
+
+    <!--下载次数加1-->
+    <update id="xiazai" parameterType="int">
+        update information set download= download+1 where id=#{id}
+     </update>
+</mapper>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sy.mapper.dc.data_dictionaryMapper">
+    <!--查询数据字典表的信息-->
+    <select id="selectdatadictionaryall" resultType="data_dictionary">
+        select * from data_dictionary where typeCode='INFO_TYPE'
+    </select>
+</mapper>

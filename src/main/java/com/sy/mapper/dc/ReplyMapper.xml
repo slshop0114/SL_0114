@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sy.mapper.dc.ReplyMapper">
+    <!--查询留言-->
+    <select id="getReplyall" resultType="reply" parameterType="int">
+        SELECT * FROM reply where messageId=#{id}
+    </select>
+
+    <!--新增回复-->
+    <insert id="insertreply" parameterType="reply">
+        INSERT INTO slsaledb.reply(messageId, replyContent, createdBy, createTime)
+        VALUES (#{messageId}, #{replyContent}, #{createdBy}, #{createTime})
+    </insert>
+
+    <!--删除回复-->
+    <delete id="deleteReply" parameterType="reply">
+      delete from reply where messageId=#{messageId}
+    </delete>
+</mapper>

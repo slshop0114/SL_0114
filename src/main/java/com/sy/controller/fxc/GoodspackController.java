@@ -111,6 +111,47 @@ public class GoodspackController {
     }
 
 
+    @RequestMapping("/backend/savemodifygoodspack.html")
+    public String savemodifygoodspack(GoodsPack goodsPack) {
+        try {
+            if ("报单购货".equals(goodsPack.getTypeName())) {
+                goodsPack.setTypeId(1);
+            }
+            if ("辅销购货".equals(goodsPack.getTypeName())) {
+                goodsPack.setTypeId(3);
+            }
+            if ("重销购货".equals(goodsPack.getTypeName())) {
+                goodsPack.setTypeId(2);
+            }
+            goodsPack.setLastUpdateTime(new Date());
+            goodsPackService.modifyGoodsPack(goodsPack);
+            GoodsPack goodsPack1 = goodsPackService.getlastgoodpackid(goodsPack);
+            GoodsPackAffiliated goodsPackAffiliated = new GoodsPackAffiliated();
+            goodsPackAffiliated.setGoodsPackId(goodsPack1.getId());
+            goodsPackAffiliatedService.deleteGoodsPackAffiliated(goodsPackAffiliated);
+
+            for (int i = goodsPack.getGoodsInfos().size() - 1; i >= 0; i--) {
+                if (goodsPack.getGoodsInfos().get(i).getId() == null) {
+                    goodsPack.getGoodsInfos().remove(i);
+
+                }
+            }
+            for (GoodsInfo goodsInfo:goodsPack.getGoodsInfos()){
+                System.out.println(goodsInfo.getNum()+"getGoodsInfosgetGoodsInfos");
+                System.out.println(goodsInfo+"getGoodsInfosgetGoodsInfos");
+                System.out.println(goodsPack.getGoodsInfos()+"getGoodsInfosgetGoodsInfos");
+                GoodsPackAffiliated goodsPackAffiliated1 = new GoodsPackAffiliated();
+                goodsPackAffiliated1.setGoodsPackId(goodsPack1.getId());
+                goodsPackAffiliated1.setGoodsInfoId(goodsInfo.getId());
+                goodsPackAffiliated1.setGoodsNum(goodsInfo.getNum());
+                goodsPackAffiliatedService.addGoodsPackAffiliated(goodsPackAffiliated1);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return "redirect:/backend/goodspacklist.html";
+    }
+
     @RequestMapping("/backend/delgoodspack.html")
     @ResponseBody
     public String delGoodsPack(GoodsPack goodsPack) {
@@ -120,7 +161,6 @@ public class GoodspackController {
         goodsPackAffiliatedService.deleteGoodsPackAffiliated(goodsPackAffiliated);
         return "1";
     }
-
 
 }
 

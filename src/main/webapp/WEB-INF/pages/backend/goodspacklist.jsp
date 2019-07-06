@@ -209,7 +209,7 @@
 <%--修改商品--%>
 
 
-<form class="layui-form fromrolesty" action="/backend/modifygoodspack.html" id="updategoodspack">
+<form class="layui-form fromrolesty" action="/backend/savemodifygoodspack.html" id="updategoodspack">
     <div class="layui-form-item">
         <div class="layui-input-block">
             <input type="hidden" name="createdBy" lay-verify="title" autocomplete="off" placeholder="请输入标题"
@@ -300,7 +300,7 @@
                     <td>
                         <div class="layui-form-item">
                             <div class="layui-input-block">
-                                <input type="text" name="GoodsInfos[${i.count}].num" lay-verify="number" autocomplete="off" placeholder="请输入数量"
+                                <input type="text" name="GoodsInfos[${i.count}].num"  autocomplete="off" placeholder="请输入数量"
                                        class="layui-input" style="width: 100px">
                             </div>
                         </div>

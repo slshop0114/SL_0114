@@ -13,7 +13,9 @@ public interface GoodsPackAffiliatedService {
 	 * @return
 	 */
 	public List<GoodsPackAffiliated> getGoodsPackAffiliatedListById(GoodsPackAffiliated goodsPackAffiliated) throws Exception;
-	
+
+	public List<GoodsPackAffiliated> selectGoodsPackAffiliatedBygoodsPackId(int i) throws Exception;
+
 	
 	/**
 	 * addGoodsPackAffiliated

@@ -36,10 +36,21 @@ function searchgoodspack() {
         method: "post",
         data: {"id": goodpackid},
         success: function (result) {
-            $("#goodsPackName2").val(result.goodsPackName)
-            $("#goodsPackCode2").val(result.goodsPackCode)
-            $("#goodspacktotalPrice2").val(result.totalPrice)
-            $("#goodspacknote2").val(result.note)
+
+            var list=result.list;
+            var list2=result.num;
+            var str="";
+            for (var i=0;i<list.length;i++) {
+                var obj=list[i];
+                var obj2=list2[i];
+                str+="<tr><td>"+obj.goodsName+"</td><td>"+obj2.goodsNum+"</td></tr>"
+            }
+            $("#goodsinfossearch").html(str);
+
+            $("#goodsPackName2").val(result.goodsPack1.goodsPackName)
+            $("#goodsPackCode2").val(result.goodsPack1.goodsPackCode)
+            $("#goodspacktotalPrice2").val(result.goodsPack1.totalPrice)
+            $("#goodspacknote2").val(result.goodsPack1.note)
         }
     });
 

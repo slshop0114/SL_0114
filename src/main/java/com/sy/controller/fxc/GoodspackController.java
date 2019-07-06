@@ -14,10 +14,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 
-
 import javax.servlet.http.HttpSession;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 
 
 @Controller
@@ -37,7 +35,7 @@ public class GoodspackController {
 
         try {
             GoodsInfo goodsInfo = new GoodsInfo();
-            goodsInfoList = goodsInfoService.getGoodsInfoList(goodsInfo,0);
+            goodsInfoList = goodsInfoService.getGoodsInfoList(goodsInfo, 0);
             goodsPackList = goodsPackService.getGoodsPackList(goodsPack);
             model.addAttribute("goodsPackList", goodsPackList);
             model.addAttribute("goodsInfoListforpack", goodsInfoList);
@@ -60,9 +58,12 @@ public class GoodspackController {
             if ("重销购货".equals(goodsPack.getTypeName())) {
                 goodsPack.setTypeId(2);
             }
-            goodsPack.setNum(1);
+            goodsPack.setNum(100);
             goodsPack.setCreateTime(new Date());
             goodsPack.setLastUpdateTime(new Date());
+            goodsPackService.addGoodsPack(goodsPack);
+            System.out.println(goodsPack.getGoodsPackCode() + "getGoodsPackCode");
+            GoodsPack goodsPack1 = goodsPackService.getlastgoodpackid(goodsPack);
             for (int i = goodsPack.getGoodsInfos().size() - 1; i >= 0; i--) {
                 if (goodsPack.getGoodsInfos().get(i).getId() == null) {
                     goodsPack.getGoodsInfos().remove(i);
@@ -70,12 +71,10 @@ public class GoodspackController {
                 }
                 GoodsPackAffiliated goodsPackAffiliated = new GoodsPackAffiliated();
                 goodsPackAffiliated.setGoodsInfoId(goodsPack.getGoodsInfos().get(i).getId());
-                goodsPackAffiliated.setGoodsPackId(goodsPack.getId());
+                goodsPackAffiliated.setGoodsPackId(goodsPack1.getId());
                 goodsPackAffiliated.setGoodsNum(goodsPack.getGoodsInfos().get(i).getNum());
                 goodsPackAffiliatedService.addGoodsPackAffiliated(goodsPackAffiliated);
             }
-
-            goodsPackService.addGoodsPack(goodsPack);
 
 
         } catch (Exception e) {
@@ -84,17 +83,31 @@ public class GoodspackController {
         return "redirect:/backend/goodspacklist.html";
     }
 
+
+    //查看功能
     @RequestMapping("/backend/modifygoodspack.html")
     @ResponseBody
-    public GoodsPack modifyGoodsPack(Model model, GoodsPack goodsPack) {
+    public Map<String, Object> modifyGoodsPack(Model model, GoodsPack goodsPack) {
+        Map<String, Object> map = new HashMap<>();
         try {
             GoodsPack goodsPack1 = goodsPackService.getGoodsPackById(goodsPack);
-            return goodsPack1;
+            map.put("goodsPack1", goodsPack1);
+            List<GoodsPackAffiliated> lista = goodsPackAffiliatedService.selectGoodsPackAffiliatedBygoodsPackId(goodsPack.getId());
+            map.put("num", lista);
+
+            List<GoodsInfo> listg = new ArrayList<>();
+            for (GoodsPackAffiliated goodsPackAffiliated : lista) {
+                GoodsInfo goodsInfo1 = new GoodsInfo();
+                goodsInfo1.setId(goodsPackAffiliated.getGoodsInfoId());
+                GoodsInfo goodsInfo = goodsInfoService.getGoodsInfoById(goodsInfo1);
+                listg.add(goodsInfo);
+            }
+            map.put("list", listg);
         } catch (Exception e) {
             e.printStackTrace();
         }
 
-        return null;
+        return map;
     }
 
 
@@ -109,10 +122,6 @@ public class GoodspackController {
     }
 
 
-  /*  @RequestMapping("/backend/modifygoodspackstate.html")
-    public String modifyGoodsPackState(HttpSession session,@RequestParam String state){
-        return "redirect:/backend/goodspacklist.html";
-        }*/
 }
 
 

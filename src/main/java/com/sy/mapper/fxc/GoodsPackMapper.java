@@ -67,4 +67,6 @@ public interface GoodsPackMapper {
 	 * @return
 	 */
 	public int getAddGoodsPackId() throws Exception;
+
+	public GoodsPack getlastgoodpackid(GoodsPack goodsPack)throws Exception;
 }

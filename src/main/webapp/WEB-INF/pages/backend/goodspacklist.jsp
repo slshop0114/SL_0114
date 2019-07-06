@@ -176,7 +176,7 @@
                     <div class="layui-form-item">
                         <div class="layui-input-block">
                             <input type="text" name="GoodsInfos[${i.count}].num" lay-verify="number" autocomplete="off" placeholder="请输入数量"
-                                   class="layui-input" style="width: 100px">
+                                   class="layui-input" style="width: 100px" value="0">
                         </div>
                     </div>
                     </td>
@@ -334,12 +334,6 @@
 <%--查询商品--%>
 
 <form class="layui-form fromrolesty" action="" id="searchgoodspack">
-    <div class="layui-form-item">
-        <div class="layui-input-block">
-            <input type="hidden" name="createdBy" lay-verify="title" autocomplete="off" placeholder="请输入标题"
-                   class="layui-input" value="${userSession.loginCode}">
-        </div>
-    </div>
 
     <div class="layui-form-item">
         <label class="layui-form-label">套餐名称</label>
@@ -398,41 +392,15 @@
             </colgroup>
             <thead>
             <tr>
-                <th>选择</th>
                 <th>商品名称</th>
-                <th>库存量</th>
-                <th>添加数量</th>
+                <th>数量</th>
+
             </tr>
             </thead>
-            <tbody>
+            <tbody id="goodsinfossearch">
 
 
-            <c:forEach items="${goodsInfoListforpack}" var="goodsInfoList" varStatus="i">
-                <tr>
-                    <td>
-                        <div class="layui-form-item">
-                            <div class="layui-input-block">
-                                <input  disabled="disabled" type="radio" value="${goodsInfoList.id}" name="GoodsInfos[${i.count}].id" title="${goodsInfoList.goodsName}">
-                            </div>
-                        </div>
-                    </td>
 
-
-                    <td class="center">${goodsInfoList.goodsName}</td>
-                    <td class="center">${goodsInfoList.num}</td>
-
-                    <td>
-                        <div class="layui-form-item">
-                            <div class="layui-input-block">
-                                <input type="text" name="GoodsInfos[${i.count}].num" lay-verify="number" autocomplete="off" placeholder="请输入数量"
-                                       class="layui-input" style="width: 100px"  disabled="disabled">
-                            </div>
-                        </div>
-                    </td>
-
-
-                </tr>
-            </c:forEach>
             </tbody>
         </table>
     </div>
@@ -486,10 +454,11 @@
                 method: "post",
                 data: {"id": goodpacksid},
                 success: function (result) {
-                    $("#goodsPackName").val(result.goodsPackName)
-                    $("#goodsPackCode").val(result.goodsPackCode)
-                    $("#goodspacktotalPrice").val(result.totalPrice)
-                    $("#goodspacknote").val(result.note)
+
+                    $("#goodsPackName").val(result.goodsPack1.goodsPackName)
+                    $("#goodsPackCode").val(result.goodsPack1.goodsPackCode)
+                    $("#goodspacktotalPrice").val(result.goodsPack1.totalPrice)
+                    $("#goodspacknote").val(result.goodsPack1.note)
                 }
             });
         });

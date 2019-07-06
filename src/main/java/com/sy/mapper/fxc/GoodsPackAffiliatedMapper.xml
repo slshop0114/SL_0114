@@ -32,4 +32,7 @@
 		delete from goods_pack_affiliated where goodsPackId = #{goodsPackId}
 	</delete>
 	
+	<select id="selectGoodsPackAffiliatedBygoodsPackId" parameterType="int" resultMap="goodsPackAffiliatedList">
+		select * from  goods_pack_affiliated where goodsPackId = #{i};
+	</select>
 </mapper>  

@@ -70,7 +70,8 @@ public class GoodsController {
     }
 
     @RequestMapping("/backend/addgoodsinfo.html")
-    public String addGoodsInfo(HttpSession session, GoodsInfo addGoodsInfo) {
+    public String addGoodsInfo(HttpSession session,GoodsInfo addGoodsInfo) {
+
         addGoodsInfo.setCreateTime(new Date());
         addGoodsInfo.setCreatedBy(((User) session.getAttribute(Constants.SESSION_USER)).getLoginCode());
         addGoodsInfo.setLastUpdateTime(new Date());

@@ -88,5 +88,7 @@
 	<select id="getAddGoodsPackId" resultType="int">
 		select LAST_INSERT_ID()
 	</select>
-	
+	<select id="getlastgoodpackid" resultType="goodsPack"  parameterType="goodsPack">
+		select * from goods_pack where goodsPackCode like #{goodsPackCode}
+	</select>
 </mapper>  

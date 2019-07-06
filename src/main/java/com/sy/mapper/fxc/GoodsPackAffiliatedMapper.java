@@ -36,4 +36,6 @@ public interface GoodsPackAffiliatedMapper {
 	 * @return
 	 */
 	public int deleteGoodsPackAffiliated(GoodsPackAffiliated goodsPackAffiliated);
+
+	public List<GoodsPackAffiliated> selectGoodsPackAffiliatedBygoodsPackId(int i);
 }

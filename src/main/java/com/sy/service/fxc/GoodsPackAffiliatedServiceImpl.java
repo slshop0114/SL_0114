@@ -28,6 +28,11 @@ public class GoodsPackAffiliatedServiceImpl implements GoodsPackAffiliatedServic
 		return mapper.getGoodsPackAffiliatedListById(goodsPackAffiliated);
 	}
 
+	@Override
+	public List<GoodsPackAffiliated> selectGoodsPackAffiliatedBygoodsPackId(int i) throws Exception {
+		return mapper.selectGoodsPackAffiliatedBygoodsPackId(i);
+	}
+
 	@Transactional(isolation = Isolation.DEFAULT,propagation = Propagation.REQUIRED)
 	public int addGoodsPackAffiliated(GoodsPackAffiliated goodsPackAffiliated)
 			throws Exception {

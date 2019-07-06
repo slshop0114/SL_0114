@@ -78,4 +78,6 @@ public interface GoodsPackService {
 	 * @return
 	 */
 	public int deleteGoodsPack(GoodsPack goodsPack);
+
+	public GoodsPack getlastgoodpackid(GoodsPack goodsPack)  throws Exception;
 }

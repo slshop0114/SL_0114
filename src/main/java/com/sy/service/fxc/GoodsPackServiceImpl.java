@@ -59,6 +59,12 @@ public class GoodsPackServiceImpl implements GoodsPackService{
 		return mapper.deleteGoodsPack(goodsPack);
 	}
 
+	@Override
+	public GoodsPack getlastgoodpackid(GoodsPack goodsPack) throws Exception {
+
+		return mapper.getlastgoodpackid(goodsPack);
+	}
+
 	@Transactional(isolation = Isolation.DEFAULT,propagation = Propagation.REQUIRED)
 	public boolean hl_addGoodsPack(GoodsPack goodsPack,List<GoodsPackAffiliated> apaList) throws Exception {
 		// TODO Auto-generated method stub

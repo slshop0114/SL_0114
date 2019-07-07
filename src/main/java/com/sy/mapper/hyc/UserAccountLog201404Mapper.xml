@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sy.mapper.hyc.UserAccountLog201404Mapper">
+
+  <resultMap id="BaseResultMap" type="com.sy.model.hyc.UserAccountLog201404">
+    <id column="accountLogId" jdbcType="BIGINT" property="accountlogid" />
+    <result column="userId" jdbcType="BIGINT" property="userid" />
+    <result column="actionTime" jdbcType="DATE" property="actiontime" />
+    <result column="actionDesc" jdbcType="VARCHAR" property="actiondesc" />
+    <result column="actionType" jdbcType="DECIMAL" property="actiontype" />
+    <result column="baseIn" jdbcType="DECIMAL" property="basein" />
+    <result column="baseOut" jdbcType="DECIMAL" property="baseout" />
+    <result column="baseBalance" jdbcType="DECIMAL" property="basebalance" />
+    <result column="repeatIn" jdbcType="DECIMAL" property="repeatin" />
+    <result column="repeatOut" jdbcType="DECIMAL" property="repeatout" />
+    <result column="repeatBalance" jdbcType="DECIMAL" property="repeatbalance" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    accountLogId, userId, actionTime, actionDesc, actionType, baseIn, baseOut, baseBalance,
+    repeatIn, repeatOut, repeatBalance
+  </sql>
+
+  <select id="selectBase" parameterType="userAccountLog201404" resultMap="BaseResultMap">
+      select
+      <include refid="Base_Column_List" />
+      from user_account_log_201404
+      <trim prefix="where" prefixOverrides="and|or">
+          actionType = 1
+          <if test="userid != null">
+              and userId =#{userid}
+          </if>
+          <if test="date1 != null">
+              and date_format(actionTime,'%Y-%m-%d')&gt;=#{date1,jdbcType=DATE}
+          </if>
+          <if test="date2 != null">
+              and date_format(actionTime,'%Y-%m-%d')&lt;=#{date2,jdbcType=DATE}
+          </if>
+      </trim>
+      order by actionTime desc
+  </select>
+
+  <select id="selectRepeat" parameterType="userAccountLog201404" resultMap="BaseResultMap">
+      select
+      <include refid="Base_Column_List" />
+      from user_account_log_201404
+      <trim prefix="where" prefixOverrides="and|or">
+          actionType = 0
+          <if test="userid != null">
+              and userId =#{userid}
+          </if>
+          <if test="date1 != null">
+              and date_format(actionTime,'%Y-%m-%d')&gt;=#{date1,jdbcType=DATE}
+          </if>
+          <if test="date2 != null">
+              and date_format(actionTime,'%Y-%m-%d')&lt;=#{date2,jdbcType=DATE}
+          </if>
+      </trim>
+      order by actionTime desc
+  </select>
+
+
+    <sql id="key">
+        <trim suffixOverrides=",">
+            <if test="userid != null"> userId,</if>
+            <if test="actiontime != null"> actionTime,</if>
+            <if test="actiondesc != null"> actionDesc,</if>
+            <if test="actiontype != null"> actionType,</if>
+            <if test="basein != null"> baseIn,</if>
+            <if test="baseout != null"> baseOut,</if>
+            <if test="basebalance != null"> baseBalance,</if>
+        </trim>
+    </sql>
+    <sql id="value">
+        <trim suffixOverrides=",">
+            <if test="userid != null"> #{userid},</if>
+            <if test="actiontime != null"> #{actiontime},</if>
+            <if test="actiondesc != null"> #{actiondesc},</if>
+            <if test="actiontype != null"> #{actiontype},</if>
+            <if test="basein != null"> #{basein},</if>
+            <if test="baseout != null"> #{baseout},</if>
+            <if test="basebalance != null"> #{basebalance},</if>
+        </trim>
+    </sql>
+    <insert id="addMoneyForBase" parameterType="userAccountLog201404">
+        INSERT INTO user_account_log_201404(<include refid="key"/>) VALUES(<include refid="value"/>)
+    </insert>
+
+
+    <sql id="key2">
+        <trim suffixOverrides=",">
+            <if test="userid != null"> userId,</if>
+            <if test="actiontime != null"> actionTime,</if>
+            <if test="actiondesc != null"> actionDesc,</if>
+            <if test="actiontype != null"> actionType,</if>
+            <if test="repeatin != null"> repeatIn,</if>
+            <if test="repeatout != null"> repeatOut,</if>
+            <if test="repeatbalance != null"> repeatBalance,</if>
+        </trim>
+    </sql>
+    <sql id="value2">
+        <trim suffixOverrides=",">
+            <if test="userid != null"> #{userid},</if>
+            <if test="actiontime != null"> #{actiontime},</if>
+            <if test="actiondesc != null"> #{actiondesc},</if>
+            <if test="actiontype != null"> #{actiontype},</if>
+            <if test="repeatin != null"> #{repeatin},</if>
+            <if test="repeatout != null"> #{repeatout},</if>
+            <if test="repeatbalance != null"> #{repeatbalance},</if>
+        </trim>
+    </sql>
+    <insert id="addMoneyForRepeat" parameterType="userAccountLog201404">
+        INSERT INTO user_account_log_201404(<include refid="key2"/>) VALUES(<include refid="value2"/>)
+    </insert>
+
+
+
+
+
+   <!-- <insert id="addMoneyForRepeat" parameterType="userAccountLog201404">
+		insert into user_account_log_201404 (userId,actionTime,actionDesc,actionType,repeatIn,repeatBalance) values(
+			#{userid},
+			#{actiontime},
+			#{actiondesc},
+			#{actiontype},
+			#{repeatin},
+			#{repeatbalance}
+			)
+	</insert>-->
+
+    <update id="modifyInBalance" parameterType="userAccountLog201404">
+        update user_account_log_201404 set baseBalance =(baseBalance + #{basebalance})  where userId = #{userid}
+	</update>
+
+    <update id="modifyOutBalance" parameterType="userAccountLog201404">
+        update user_account_log_201404 set baseBalance =(baseBalance - #{basebalance})  where userId = #{userid}
+	</update>
+
+    <select id="selectBaseBalance" resultType="BigDecimal" parameterType="userAccountLog201404">
+        select sum(baseBalance) as basebalance from user_account_log_201404 where userId = #{userid}
+	</select>
+
+    <select id="selectRepeatBalance" resultType="BigDecimal" parameterType="userAccountLog201404">
+        select sum(repeatBalance) as repeatbalance from user_account_log_201404 where userId = #{userid}
+	</select>
+</mapper>

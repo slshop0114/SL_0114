@@ -3,6 +3,14 @@
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.sy.mapper.common.UserMapper">
+
+	<select id="getIdByLogincode" parameterType="String" resultType="Integer">
+		select id from au_user where loginCode = #{loginCode}
+	</select>
+
+	<select id="getUserByIdAndPw2" parameterType="user" resultType="user">
+		select * from au_user where id = #{id} and password2 = #{password2}
+	</select>
 	
     <!-- 分页 按条件搜索 -->
      <select id="getUserList" resultType="user" parameterType="user">

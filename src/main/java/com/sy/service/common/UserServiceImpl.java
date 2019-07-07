@@ -17,6 +17,18 @@ public class UserServiceImpl implements UserService {
     @Autowired
     private UserMapper mapper;
 
+    //hyc
+    @Override
+    public Integer getId(String loginCode) throws Exception {
+        return mapper.getIdByLogincode(loginCode);
+    }
+
+    @Override
+    public User getUserByIdAndPw2(User user) throws Exception {
+        return mapper.getUserByIdAndPw2(user);
+    }
+    //hyc
+
     @Override
     public List<User> getUserList(User user) throws Exception {
         return mapper.getUserList(user);

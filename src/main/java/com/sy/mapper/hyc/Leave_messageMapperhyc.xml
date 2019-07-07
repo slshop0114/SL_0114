@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sy.mapper.hyc.Leave_messageMapperhyc">
+  <resultMap id="BaseResultMap" type="com.sy.model.hyc.Leave_messagehyc">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="createdBy" jdbcType="VARCHAR" property="createdby" />
+    <result column="messageCode" jdbcType="VARCHAR" property="messagecode" />
+    <result column="messageTitle" jdbcType="VARCHAR" property="messagetitle" />
+    <result column="state" jdbcType="INTEGER" property="state" />
+    <result column="createTime" jdbcType="TIMESTAMP" property="createtime" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.sy.model.hyc.Leave_messagehyc">
+    <result column="messageContent" jdbcType="LONGVARCHAR" property="messagecontent" />
+  </resultMap>
+
+  <sql id="Base_Column_List">
+    id, createdBy, messageCode, messageTitle, state, createTime
+  </sql>
+  <sql id="Blob_Column_List">
+    messageContent
+  </sql>
+
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="ResultMapWithBLOBs">
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from leave_message
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+
+
+  <sql id="key">
+    <trim suffixOverrides=",">
+      <if test="createdby != null"> createdBy,</if>
+      <if test="messagecode != null"> messageCode,</if>
+      <if test="messagetitle != null"> messageTitle,</if>
+      <if test="state != null"> state,</if>
+      <if test="createtime != null"> createTime,</if>
+      <if test="messagecontent != null"> messageContent,</if>
+    </trim>
+  </sql>
+  <sql id="value">
+    <trim suffixOverrides=",">
+      <if test="createdby != null"> #{createdby},</if>
+      <if test="messagecode != null"> #{messagecode},</if>
+      <if test="messagetitle != null"> #{messagetitle},</if>
+      <if test="state != null"> #{state},</if>
+      <if test="createtime != null"> #{createtime},</if>
+      <if test="messagecontent != null"> #{messagecontent},</if>
+    </trim>
+  </sql>
+  <insert id="addLeave_Message" parameterType="leave_messagehyc">
+    INSERT INTO leave_message(<include refid="key"/>) VALUES(<include refid="value"/>)
+  </insert>
+</mapper>

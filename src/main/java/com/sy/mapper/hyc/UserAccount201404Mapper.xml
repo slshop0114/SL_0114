@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sy.mapper.hyc.UserAccount201404Mapper">
+
+  <resultMap id="BaseResultMap" type="com.sy.model.hyc.UserAccount201404">
+    <id column="ACCOUNT_ID" jdbcType="INTEGER" property="accountId" />
+    <result column="USER_ID" jdbcType="INTEGER" property="userId" />
+    <result column="ACCOUNT_DATE" jdbcType="DATE" property="accountDate" />
+    <result column="STAT" jdbcType="INTEGER" property="stat" />
+    <result column="BASE_IN" jdbcType="DOUBLE" property="baseIn" />
+    <result column="BASE_OUT" jdbcType="DOUBLE" property="baseOut" />
+    <result column="BASE_BALANCE" jdbcType="DOUBLE" property="baseBalance" />
+    <result column="REPEAT_IN" jdbcType="DOUBLE" property="repeatIn" />
+    <result column="REPEAT_OUT" jdbcType="DOUBLE" property="repeatOut" />
+    <result column="REPEAT_BALANCE" jdbcType="DOUBLE" property="repeatBalance" />
+    <result column="FREE_PV" jdbcType="INTEGER" property="freePv" />
+    <result column="ALREADY_PV" jdbcType="INTEGER" property="alreadyPv" />
+    <result column="BUY_PV" jdbcType="INTEGER" property="buyPv" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    ACCOUNT_ID, USER_ID, ACCOUNT_DATE, STAT, BASE_IN, BASE_OUT, BASE_BALANCE, REPEAT_IN, 
+    REPEAT_OUT, REPEAT_BALANCE, FREE_PV, ALREADY_PV, BUY_PV
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from user_account_201404
+    where ACCOUNT_ID = #{accountId,jdbcType=INTEGER}
+  </select>
+</mapper>

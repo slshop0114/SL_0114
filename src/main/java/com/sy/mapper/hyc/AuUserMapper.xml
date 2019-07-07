@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sy.mapper.hyc.AuUserMapper">
+  <resultMap id="BaseResultMap" type="com.sy.model.hyc.AuUser">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="loginCode" jdbcType="VARCHAR" property="logincode" />
+    <result column="password" jdbcType="VARCHAR" property="password" />
+    <result column="password2" jdbcType="VARCHAR" property="password2" />
+    <result column="userName" jdbcType="VARCHAR" property="username" />
+    <result column="sex" jdbcType="VARCHAR" property="sex" />
+    <result column="birthday" jdbcType="DATE" property="birthday" />
+    <result column="cardType" jdbcType="VARCHAR" property="cardtype" />
+    <result column="cardTypeName" jdbcType="VARCHAR" property="cardtypename" />
+    <result column="idCard" jdbcType="VARCHAR" property="idcard" />
+    <result column="country" jdbcType="VARCHAR" property="country" />
+    <result column="mobile" jdbcType="VARCHAR" property="mobile" />
+    <result column="email" jdbcType="VARCHAR" property="email" />
+    <result column="userAddress" jdbcType="VARCHAR" property="useraddress" />
+    <result column="postCode" jdbcType="VARCHAR" property="postcode" />
+    <result column="createTime" jdbcType="TIMESTAMP" property="createtime" />
+    <result column="referId" jdbcType="BIGINT" property="referid" />
+    <result column="referCode" jdbcType="VARCHAR" property="refercode" />
+    <result column="roleId" jdbcType="BIGINT" property="roleid" />
+    <result column="roleName" jdbcType="VARCHAR" property="rolename" />
+    <result column="userType" jdbcType="VARCHAR" property="usertype" />
+    <result column="userTypeName" jdbcType="VARCHAR" property="usertypename" />
+    <result column="isStart" jdbcType="INTEGER" property="isstart" />
+    <result column="lastUpdateTime" jdbcType="TIMESTAMP" property="lastupdatetime" />
+    <result column="lastLoginTime" jdbcType="TIMESTAMP" property="lastlogintime" />
+    <result column="bankAccount" jdbcType="VARCHAR" property="bankaccount" />
+    <result column="bankName" jdbcType="VARCHAR" property="bankname" />
+    <result column="accountHolder" jdbcType="VARCHAR" property="accountholder" />
+    <result column="idCardPicPath" jdbcType="VARCHAR" property="idcardpicpath" />
+    <result column="bankPicPath" jdbcType="VARCHAR" property="bankpicpath" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, loginCode, password, password2, userName, sex, birthday, cardType, cardTypeName, 
+    idCard, country, mobile, email, userAddress, postCode, createTime, referId, referCode, 
+    roleId, roleName, userType, userTypeName, isStart, lastUpdateTime, lastLoginTime, 
+    bankAccount, bankName, accountHolder, idCardPicPath, bankPicPath
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from au_user
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+
+  <select id="selectBank" resultType="AuUser">
+  		SELECT accountHolder,bankAccount FROM au_user WHERE  id = #{id}
+  </select>
+</mapper>

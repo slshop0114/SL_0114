@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sy.mapper.hyc.UserRechargeMapperhyc">
+
+  <resultMap id="BaseResultMap" type="com.sy.model.hyc.UserRechargehyc">
+    <id column="RECHARGE_ID" jdbcType="VARCHAR" property="rechargeId" />
+    <result column="RECHARGE_TIME" jdbcType="DATE" property="rechargeTime" />
+    <result column="RECHARGE_NUM" jdbcType="VARCHAR" property="rechargeNum" />
+    <result column="USER_ID" jdbcType="VARCHAR" property="userId" />
+    <result column="CURRENCY" jdbcType="VARCHAR" property="currency" />
+    <result column="RECHARGE_MONEY" jdbcType="DECIMAL" property="rechargeMoney" />
+    <result column="NOTE" jdbcType="VARCHAR" property="note" />
+    <result column="CREDITED_MONEY" jdbcType="DECIMAL" property="creditedMoney" />
+    <result column="CREDITED_TIME" jdbcType="DATE" property="creditedTime" />
+    <result column="AUDIT_USER" jdbcType="VARCHAR" property="auditUser" />
+    <result column="PV_RATE" jdbcType="DECIMAL" property="pvRate" />
+    <result column="PV" jdbcType="DECIMAL" property="pv" />
+    <result column="BANK_NAME" jdbcType="VARCHAR" property="bankName" />
+    <result column="BANK_ACCOUNT" jdbcType="VARCHAR" property="bankAccount" />
+    <result column="PLATFORM" jdbcType="VARCHAR" property="platform" />
+    <result column="PARAM" jdbcType="VARCHAR" property="param" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    RECHARGE_ID, RECHARGE_TIME, RECHARGE_NUM, USER_ID, CURRENCY, RECHARGE_MONEY, NOTE, 
+    CREDITED_MONEY, CREDITED_TIME, AUDIT_USER, PV_RATE, PV, BANK_NAME, BANK_ACCOUNT, 
+    PLATFORM, PARAM ,RECHARGE_ACCOUNT
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from user_recharge
+    where RECHARGE_ID = #{rechargeId,jdbcType=VARCHAR}
+  </select>
+
+  <!-- 增加 -->
+  <insert id="addMoney" parameterType="userRechargehyc">
+		insert into user_recharge (RECHARGE_TIME,RECHARGE_NUM,USER_ID,RECHARGE_MONEY,NOTE,RECHARGE_ACCOUNT)
+							 values
+							 (#{rechargeTime},#{rechargeNum},#{userId},#{rechargeMoney},#{note},#{recharge_account})
+	</insert>
+</mapper>

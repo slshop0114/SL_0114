@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>layui</title>
+        <script src="../../../statics/js/jquery.js"></script>
+    </head>
+    <body>
+        <form class="layui-form" id="subForm">
+            <div class="layui-form-item">
+                <label class="layui-form-label">单号：</label>
+                <div class="layui-input-inline">
+                    <input id="name"  type="text" name="name" required  lay-verify="required" autocomplete="off" class="layui-input">
+                </div>
+                <div class="layui-form-mid layui-word-aux"><span id="info1"></span></div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">汇款金额：</label>
+                <div class="layui-input-inline">
+                    <input id="name"  type="text" name="name" required  lay-verify="required" autocomplete="off" class="layui-input">
+                </div>
+                <div class="layui-form-mid layui-word-aux"><span id="info1"></span></div>
+            </div>
+
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">日期：</label>
+                <div class="layui-input-inline">
+                    <input id="name"  type="text" name="name" required  lay-verify="required" autocomplete="off" class="layui-input">
+                </div>
+                <div class="layui-form-mid layui-word-aux"><span id="info1"></span></div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">时间：</label>
+                <div class="layui-input-inline">
+                    <input id="name"  type="text" name="name" required  lay-verify="required" autocomplete="off" class="layui-input">
+                </div>
+                <div class="layui-form-mid layui-word-aux"><span id="info1"></span></div>
+            </div>
+
+
+
+
+
+            <div class="layui-form-item">
+                <div class="layui-input-block">
+                    <input type="submit" class="layui-btn"  lay-submit lay-filter="formDemo" value="提交">
+                    <input type="reset" class="layui-btn layui-btn-primary" value="重置">
+                </div>
+            </div>
+        </form>
+
+        <script>
+            //Demo
+            layui.use('form', function(){
+                var form = layui.form;
+
+                //监听提交
+                form.on('submit(formDemo)', function(data){
+                    layer.msg(JSON.stringify(data.field));
+                    return false;
+                });
+            });
+        </script>
+    </body>
+</html>
+
+
+
+
+
+

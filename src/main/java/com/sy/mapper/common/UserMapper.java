@@ -7,6 +7,11 @@ import java.util.List;
 
 public interface UserMapper {
 
+    //根据登录名查询id
+    public Integer getIdByLogincode(String loginCode) throws Exception;
+    //根据id和2级密码查询，验证2级密码
+    public User getUserByIdAndPw2(User user)throws Exception;
+
     /**
      * 查询用户列表
      * @return

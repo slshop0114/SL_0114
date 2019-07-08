@@ -4,7 +4,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <title>详情页</title>
-<link href="/statics/layui/css/layui.css" rel="stylesheet">
+
 <link href="/statics/css/dc/announcementsxqy.css" rel="stylesheet">
 <script src="/statics/js/dc/jQuery3.4.1.js"></script>
 <script src="/statics/layui/layui.js"></script>

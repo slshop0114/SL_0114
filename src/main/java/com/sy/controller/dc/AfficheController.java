@@ -25,7 +25,7 @@ public class AfficheController {
 //    获取有效期内的公告  分页展示
     @RequestMapping("/afficheselect.html")
     @ResponseBody
-    public List<Affiche> getafficheselect (int firstResult, int maxResults) throws Exception{
+    public List<Affiche> getafficheselect (Integer firstResult, Integer maxResults) throws Exception{
         List<Affiche> list = afficheservice.getafficelist(firstResult,maxResults);
         System.out.println(list);
         return list;
@@ -34,6 +34,8 @@ public class AfficheController {
     //    新增公告公告
     @RequestMapping("/addaffiche.html")
          public String addaffiche(Affiche affiche , String username)throws Exception{
+        System.out.println("afficheafficheafficheaffiche");
+        System.out.println(affiche);
         affiche.setPublisher(username);
         SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");//设置日期格式
         Date date=df.parse(df.format(new Date()));//转换当前时间格式

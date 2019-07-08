@@ -3,7 +3,7 @@
 <html>
 <head>
     <title>下载中心</title>
-    <link href="/statics/layui/css/layui.css" rel="stylesheet" >
+
     <link href="/statics/css/dc/download.css" rel="stylesheet">
     <script src="/statics/js/dc/jQuery3.4.1.js"></script>
     <script src="/statics/layui/layui.js"></script>

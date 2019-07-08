@@ -14,9 +14,9 @@ public class Affiche {
     private String publisher;//发布人
     @JsonFormat(pattern = "yyyy-MM-dd ", timezone="GMT+8")
     private Date publishTime;//发布时间
-//    @JsonFormat(pattern = "yyyy-MM-dd ", timezone="GMT+8")
+ @JsonFormat(pattern = "yyyy-MM-dd ", timezone="GMT+8")
     private  Date startTime;//生效时间
-//    @JsonFormat(pattern = "yyyy-MM-dd ", timezone="GMT+8")
+   @JsonFormat(pattern = "yyyy-MM-dd ", timezone="GMT+8")
     private  Date endTime;//失效时间
 
     public Integer getId() {

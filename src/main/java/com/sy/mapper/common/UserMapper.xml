@@ -168,7 +168,13 @@
 				</if>
 			</trim>
 	</select>
-	
+
+	<select id="selectCountvip" resultType="int" parameterType="user">
+		select count(1) from au_user where referId = #{referId}
+	</select>
+
+
+
 	<!-- 搜索框的支持 -->
 	<select id="getUserListBySearch" resultType="user" parameterType="user">
 		select * from au_user 
@@ -196,5 +202,9 @@
 			</if>
 		</trim>
 	</select>
-	
+
+
+	<select id="searchUserbyReferId" resultType="user" parameterType="user">
+		select * from au_user where referId = #{referId}
+	</select>
 </mapper>  

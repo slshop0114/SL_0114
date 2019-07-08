@@ -88,4 +88,14 @@ public class UserServiceImpl implements UserService {
     public int loginCodeIsExit(User user) throws Exception {
         return mapper.loginCodeIsExit(user);
     }
+
+    @Override
+    public List<User> searchUserbyReferId(User user) throws Exception {
+        return mapper.searchUserbyReferId(user);
+    }
+
+    @Override
+    public int selectCountvip(User user) throws Exception {
+        return mapper.selectCountvip(user);
+    }
 }

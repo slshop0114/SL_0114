@@ -56,3 +56,20 @@ function searchgoodspack() {
 
 }
 
+$("#goodspackcodefxc").blur(function () {
+    $("#testgoodspackcodefxc").hide();
+    var goodspackcode=$("#goodspackcodefxc").val()
+    $.ajax({
+        url: "/backend/searchgoodspackcode.html",
+        method: "post",
+        data:{"goodsPackCode":goodspackcode},
+        dataType: "text",
+        success:function (r) {
+            if(r=="1"){
+                $("#testgoodspackcodefxc").show();
+            }
+
+        }
+    })
+})
+

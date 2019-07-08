@@ -1,8 +1,8 @@
 .bodyall{
-    width: 80%;
+    width: 90%;
     position:fixed;
     left:20%;
-    top:15%;
+    top:10%;
 }
 
 .tablea{
@@ -20,5 +20,5 @@ input{
 }
 .left{
     float: left;
-    width: 80%;
+    width: 100%;
 }

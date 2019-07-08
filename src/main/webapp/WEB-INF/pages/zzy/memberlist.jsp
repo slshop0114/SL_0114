@@ -26,10 +26,10 @@
 
 	<div class="layui-inline">
 		<div class="layui-input-inline">
-			<input type="text" id="sousuo" value="" placeholder="请输入关键字" class="layui-input search_input">
+			<input type="text" id="sousuozzy" value="" placeholder="请输入关键字" class="layui-input search_input">
 		</div>
 		<a class="layui-btn search_btn" onclick="searchin()">查询</a>
-       <%-- <input type="text" id="sousuo"> <input type="button" onclick="searchin()" value="搜索">--%>
+
 	</div>
 
     
@@ -61,8 +61,8 @@
 
 
 
-<div class="modal hide fade" id="modifyUserDiv">
-    <form  action="/member/saveMember.html" id="updateUserform" class="layui-form" >
+<div class="modal hide fade" id="modifyUserDivzzy">
+    <form  action="/member/saveMember.html" id="updateUserformzzy" class="layui-form" >
         <input name="id" type="hidden" value="" id="useridhiddenm">
         <%--银行卡身份证链接地址--%>
         <input name="idCardPicPath" type="hidden" value="" id="idCardPicPath2">
@@ -195,7 +195,7 @@
             </ul>
         </div>
 
-            <button type="button" class="layui-btn" id="updateusercard2">上传身份证</button>
+            <button type="button" class="layui-btn" id="updateusercard2zzy">上传身份证</button>
             <br>
             <div class="layui-upload">
                 <div class="layui-upload-list">
@@ -204,7 +204,7 @@
                 </div>
             </div>
 
-            <button type="button" class="layui-btn" id="updateuserbankcard2">上传银行卡</button>
+            <button type="button" class="layui-btn" id="updateuserbankcard2zzy">上传银行卡</button>
             <div class="layui-upload">
                 <div class="layui-upload-list">
                     <img src="#" class="layui-upload-img" id="bankcardview2" style="width: 100px;height: 100px">
@@ -230,3 +230,4 @@
 <%@include file="/WEB-INF/pages/common/foot.jsp"%>
 
 
+<script type="text/javascript" src="/statics/localjs/zzy/memberlist.js"></script>

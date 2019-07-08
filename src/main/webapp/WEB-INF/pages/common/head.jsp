@@ -17,10 +17,10 @@
         <link rel="stylesheet" href="/statics/localcss/dicmanage.css" media="all">
         <link rel="stylesheet" href="/statics/localcss/goodspacklist.css" media="all">
         <link rel="stylesheet" href="/statics/localcss/authoritymanage.css" media="all">
-
-
-
         <script src="/statics/js/jQuery3.4.1.js" type="text/javascript"></script>
+
+
+
 
 
         <style type="text/css">
@@ -63,18 +63,14 @@
                 <li class="layui-nav-item layui-this"><a href="#">角色：${userSession.roleName}</a></li>
                 <li class="layui-nav-item"><a href="/main.html">首页</a></li>
                 <li class="layui-nav-item"><a href="#">购物车</a></li>
-                <li class="layui-nav-item"><a href="#">留言板</a></li>
-                <li class="layui-nav-item">
-                    <div class="site-demo-button" id="layerDemo" style="margin-bottom: 0;">
-                        <button data-method="notice" class="layui-btn">修改密码</button>
-                    </div>
-                </li>
-                <li class="layui-nav-item"><a href="/logout.html">注销</a></li>
+                <li class="layui-nav-item"><a href="member/modifypersonalpwd.html">修改密码</a></li>
+
+                <li class="layui-nav-item"><a href="/">注销</a></li>
             </ul>
 
         </div>
 
-     <ul id="headleft" class="layui-nav layui-nav-tree layui-inline" lay-filter="demo" style="margin-right: 10px;">
+     <ul id="headleft" class="layui-nav layui-nav-tree layui-inline"  lay-filter="demo" style="margin-right: 10px;">
 
 
 

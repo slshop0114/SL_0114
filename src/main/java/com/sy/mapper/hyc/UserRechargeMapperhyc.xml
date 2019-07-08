@@ -33,9 +33,27 @@
   </select>
 
   <!-- 增加 -->
+  <sql id="key">
+    <trim suffixOverrides=",">
+      <if test="rechargeTime != null"> RECHARGE_TIME,</if>
+      <if test="rechargeNum != null"> RECHARGE_NUM,</if>
+      <if test="userId != null"> USER_ID,</if>
+      <if test="rechargeMoney != null"> RECHARGE_MONEY,</if>
+      <if test="note != null"> NOTE,</if>
+      <if test="recharge_account != null"> RECHARGE_ACCOUNT,</if>
+    </trim>
+  </sql>
+  <sql id="value">
+    <trim suffixOverrides=",">
+      <if test="rechargeTime != null"> #{rechargeTime},</if>
+      <if test="rechargeNum != null"> #{rechargeNum},</if>
+      <if test="userId != null"> #{userId},</if>
+      <if test="rechargeMoney != null"> #{rechargeMoney},</if>
+      <if test="note != null"> #{note},</if>
+      <if test="recharge_account != null"> #{recharge_account},</if>
+    </trim>
+  </sql>
   <insert id="addMoney" parameterType="userRechargehyc">
-		insert into user_recharge (RECHARGE_TIME,RECHARGE_NUM,USER_ID,RECHARGE_MONEY,NOTE,RECHARGE_ACCOUNT)
-							 values
-							 (#{rechargeTime},#{rechargeNum},#{userId},#{rechargeMoney},#{note},#{recharge_account})
-	</insert>
+    INSERT INTO user_recharge(<include refid="key"/>) VALUES(<include refid="value"/>)
+  </insert>
 </mapper>

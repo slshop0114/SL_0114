@@ -235,7 +235,7 @@
 
 <%--查询商品--%>
 
-<form class="layui-form fromrolesty" action="/backend/modifygoodsinfo.html" id="searchgoodsinfo">
+<form class="layui-form fromrolesty" action="" id="searchgoodsinfo">
     <div class="layui-form-item">
 
         <div class="layui-input-block">

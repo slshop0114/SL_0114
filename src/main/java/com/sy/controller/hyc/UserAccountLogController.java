@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import javax.servlet.http.HttpSession;
 import java.math.BigDecimal;
 import java.text.DecimalFormat;
+import java.text.ParsePosition;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
@@ -145,19 +146,21 @@ public class UserAccountLogController {
     //汇款充值未到账，发送留言
     @RequestMapping("/sendmessage.html")
     @ResponseBody
-    public String sendMessage(String rechargeNum,BigDecimal rechargeMoney,Date date,HttpSession session)throws Exception {
+    public String sendMessage(String rechargeNum,BigDecimal rechargeMoney,String date,HttpSession session)throws Exception {
         System.out.println(".......................................");
         User user = (User) session.getAttribute(Constants.SESSION_USER);
         Leave_messagehyc leave_messagehyc = new Leave_messagehyc();
         leave_messagehyc.setCreatedby(user.getLoginCode());
-        Date time =new Date(String.valueOf(date));
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-        String timeFormat = sdf.format(time);
-        leave_messagehyc.setMessagecontent("您好："+timeFormat+"单号为"+rechargeNum+"金额为"+rechargeMoney+"的汇款充值未到账，速查！");
+        leave_messagehyc.setMessagecontent("您好："+date+"单号为"+rechargeNum+"金额为"+rechargeMoney+"的汇款充值未到账，速查！");
         leave_messagehyc.setState(0);
-        leave_messagehyc.setCreatetime(date);
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        //用来标明解析开始位
+        ParsePosition pos = new ParsePosition(0);
+        Date strtodate = formatter.parse(date, pos);
+        leave_messagehyc.setCreatetime(strtodate);
         leave_messageService.addLeave_message(leave_messagehyc);
         return "1";
     }
+
 }
 

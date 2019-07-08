@@ -1,3 +1,16 @@
+layui.use(['form', 'laydate'], function(){
+	var form = layui.form
+		,layer = layui.layer
+		,layedit = layui.layedit
+		,laydate = layui.laydate;
+
+	//日期
+	laydate.render({
+		elem: '#a_birthday'
+	});
+
+});
+
 function checkEmail(str){
 	var reg = /^([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+@([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+\.[a-zA-Z]{2,3}$/;
 	if(str == null || str == "" || reg.test(str))
@@ -13,14 +26,6 @@ $(".agreerule").click(function(){
 		$(".nextbtn").attr("disabled","disabled");
 });
 
-$(".rule").click(function(){
-	window.open("/member/registe.html");
-});
-
-
-$(".backbtn").click(function(){
-	window.location.href="/member/registe.html";
-});
 
 $("#a_cardType").change(function(){
 	$("#a_cardTypeName").val($("#a_cardType").find("option:selected").text()) ;
@@ -38,14 +43,12 @@ $("#a_loginCode").blur(function(){
 	var alc = $.trim($("#a_loginCode").val());
 	if(alc != ""){
 		$.post("/member/cheakUser.html",{'loginCode':alc},function(result){
-			if(result == "repeat"){
+			if(result.code ==400){
 				$("#add_formtip").css("color","red");
 				$("#add_formtip").html("<li>对不起，该用户名已存在。</li>");
 				$("#add_formtip").attr("key","1");;
 				result = false;
-			}else if(result == "failed"){
-				alert("操作超时!");
-			}else if(result == "only"){
+			} else if(result.code == 200){
 				$("#add_formtip").css("color","green");
 				$("#add_formtip").html("<li>该用户名可以正常使用。</li>");
 				$("#add_formtip").attr("key","0");
@@ -65,77 +68,6 @@ $("#a_email").blur(function(){
 		$("#add_formtip").attr("email","0");
 	}
 });
-
-
-
-/*
-function registMemberFunc(){
-	$("#add_formtip").html("");
-	var result = true;
-	if($.trim($("#a_loginCode").val()) == "" || $("#a_loginCode").val() == null){
-		$("#add_formtip").css("color","red");
-		$("#add_formtip").append("<li>对不起，用户名不能为空。</li>");
-		result = false;
-	}else{
-		if($("#add_formtip").attr("key") == "1"){
-			$("#add_formtip").append("<li>对不起，该用户名已存在。</li>");
-			result = false;
-		}
-	}
-	if($.trim($("#a_userName").val()) == "" || $("#a_userName").val() == null){
-		$("#add_formtip").css("color","red");
-		$("#add_formtip").append("<li>对不起，真实姓名不能为空。</li>");
-		result = false;
-	}
-	if($("#a_cardType").val() == ""){
-		$("#add_formtip").css("color","red");
-		$("#add_formtip").append("<li>对不起，证件类型不能为空。</li>");
-		result = false;
-	}
-	if($.trim($("#a_idCard").val()) == "" || $("#a_idCard").val() == null){
-		$("#add_formtip").css("color","red");
-		$("#add_formtip").append("<li>对不起，证件号码不能为空。</li>");
-		result = false;
-	}else{
-		if($("#a_idCard").val().length < 6){
-			$("#add_formtip").css("color","red");
-			$("#add_formtip").append("<li>对不起，证件号码长度必须超过6位。</li>");
-			result = false;
-		}
-	}
-	if($.trim($("#a_mobile").val()) == "" || $("#a_mobile").val() == null){
-		$("#add_formtip").css("color","red");
-		$("#add_formtip").append("<li>对不起，联系电话不能为空。</li>");
-		result = false;
-	}
-	if($.trim($("#a_bankName").val()) == "" || $("#a_bankName").val() == null){
-		$("#add_formtip").css("color","red");
-		$("#add_formtip").append("<li>对不起，开户行不能为空。</li>");
-		result = false;
-	}
-	if($.trim($("#a_bankAccount").val()) == "" || $("#a_bankAccount").val() == null){
-		$("#add_formtip").css("color","red");
-		$("#add_formtip").append("<li>对不起，开户卡号不能为空。</li>");
-		result = false;
-	}
-	if($.trim($("#a_accountHolder").val()) == "" || $("#a_accountHolder").val() == null){
-		$("#add_formtip").css("color","red");
-		$("#add_formtip").append("<li>对不起，开户人不能为空。</li>");
-		result = false;
-	}
-	if($.trim($("#a_email").val()) != "" && $("#a_email").val() != null && $("#add_formtip").attr("email") == "1"){
-		$("#add_formtip").css("color","red");
-		$("#add_formtip").append("<li>email格式不正确</li>");
-		result = false;
-	}
-	if(result == true)
-		alert("添加成功 ^_^");
-	
-	return result;
-	
-}
-*/
-
 
 
 layui.use(['form', 'upload'], function () {

@@ -8,12 +8,12 @@
                 <div style="width: 1000px">
                     <input type="hidden" value="${userSession.id}" id="userid">
                     <form class="layui-form" id="rechargeForm">
-                        <div class="layui-form-item">
+                        <%--<div class="layui-form-item">
                             <label class="layui-form-label">汇款日期:</label>
                             <div class="layui-input-block">
                                 <input id="date" type="text" name="date" required  lay-verify="required" placeholder="YYYY-MM-DD" autocomplete="off" class="layui-input" style="width: 250px">
                             </div>
-                        </div>
+                        </div>--%>
                         <div class="layui-form-item">
                             <label class="layui-form-label">汇款金额:</label>
                             <div class="layui-input-inline">
@@ -38,9 +38,7 @@
                         </div>
                         <div style="margin-top: 5px">
                             <label class="layui-form-label" style="margin-top: -10px">单号:</label>
-
                             <label id="oddnum" style="color:#8700FF;font-weight: bold;font-size: 16px;margin-top: 5px"></label>
-
                         </div>
                         <div class="layui-form-item">
                             <div class="layui-input-block">

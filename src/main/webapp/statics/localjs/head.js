@@ -31,7 +31,7 @@ layui.use('element', function(){
                 //这里是添加所有的子菜单
                 content+=loadchild(obj);
                 content+='</li>';
-                $(".layui-nav-tree").append(content);
+                $("#headleft").append(content);
             });
             element.init();
 
@@ -73,6 +73,7 @@ layui.use('element', function(){
 
 
 // 弹出表单
+/*
 layui.use('layer', function(){ //独立版的layer无需执行这一句
     var $ = layui.jquery, layer = layui.layer; //独立版的layer无需执行这一句
 
@@ -115,3 +116,4 @@ layui.use('layer', function(){ //独立版的layer无需执行这一句
 
 });
 
+*/

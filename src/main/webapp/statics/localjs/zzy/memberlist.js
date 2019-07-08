@@ -1,7 +1,8 @@
 function reviseuser(){
 
-    $("#modifyUserDiv").css('display','block');
+    $("#modifyUserDivzzy").css('display','block');
     $("#foradduser").css('display','block');
+    $("#updateUserformzzy").css('display','block');
 
 }
 
@@ -38,7 +39,7 @@ function viewRequest(id) {
     $.cookie="invid="+id;
 }
 function searchin() {
-    var loginCode = $("#sousuo").val();
+    var loginCode = $("#sousuozzy").val();
     $.ajax({
         url:"/member/getlist.html",
         type: "post",
@@ -85,51 +86,11 @@ layui.use(['form','upload'], function () {
     var upload = layui.upload;
 
 
-    var uploadidcard = upload.render({
-        elem: '#updateusercard' //绑定元素
-        , url: '/member/upload.html' //上传接口
-        , field: "uploadFile"
-        , before: function (obj) {
-            alert("upload2")
-            //预读本地文件示例，不支持ie8
-            obj.preview(function (index, file, result) {
-                $('#idcardview').attr('src', result); //图片链接（base64）
-            });
-        }
-        , done: function (res) {
-            //上传完毕回调
-
-            $("#idCardPicPath").val(res.file)
-        }
-        , error: function () {
-            //请求异常回调
-        }
-    });
-    //上传银行卡
-    var uploadbankcard = upload.render({
-        elem: '#updateuserbankcard' //绑定元素
-        , url: '/member/upload.html' //上传接口
-        , field: "uploadFile"
-        , before: function (obj) {
-            //预读本地文件示例，不支持ie8
-            obj.preview(function (index, file, result) {
-                $('#bankcardview').attr('src', result); //图片链接（base64）
-            });
-        }
-        , done: function (res) {
-            //上传完毕回调
-
-            $("#bankCardPicPath").val(res.file)
-        }
-        , error: function () {
-            //请求异常回调
-        }
-    });
 
 
     // 上传身份证2
-    var uploadidcard2 = upload.render({
-        elem: '#updateusercard2' //绑定元素
+    var uploadidcard2zzy = upload.render({
+        elem: '#updateusercard2zzy' //绑定元素
         , url: '/member/upload.html' //上传接口
         , field: "uploadFile"
         , before: function (obj) {
@@ -148,8 +109,8 @@ layui.use(['form','upload'], function () {
         }
     });
     //上传银行卡2
-    var uploadbankcard2 = upload.render({
-        elem: '#updateuserbankcard2' //绑定元素
+    var uploadbankcard2zzy = upload.render({
+        elem: '#updateuserbankcard2zzy' //绑定元素
         , url: '/member/upload.html' //上传接口
         , field: "uploadFile"
         , before: function (obj) {

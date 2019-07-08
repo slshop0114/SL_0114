@@ -17,7 +17,7 @@ function dedicmanage() {
     }
     var dicid = $('#fromdicmanagelist input:radio:checked').val();
     $.ajax({
-        url: "/backend/delgoodsinfo.html",
+        url: "/backend/delMainDic.html",
         method: "post",
         data: {"id": dicid},
         dataType: "text",

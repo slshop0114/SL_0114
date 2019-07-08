@@ -160,3 +160,4 @@
 	</div>		
 <%@include file="/WEB-INF/pages/common/foot.jsp"%>
 
+<script type="text/javascript" src="/statics/localjs/zzy/modifypersonalinfo.js"></script>

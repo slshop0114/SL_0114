@@ -38,7 +38,8 @@ public class modifypersonalinfoController {
         System.out.println("111111");
 
       user.setId(((User) session.getAttribute(Constants.SESSION_USER)).getId());
-     
+        user.setRoleId(((User) session.getAttribute(Constants.SESSION_USER)).getRoleId());
+
         ResponseData responseData = new ResponseData();
         
             responseData.setCode(200);
@@ -46,6 +47,7 @@ public class modifypersonalinfoController {
             userService.modifyUser(user);
        
         System.out.println(responseData);
+        session.setAttribute(Constants.SESSION_USER, user);
         return "zzy/modifypersonalinfo";
         
     }

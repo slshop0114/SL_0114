@@ -36,7 +36,7 @@ public class LoginController {
     @RequestMapping("/main.html")
     public String toMain(){
 
-        return "main";
+        return "dc/Announcements";
     }
 
     @RequestMapping("/login.html")

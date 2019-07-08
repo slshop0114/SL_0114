@@ -103,7 +103,8 @@
         <label class="layui-form-label">编号</label>
         <div class="layui-input-block">
             <input type="text" name="goodsPackCode" lay-verify="required" autocomplete="off" placeholder="请输入标题"
-                   class="layui-input">
+                   class="layui-input" id="goodspackcodefxc">
+        <div id="testgoodspackcodefxc" style="display: none">编号重复</div>
         </div>
     </div>
 
@@ -228,7 +229,8 @@
         <label class="layui-form-label">编号</label>
         <div class="layui-input-block">
             <input type="text" name="goodsPackCode" lay-verify="required" autocomplete="off" placeholder="请输入标题"
-                   class="layui-input" id="goodsPackCode">
+                   class="layui-input" id="goodsPackCode"  disabled="disabled">
+
         </div>
     </div>
 

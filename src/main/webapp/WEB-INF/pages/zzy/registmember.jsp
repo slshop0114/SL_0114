@@ -35,28 +35,27 @@
 						<ul class="topul">
 							
 							<div class="left">
-								<li>
+								
 								<label>用户名：</label>
 								<input type="text" id="a_loginCode" name="loginCode" onkeyup="value=value.replace(/[^\w\.\/]/ig,'')"/>
 								<span style="color:red;font-weight: bold;">*</span>
-							</li>
-								<li>
+							
+								
 									<label>姓名：</label>
 									<input type="text" id="a_userName" name="userName" />
 									<span style="color:red;font-weight: bold;">*</span>
-								</li>
+								
 							</div>
 							<br>
 							 <div class="left">
-								 <li>
+								 
 									 <label>性别：</label>
 									 <select id="a_sex" name="sex" style="width:100px;">
 										 <option value="" selected="selected">--请选择--</option>
 										 　　 <option value="男">男</option>
 										 <option value="女">女</option>
 									 </select>
-								 </li>
-								 <li>
+								
 									 <label>证件类型：</label>
 									 <select id="a_cardType" name="cardType" style="width:100px;">
 										 <option value="" selected="selected">--请选择--</option>
@@ -65,62 +64,58 @@
 										 <option value="3">军官证</option>
 
 									 </select><span style="color:red;font-weight: bold;">*</span>
-								 </li>
+							
 							 </div>
 							<br>
 							<div class="left">
-								<li>
+								
 									<label>证件号码：</label>
 									<input type="text" id="a_idCard" name="idCard" onkeyup="value=value.replace(/[^\w\.\/]/ig,'')"/>
 									<span style="color:red;font-weight: bold;">*</span>
-								</li>
-								<li>
+								
 									<label>生日：</label>
 									<div class="layui-input-block">
-										<input type="text" name="birthday" id="a_birthday" autocomplete="off" class="layui-input Wdate" size="15">
+										<input type="text" name="birthday" id="a_birthday" autocomplete="off" class="layui-input Wdate" width="150px" size="15">
 									</div>
-								</li>
+								
 							</div>
 							<br>
 							<div class="left">
-								<li>
+								
 									<label>联系电话：</label>
 									<input type="text" id="a_mobile" name="mobile" onkeyup="this.value=this.value.replace(/\D/g,'')" onafterpaste="this.value=this.value.replace(/\D/g,'')"/>
 									<span style="color:red;font-weight: bold;">*</span>
-								</li>
-								<li>
+								
 									<label>Email：</label>
 									<input type="text" id="a_email" name="email"/>
-								</li>
+								
 							</div>
 							<br>
 							<div class="left">
-								<li>
+								
 									<label>邮政编码：</label>
 									<input type="text" id="a_postCode" name="postCode" onkeyup="this.value=this.value.replace(/\D/g,'')" onafterpaste="this.value=this.value.replace(/\D/g,'')"/>
-								</li>
-								<li>
+								
 									<label>开户行：</label>
 									<input type="text" id="a_bankName" name="bankName"/>
 									<span style="color:red;font-weight: bold;">*</span>
-								</li>
+								
 							</div>
 							<br>
 							<div class="left">
-								<li>
+								
 									<label>开户卡号：</label>
 									<input type="text" id="a_bankAccount" name="bankAccount" onkeyup="this.value=this.value.replace(/\D/g,'')" onafterpaste="this.value=this.value.replace(/\D/g,'')"/>
 									<span style="color:red;font-weight: bold;">*</span>
-								</li>
-								<li>
+								
 									<label>开户人：</label>
 									<input type="text" id="a_accountHolder" name="accountHolder"/>
 									<span style="color:red;font-weight: bold;">*</span>
-								</li>
+								
 							</div>
 							<br>
 							<div class="left">
-								<li>
+								
 									<label>收货国家：</label>
 									<%--<input type="text" id="a_country" name="country" value=""/>--%>
 									<select id="acountry" name="cardType" style="width:100px;">
@@ -133,15 +128,15 @@
 											</c:forEach>
 										</c:if>
 									</select>
-								</li>
 								
-								<li>
+								
+								
 									<label>是否启用：</label>
 									<select name="isStart" style="width:100px;height:30px ">
 										<option value="1" selected="selected">启用</option>
 										<option value="2">不启用</option>
 									</select> <span style="color:red;font-weight: bold;">*</span>
-								</li>
+								
 							</div>
 							<br>
 							<div class="left">
@@ -154,7 +149,7 @@
 						<div class="downbuttom">
 						<div class="clear"></div>
 
-                         <div class="left">
+                         <div class="left" >
 							
 								 <button type="button" class="layui-btn" id="a_updateusercard">上传身份证</button>
 								 <br>
@@ -173,8 +168,6 @@
 
 									</div>
 								</div>
-
-						
 							 
 
 						 </div>
@@ -197,21 +190,7 @@
 			</div><!--/row-->
 </div>
 
-<%--<script type="text/javascript" src="/statics/medire/WdatePicker.js"></script>--%>
-<%--<script src="/statics/layui/layui.js" charset="utf-8"></script>
-<!-- 注意：如果你直接复制所有代码到本地，上述js路径需要改成你本地的 -->
-<script>
-	layui.use(['form', 'laydate'], function(){
-		var form = layui.form
-				,layer = layui.layer
-				,layedit = layui.layedit
-				,laydate = layui.laydate;
 
-		//日期
-		laydate.render({
-			elem: '#a_birthday'
-		});
-		
-	});
-</script>--%>
+
 <%@include file="/WEB-INF/pages/common/foot.jsp"%>
+<script src="/statics/localjs/zzy/registmember.js" type="text/javascript"></script>

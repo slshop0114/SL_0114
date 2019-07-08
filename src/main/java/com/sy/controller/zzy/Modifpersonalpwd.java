@@ -36,6 +36,7 @@ public class Modifpersonalpwd {
     @RequestMapping("/member/modifyPwd.html")
     @ResponseBody
     public ResponseData modifyPwd (User user, HttpSession session, String password) throws Exception {
+        System.out.println("modifyPwdmodifyPwdmodifyPwdmodifyPwd");
         user.setId(((User) session.getAttribute(Constants.SESSION_USER)).getId());
       
         ResponseData responseData = new ResponseData();

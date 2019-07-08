@@ -332,14 +332,14 @@
     <div class="layui-form-item">
         <label class="layui-form-label">卡号</label>
         <div class="layui-input-block">
-            <input type="text" name="bankAccount" lay-verify="title" autocomplete="off" placeholder="请输入标题"
+            <input type="text" name="bankAccount" lay-verify="number" autocomplete="off" placeholder="请输入标题"
                    class="layui-input" id="bankAccount2">
         </div>
     </div>
     <div class="layui-form-item">
         <label class="layui-form-label">开户人</label>
         <div class="layui-input-block">
-            <input type="text" name="accountHolder" lay-verify="number" autocomplete="off" placeholder="请输入标题"
+            <input type="text" name="accountHolder" lay-verify="required" autocomplete="off" placeholder="请输入标题"
                    class="layui-input" id="accountHolder2">
         </div>
     </div>

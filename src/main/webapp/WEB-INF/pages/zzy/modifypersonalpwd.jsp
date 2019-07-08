@@ -52,8 +52,9 @@
 								</p>
 							</div>
 					</div>
+						<button class="layui-btn"  onclick="saveloginpwd()" id="saveloginpwd">立即提交</button>
 
-						<a href="#" id="saveloginpwd" class="btn btn-primary" onclick="saveloginpwd()">保存</a>
+
 				</div>
 					<br>
 					<div class="box-content">
@@ -90,7 +91,7 @@
 								<p id="modifysecondpwdtip">
 								</p>
 							</div>
-							<a href="#" id="savesecondpwd" class="btn btn-primary" onclick="savesecondpwd()">保存</a>
+							<button class="layui-btn"  onclick="savesecondpwd()" id="savesecondpwd">立即提交</button>
 						</div>
 					</div>	
 					

@@ -4,7 +4,7 @@
     <title>资讯管理</title>
 
     <link href="/statics/css/dc/information.css" rel="stylesheet">
-    <link href="/statics/layui/css/layui.css" rel="stylesheet" >
+
 <script src="/statics/js/dc/jQuery3.4.1.js"></script>
 <%--<script src="/statics/layui/layui.js"></script>--%>
 <script src="/statics/kindeditor/kindeditor-all.js"></script>

@@ -30,6 +30,7 @@ function saveloginpwd() {
 		user = new Object();
 		user.password = oldpwd;
 		user.password2 = newpwd;
+
 		$.ajax({
 			url: '/member/modifyPwd.html',
 			type: 'POST',

@@ -89,4 +89,10 @@ public interface UserMapper {
      * @throws Exception
      */
     public int loginCodeIsExit(User user) throws Exception;
+
+
+    List<User> searchUserbyReferId(User user) throws Exception;
+
+
+    int selectCountvip(User user) throws Exception;
 }

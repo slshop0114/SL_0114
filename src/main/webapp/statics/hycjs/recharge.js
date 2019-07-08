@@ -1,20 +1,22 @@
-//生成随机单号
 $(function () {
     open()
+    //时间选择
     layui.use('laydate', function(){
         var laydate = layui.laydate;
+        //日期时间选择器
         laydate.render({
-            elem: '#date',
+            elem: '#date'
+            ,type: 'datetime'
         });
     });
 });
+//生成随机单号
 function getCode(n) {
     var all = "azxcvbnmsdfghjklqwertyuiopZXCVBNMASDFGHJKLQWERTYUIOP0123456789";
     var b = "";
     for (var i = 0; i < n; i++) {
         var index = Math.floor(Math.random() * 62);
         b += all.charAt(index);
-
     }
     return b;
 }
@@ -25,17 +27,17 @@ function open() {
 
 //表单提交
 function conform(){
-    var rechargeTime = $("#date").val();
+   // var rechargeTime = $("#date").val();
     var rechargeMoney = $("#money").val();
     var note = $("#note").val();
-    var rechargeNum = getCode(20);
+    var rechargeNum = $("#oddnum").text();
     var recharge_account =  $("#recharge_account").val();
     var userid =  $("#userid").val();
     $.ajax({
         url: "/recharge/rechargeMoney.html",
         type: "post",
         data: {
-            "rechargeTime": rechargeTime,
+           // "rechargeTime": rechargeTime,
             "rechargeMoney": rechargeMoney,
             "note": note,
             "rechargeNum": rechargeNum,
@@ -85,11 +87,10 @@ function cancle() {
 $(function () {
     $("#rechargeForm").submit(function (e) {
         e.preventDefault();
-        var rechargeTime = $("#date").val();
+       // var rechargeTime = $("#date").val();
         var rechargeMoney = $("#money").val();
         var note = $("#note").val();
-        var rechargeNum = getCode(20);
-        console.log(rechargeTime + rechargeMoney + note)
+        var rechargeNum = $("#oddnum").text();
         layui.use('layer', function () {
             var layer = layui.layer;
             layer.open({
@@ -99,7 +100,7 @@ $(function () {
                 area: ['400px','300px'],
                 content: ' <div>\n' +
                     '            <div style="margin-left: 100px">\n' +
-                    '                <p>汇款日期：<span>'+rechargeTime+'</span></p><br>\n' +
+                  /*  '                <p>汇款日期：<span>'+rechargeTime+'</span></p><br>\n' +*/
                     '                <p>汇款金额：<span>'+rechargeMoney+'</span></p><br>\n' +
                     '                <p>汇款摘要：<span>'+note+'</span></p><br>\n' +
                     '                <p>汇款单号：<span>'+rechargeNum+'</span></p><br>\n' +

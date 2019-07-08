@@ -11,12 +11,8 @@
 <script src="/statics/layui/layui.all.js" charset="utf-8"></script>
 
 <script type="text/javascript" src="/statics/localjs/userlist.js"></script>
+
 <script type="text/javascript" src="/statics/localjs/rolelist.js"></script>
-<%-----------------------------------------------------zzy-------------------------------------------------------------%>
-<script type="text/javascript" src="/statics/localjs/zzy/memberlist.js"></script>
-<script type="text/javascript" src="/statics/localjs/userlist.js"></script>
-<script type="text/javascript" src="/statics/localjs/zzy/registmember.js"></script>
-<script type="text/javascript" src="/statics/localjs/zzy/modifypersonalinfo.js"></script>
 
 
 

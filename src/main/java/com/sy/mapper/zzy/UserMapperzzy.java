@@ -6,7 +6,7 @@ import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
-public interface UserzzyMapper {
+public interface UserMapperzzy {
 
     /**
      * 查询用户列表

@@ -1,6 +1,6 @@
 package com.sy.service.zzy;
 
-import com.sy.mapper.zzy.UserzzyMapper;
+import com.sy.mapper.zzy.UserMapperzzy;
 import com.sy.model.common.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -15,7 +15,7 @@ import java.util.List;
 public class UserServicezzyImpl implements UserzzyService {
 
     @Autowired
-    private UserzzyMapper mapper;
+    private UserMapperzzy mapper;
 
     @Override
     public List<User> getUserList(User user, Integer starNum, Integer pageSize) throws Exception {

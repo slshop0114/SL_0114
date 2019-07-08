@@ -162,6 +162,20 @@ public class GoodspackController {
         return "1";
     }
 
+    @RequestMapping("/backend/searchgoodspackcode.html")
+    @ResponseBody
+    public String searchgoodspackcode(GoodsPack goodsPack){
+        try {
+           int i = goodsPackService.goodsPackCodeIsExit(goodsPack);
+           if (i>0){
+               return "1";
+           }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return "0";
+    }
+
 }
 
 

@@ -3,7 +3,7 @@
 <html>
 <head>
     <title>留言管理</title><input type="hidden" value="${userSession.loginCode}" class="username" >
-    <link href="/statics/layui/css/layui.css" rel="stylesheet" >
+
     <link href="/statics/css/dc/Leave_message.css" rel="stylesheet">
     <script src="/statics/js/dc/jQuery3.4.1.js"></script>
     <script src="/statics/layui/layui.js"></script>

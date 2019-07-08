@@ -1,5 +1,7 @@
 package com.sy.model.common;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import java.io.Serializable;
 import java.util.Date;
 
@@ -20,6 +22,7 @@ public class User implements Serializable {
     private String email;
     private String userAddress;
     private String postCode;
+    @JsonFormat(pattern = "yyyy-MM-dd ", timezone="GMT+8")
     private Date createTime;
     private Integer referId;
     private String referCode;

@@ -1,5 +1,6 @@
 package com.sy.controller.zzy;
 
+import com.sy.model.common.ResponseData;
 import com.sy.model.common.User;
 import com.sy.service.zzy.MenuzzyService;
 import com.sy.service.zzy.UserzzyService;
@@ -33,18 +34,35 @@ public class RegisteController {
       /*  return "zzy/registmember";*/
         return "zzy/registrule";
     }
+
+    @RequestMapping("/member/registList.html")
+    public String toRegistList() {
+        return "zzy/registList";
+
+    }
     @RequestMapping("/member/registok.html")
     public String toRegistok() {
+        
         return "zzy/registok";
 
     }
     
     @RequestMapping("/member/cheakUser.html")
     @ResponseBody
-    public User cheakUser(String loginCode) throws Exception {
+    public ResponseData cheakUser(String loginCode) throws Exception {
+
+        ResponseData responseData = new ResponseData();
         User user =  userService.getUserById(loginCode);
-                
-        return user;
+        if(user!=null){
+            responseData.setCode(200);
+            responseData.setMessage("OK");
+           
+    }else{
+            responseData.setCode(400);
+            
+        }
+        
+        return responseData;
     }
     
     @RequestMapping("/member/saveregistmember.html")
@@ -61,9 +79,9 @@ public class RegisteController {
             e.printStackTrace();
            
         }
-        return "zzy/registok";
+        return "zzy/registList";
 
     }
 
-  
+   
 }

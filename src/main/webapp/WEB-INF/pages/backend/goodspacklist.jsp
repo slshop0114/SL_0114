@@ -219,7 +219,7 @@
                    class="layui-input" value="${userSession.loginCode}">
         </div>
     </div>
-
+    <input type="hidden" name="id" id="hiddenupdatepackidfxc">
     <div class="layui-form-item">
         <label class="layui-form-label">套餐名称</label>
         <div class="layui-input-block">
@@ -231,7 +231,7 @@
         <label class="layui-form-label">编号</label>
         <div class="layui-input-block">
             <input type="text" name="goodsPackCode" lay-verify="required" autocomplete="off" placeholder="请输入标题"
-                   class="layui-input" id="goodsPackCode"  disabled="disabled">
+                   class="layui-input" id="goodsPackCode" >
 
         </div>
     </div>
@@ -452,6 +452,7 @@
         });
         form.on("radio(choosegoodspack)", function (data) {
          var goodpacksid = data.value;
+            $("#hiddenupdatepackidfxc").val(goodpacksid);
             $.ajax({
                 url: "/backend/modifygoodspack.html",
                 dataType: "json",
@@ -459,9 +460,9 @@
                 data: {"id": goodpacksid},
                 success: function (result) {
 
-                    $("#goodsPackName").val(result.goodsPack1.goodsPackName)
-                    $("#goodsPackCode").val(result.goodsPack1.goodsPackCode)
-                    $("#goodspacktotalPrice").val(result.goodsPack1.totalPrice)
+                    $("#goodsPackName").val(result.goodsPack1.goodsPackName);
+                    $("#goodsPackCode").val(result.goodsPack1.goodsPackCode);
+                    $("#goodspacktotalPrice").val(result.goodsPack1.totalPrice);
                     $("#goodspacknote").val(result.goodsPack1.note)
                 }
             });

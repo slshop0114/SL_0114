@@ -137,9 +137,7 @@ public class GoodspackController {
                 }
             }
             for (GoodsInfo goodsInfo:goodsPack.getGoodsInfos()){
-                System.out.println(goodsInfo.getNum()+"getGoodsInfosgetGoodsInfos");
-                System.out.println(goodsInfo+"getGoodsInfosgetGoodsInfos");
-                System.out.println(goodsPack.getGoodsInfos()+"getGoodsInfosgetGoodsInfos");
+
                 GoodsPackAffiliated goodsPackAffiliated1 = new GoodsPackAffiliated();
                 goodsPackAffiliated1.setGoodsPackId(goodsPack1.getId());
                 goodsPackAffiliated1.setGoodsInfoId(goodsInfo.getId());

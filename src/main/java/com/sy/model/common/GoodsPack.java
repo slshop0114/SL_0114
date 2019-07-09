@@ -104,6 +104,22 @@ public class GoodsPack extends Base{
 	public void setLastUpdateTime(Date lastUpdateTime) {
 		this.lastUpdateTime = lastUpdateTime;
 	}
-	
-	  
+
+	@Override
+	public String toString() {
+		return "GoodsPack{" +
+				"id=" + id +
+				", goodsPackName='" + goodsPackName + '\'' +
+				", goodsPackCode='" + goodsPackCode + '\'' +
+				", typeId=" + typeId +
+				", typeName='" + typeName + '\'' +
+				", totalPrice=" + totalPrice +
+				", state=" + state +
+				", note='" + note + '\'' +
+				", num=" + num +
+				", createdBy='" + createdBy + '\'' +
+				", createTime=" + createTime +
+				", lastUpdateTime=" + lastUpdateTime +
+				'}';
+	}
 }

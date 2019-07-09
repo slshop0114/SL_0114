@@ -1,7 +1,9 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8" %>
 <%@include file="/WEB-INF/pages/common/head.jsp" %>
 
-
+<div style="width: 1000px;height: 30px;font-size: 20px">
+    角色管理    <i class="layui-icon layui-icon-next"></i>
+</div>
 <form class="layui-form fromrolesty" action="">
     <button type="button" class="layui-btn" onclick="addrole()">添加</button>
     <button type="button" class="layui-btn" onclick="modifyRolerole()">修改</button>
@@ -36,7 +38,7 @@
                     <td class="center">${role.roleName}</td>
                     <td class="center"><fmt:formatDate value="${role.createDate}" pattern="yyyy-MM-dd"/></td>
                     <td class="center">
-                        <input type="checkbox" data-rel="tooltip" class="modifyIsStart"
+                        <input disabled type="checkbox" data-rel="tooltip" class="modifyIsStart"
                                isstart="${role.isStart}" roleid="${role.id}"
                                <c:if test="${role.isStart == 1}">checked="true"</c:if>/>
                     </td>
@@ -44,7 +46,7 @@
                     <td class="center">
                         <div class="layui-form-item" pane="">
                             <div class="layui-input-block">
-                                <input type="radio" name="chooserole" value="${role.id}" lay-filter="chooseroleid">
+                                <input type="radio" name="chooserole" value="${role.id}" lay-filter="chooseroleid" >
                             </div>
                         </div>
                     </td>

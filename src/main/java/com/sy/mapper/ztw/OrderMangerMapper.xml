@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sy.mapper.ztw.OrderMangerMapper">
+    <resultMap type="orderInfoZtw" id="orderInfoResultMap">
+
+        <id column="ORDER_ID" property="orderid"/>
+        <result column="ORDER_TIME" property="ordertime"/>
+        <result column="ORDER_SN" property="ordersn"/>
+        <result column="PICK_USER_ID" property="buyuserid"/>
+        <result column="BUY_USER_ID" property="pickuserid"/>
+        <result column="REPEAT_PV" property="repeatpv"/>
+        <result column="BASE_PV" property="basepv"/>
+        <result column="SERVICE_FEE" property="servicefee"/>
+        <result column="SHIP_FRE" property="shipfre"/>
+        <result column="TAX" property="tax"/>
+        <result column="COUNTRY" property="country"/>
+        <result column="TEL" property="tel"/>
+        <result column="MOBILE" property="mobile"/>
+        <result column="EMAIL" property="email"/>
+        <result column="USER_ADDRESS" property="useraddress"/>
+        <result column="POSTCODE" property="postcode"/>
+        <result column="STAT" property="sata"/>
+        <result column="SHIP_TYPE" property="shiptype"/>
+        <result column="SHIP_NUM" property="shipnum"/>
+        <result column="SHIP_TIME" property="shiptime"/>
+        <result column="SHIP_NOTE" property="shipnote"/>
+    </resultMap>
+    <select id="getByOrdersn" parameterType="string" resultMap="orderInfoResultMap">
+        select * from order_info
+        <trim prefix="where" prefixOverrides="and|or">
+            <if test="ordersn != null">
+                and ORDER_SN = #{ordersn}
+            </if>
+            <if test="quiz1 != null">
+                and TEL = #{quiz1}
+            </if>
+        </trim>
+    </select>
+    <select id="getByLoginCode" parameterType="string" resultType="user">
+        select * from au_user
+        <trim prefix="where" prefixOverrides="and|or">
+            <if test="_parameter != null">
+                and loginCode = #{_parameter}
+            </if>
+        </trim>
+    </select>
+    <delete id="doDel" parameterType="string">
+        delete from  order_info
+        <trim prefix="where" prefixOverrides="and|or">
+            <if test="_parameter != null">
+                and ORDER_ID = #{_parameter}
+            </if>
+        </trim>
+    </delete>
+</mapper>

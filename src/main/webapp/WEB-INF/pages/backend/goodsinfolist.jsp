@@ -1,6 +1,8 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8" %>
 <%@include file="/WEB-INF/pages/common/head.jsp" %>
-
+<div style="width: 1000px;height: 30px;font-size: 20px">
+    商品管理    <i class="layui-icon layui-icon-next"></i>
+</div>
 
 <%--商品展示--%>
 <form class="layui-form fromrolesty" action="/backend/goodsinfolist.html" id="fromgoodslist">
@@ -16,7 +18,7 @@
         <input type="text" name="goodsName" placeholder="请输入名称" class="layui-input search_input" id="searchgoodsinput">
     </div>
 
-    <div class="layui-form-item fl">
+    <div class="layui-form-item fl" style="margin-right: 12px">
         <div class="layui-input-block">
             <button class="layui-btn" lay-submit="" lay-filter="searchforgoods">查询</button>
         </div>
@@ -55,7 +57,7 @@
                     <td class="center">${goodsInfoList.realPrice}</td>
                     <td class="center">${goodsInfoList.num}</td>
                     <td class="center">
-                        <input type="checkbox" data-rel="tooltip" class="modifyIsStart"
+                        <input disabled type="checkbox" data-rel="tooltip" class="modifyIsStart"
                                isstart="${goodsInfoList.state}" roleid="${role.id}"
                                <c:if test="${goodsInfoList.state == 1}">checked="true"</c:if>/>
                     </td>
@@ -65,7 +67,7 @@
                         <div class="layui-form-item" pane="">
                             <div class="layui-input-block">
                                 <input type="radio" name="choosegoods" value="${goodsInfoList.id}"
-                                       lay-filter="choosegoods" id="choosegoods">
+                                       lay-filter="choosegoods" id="choosegoods" >
                             </div>
                         </div>
                     </td>

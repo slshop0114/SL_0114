@@ -37,7 +37,6 @@ public class MenuService {
     public String makeMenus(int roleId) throws Exception{
         System.out.println("makeMenus"+roleId);
         String key = "MENU"+roleId;
-        //1.从redis查询该key
         boolean flag = redisAPI.exist(key);
         String json = null;
         if(flag){

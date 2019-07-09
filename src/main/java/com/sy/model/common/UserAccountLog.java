@@ -1,11 +1,12 @@
 package com.sy.model.common;
 
 import javax.xml.crypto.Data;
+import java.util.Date;
 
 public class UserAccountLog extends Base{
 	private int accountLogId;	//主键ID
 	private int userId;			//用户ID
-	private Data actionTime;	//操作时间
+	private Date actionTime;	//操作时间
 	private String actionDesc;	//动作摘要
 	private int actionType;		//动作类型
 	private double baseIn;		//基本入账
@@ -27,10 +28,10 @@ public class UserAccountLog extends Base{
 	public void setUserId(int userId) {
 		this.userId = userId;
 	}
-	public Data getActionTime() {
+	public Date getActionTime() {
 		return actionTime;
 	}
-	public void setActionTime(Data actionTime) {
+	public void setActionTime(Date actionTime) {
 		this.actionTime = actionTime;
 	}
 	public String getActionDesc() {
@@ -81,7 +82,7 @@ public class UserAccountLog extends Base{
 	public void setRepeatBalance(double repeatBalance) {
 		this.repeatBalance = repeatBalance;
 	}
-	public UserAccountLog(int accountLogId, int userId, Data actionTime,
+	public UserAccountLog(int accountLogId, int userId, Date actionTime,
 			String actionDesc, int actionType, double baseIn, double baseOut,
 			double baseBalance, double repeatIn, double repeatOut,
 			double repeatBalance) {

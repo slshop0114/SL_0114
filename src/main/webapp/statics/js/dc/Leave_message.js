@@ -49,6 +49,9 @@ function huiyuanliuyanguanli() {
                 }
             }
             $("#list").html(str);
+        },error : function() {
+            // view("异常！");
+            alert("异常！");
         }
     });
 
@@ -130,11 +133,15 @@ function liuyantijiao() {
             type: "post",
             data: {"MessageContent":messagecontent,"username":username},
             success: function () {
-
+                alert("留言成功，等待处理")
+                huiyuanliuyanguanli() ;//留言成功，重新加载页面
+            },error : function() {
+                // view("异常！");
+                alert("异常！");
             }
         });
-        alert("留言成功，等待处理")
-        huiyuanliuyanguanli() ;//留言成功，重新加载页面
+
+
     }
 
 }
@@ -260,6 +267,9 @@ function guanliyuan() {
                     "</tr>"
             }
             $("#list1").html(biatou+str+"</table>");
+        },error : function() {
+            // view("异常！");
+            alert("异常！");
         }
     });
 
@@ -327,6 +337,9 @@ function chakantanchuang() {
                 }
 
                 $("#conte").html(str);
+            },error : function() {
+                // view("异常！");
+                alert("异常！");
             }
         })
     }
@@ -383,6 +396,9 @@ function huifutanchuang() {
 
 
                 $("#contes").html(str);
+            },error : function() {
+                // view("异常！");
+                alert("异常！");
             }
         })
     }
@@ -406,13 +422,18 @@ function baocunhuifu() {
                 url: "/insertreply",
                 type: "post",
                 data: {"id": obj[k].id, "replyContent": content,"username":username},
-                dataType: "json",
+
                 success: function () {
+                    alert("添加成功");
+                    huifuguanbi();//关闭弹层
+                    guanliyuan();//重新加载页面
+                },error : function() {
+                    // view("异常！");
+                    alert("异常！");
                 }
             })
-            alert("添加成功");
-            huifuguanbi();//关闭弹层
-            guanliyuan();//重新加载页面
+
+
         }
     }
 }
@@ -427,7 +448,7 @@ function deleteliuyan() {
         }
     }
     // 弹层确认是否删除
-    if (confirm("确定要删除选中的公告吗")) {
+    if (confirm("确定要删除选中的留言吗")) {
     } else {
         return false;
     }
@@ -436,13 +457,17 @@ function deleteliuyan() {
             url: "/deleteLeave",
             type: "post",
             data: {"id":checkeds[i]},
-            dataType: "json",
-            success: function () {
 
+            success: function () {
+                alert("留言删除成功");
+                guanliyuan();
+            },error : function() {
+                // view("异常！");
+                alert("异常！");
             }
         });
     }
-    alert("公告删除成功");
-    guanliyuan();
+
+
 
 }

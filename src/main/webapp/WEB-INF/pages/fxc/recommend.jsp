@@ -1,7 +1,17 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8" %>
 <%@include file="/WEB-INF/pages/common/head.jsp" %>
 
+<style>
+    #userreferinfo li{
+        font-size:20px;
+        margin-top: 5px;
+    }
+</style>
+
 <ul class="layui-nav layui-nav-tree layui-bg-cyan layui-inline fl">
+    <li class="layui-nav-item">
+        <a href="javascript:;">推荐会员:</a>
+    </li>
     <li class="layui-nav-item layui-nav-itemed">
         <a href="javascript:;">${userSession.loginCode}</a>
         <dl class="layui-nav-child">
@@ -10,9 +20,7 @@
             </c:forEach>
         </dl>
     </li>
-    <li class="layui-nav-item">
-        <a href="javascript:;">推荐会员</a>
-    </li>
+
 
 </ul>
 <div class="fl" >会员信息：

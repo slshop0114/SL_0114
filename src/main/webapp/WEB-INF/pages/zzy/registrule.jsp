@@ -7,8 +7,8 @@
     <script type="text/javascript" src="/statics/localjs/zzy/registrule.js"></script>
     <script src="/statics/localjs/zzy/jquery.cookie.js" type="text/javascript"></script>
 
-
 <%@include file="/WEB-INF/pages/common/head.jsp"%>
+
 <div class="bodyall">
 <div class="row-fluid" style="width: 900px">
     <div class="box span12">

@@ -160,3 +160,22 @@ function deleteuser() {
     })
 }
 
+
+$("#testUsercodyFxc1").blur(function () {
+    var usercody = $("#testUsercodyFxc1").val()
+    $("#hiddenUsercodyFxc1").hide();
+    $.ajax({
+        url: "/backend/searchUserIsExits",
+        data: {"loginCode": usercody},
+        method: "post",
+        dataType: "json",
+        success: function (result) {
+            if (result.key == "exits") {
+                $("#hiddenUsercodyFxc1").show();
+            }
+        }
+    })
+
+});
+
+

@@ -164,13 +164,59 @@ public class UserManageController {
     }
 
     @RequestMapping("/backend/modifyuser.html")
-    public String modifyUser(User user){
+    public String modifyUser(User user) {
 
-
-                userService.modifyUser(user);
-
-            return"redirect:/backend/userlist.html";
+        if ("1".equals(user.getCardType())) {
+            user.setCardTypeName("二代身份证");
         }
+        if ("3".equals(user.getCardType())) {
+            user.setCardTypeName("军官证");
+        }
+        if ("4".equals(user.getCardType())) {
+            user.setCardTypeName("护照");
+        }
+        if (user.getRoleId() == 1) {
+            user.setRoleName("管理员");
+            user.setUserTypeName("");
+        }
+        if (user.getRoleId() == 2) {
+            user.setRoleName("会员");
+        }
+        if ("1".equals(user.getUserType())) {
+            user.setUserTypeName("注册会员");
+        }
+        if ("2".equals(user.getUserType())) {
+            user.setUserTypeName("消费会员");
+        }
+        if ("3".equals(user.getUserType())) {
+            user.setUserTypeName("VIP会员");
+        }
+        if ("4".equals(user.getUserType())) {
+            user.setUserTypeName("加盟店");
+        }
+
+        userService.modifyUser(user);
+
+        return "redirect:/backend/userlist.html";
+    }
+
+    @RequestMapping("/backend/searchUserIsExits")
+    @ResponseBody
+    public Map<String, String> searchUserIsExits(User user) {
+        Map<String, String> map = new HashMap<>();
+        try {
+          int i = userService.loginCodeIsExit(user);
+          if (i>0){
+              map.put("key","exits");
+              return map;
+          }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        map.put("key","none");
+        return map;
+    }
 
 }
 

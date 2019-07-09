@@ -84,6 +84,9 @@ var biaotou=" <thead>\n" +
             // console.log(str)
             }
             $("#list").html(biaotou+str);
+        },error : function() {
+            // view("异常！");
+            alert("异常！");
         }
     })
 }
@@ -98,11 +101,13 @@ function onclickcheckbox(id) {
                 url: "/informanage/modifyInfoState.html",
                 type: "post",
                 data:{"id":id,"state":1},
-                dataType: "json",
-                success: function (list) {
-                }}
+                success: function () {alert("已发布")
+                },error : function() {
+                        // view("异常！");
+                        alert("异常！");
+                    }}
                 )
-           alert("已发布")
+
             break;
         }else {
             // 不发布
@@ -110,11 +115,14 @@ function onclickcheckbox(id) {
                 url: "/informanage/modifyInfoState.html",
                 type: "post",
                 data:{"id":id,"state":0},
-                dataType: "json",
-                success: function (list) {
+                success: function () {
+                    alert("已取消")
+                },error : function() {
+                    // view("异常！");
+                    alert("异常！");
                 }}
             )
-            alert("已取消")
+
         }
     }
 }
@@ -147,6 +155,9 @@ function selectdatadictionall() {
             }
             // console.log(str);
             $("#zixunleixing").html(str)
+        },error : function() {
+            // view("异常！");
+            alert("异常！");
         }
 })
 }
@@ -191,15 +202,19 @@ function baocun1(){
             "fileSize":size,
             "publisher":username
         },
-        dataType: "json",
+
         success: function () {
+            alert("添加资讯成功");
+            guan()
             // alert("添加资讯成功");
-            // selectinformationall();
+            selectinformationall();
+
+        },error : function() {
+            // view("异常！");
+            alert("异常！");
         }
     })
-    guan()
-    alert("添加资讯成功");
-    selectinformationall();
+
 }
 //删除资讯
 function deleteid() {
@@ -223,13 +238,17 @@ function deleteid() {
             type: "post",
             data: {"id":checkVal[i]},
             async: true,
-            dataType: "json",
+
             success: function () {
+                alert("公告删除成功")
+                selectinformationall();
+            },error : function() {
+                // view("异常！");
+                alert("异常！");
             }
         });
     }
-    alert("公告删除成功")
-    selectinformationall();}else {
+}else {
         alert("请至少选择一条进行删除")
     }
 }
@@ -287,11 +306,16 @@ function xiugaizx(){
                     },
                     async: true,
                     success: function () {
+                        alert("修改成功");
+                        guanxiugai()
+                        selectinformationall()
+                    },error : function() {
+                        // view("异常！");
+                        alert("异常！");
                     }
                 });
-                alert("修改成功");
-                guanxiugai()
-                selectinformationall()
+
+
             }
 
         }
@@ -381,8 +405,9 @@ function updatezx(){
                 // console.log(str)
                 $("#conte1").html(str);
 
-
-
+            },error : function() {
+                // view("异常！");
+                alert("异常！");
             }
         })
         selectdatadictionall();

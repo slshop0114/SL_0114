@@ -30,7 +30,7 @@ public class LoginController {
     @RequestMapping("/")
     public String toIndex() {
 
-        return "index";
+        return "zzy/index";
     }
 
     @RequestMapping("/main.html")

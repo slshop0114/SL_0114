@@ -53,12 +53,13 @@ public class RegisteController {
 
         ResponseData responseData = new ResponseData();
         User user =  userService.getUserById(loginCode);
+        System.out.println(loginCode);
         if(user!=null){
-            responseData.setCode(200);
-            responseData.setMessage("OK");
+            responseData.setCode(400);
+           
            
     }else{
-            responseData.setCode(400);
+            responseData.setCode(200);
             
         }
         

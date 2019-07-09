@@ -336,75 +336,6 @@ $("#m_email").blur(function(){
 });
 
 /*
-//修改用户信息验证
-function modifyUserFunction(){
-    $("#modify_formtip").html("");
-    var result = true;
-    if($("#m_roleId").val() == ""){
-        $("#modify_formtip").css("color","red");
-        $("#modify_formtip").append("<li>对不起，角色不能为空。</li>");
-        result = false;
-    }
-    if($.trim($("#m_logincode").val()) == "" || $("#m_logincode").val() == null){
-        $("#modify_formtip").css("color","red");
-        $("#modify_formtip").append("<li>对不起，用户名不能为空。</li>");
-        result = false;
-    }else{
-        if($("#modify_formtip").attr("key") == "1"){
-            $("#modify_formtip").append("<li>对不起，该用户名已存在。</li>");
-            result = false;
-        }
-    }
-    if($.trim($("#m_username").val()) == "" || $("#m_username").val() == null){
-        $("#modify_formtip").css("color","red");
-        $("#modify_formtip").append("<li>对不起，真实姓名不能为空。</li>");
-        result = false;
-    }
-    if($("#m_cardtype").val() == ""){
-        $("#modify_formtip").css("color","red");
-        $("#modify_formtip").append("<li>对不起，证件类型不能为空。</li>");
-        result = false;
-    }
-    if($.trim($("#m_idcard").val()) == "" || $("#m_idcard").val() == null){
-        $("#modify_formtip").css("color","red");
-        $("#modify_formtip").append("<li>对不起，证件号码不能为空。</li>");
-        result = false;
-    }else{
-        if($("#m_idcard").val().length < 6){
-            $("#modify_formtip").css("color","red");
-            $("#modify_formtip").append("<li>对不起，证件号码长度必须超过6位。</li>");
-            result = false;
-        }
-    }
-    if($.trim($("#m_mobile").val()) == "" || $("#m_mobile").val() == null){
-        $("#modify_formtip").css("color","red");
-        $("#modify_formtip").append("<li>对不起，联系电话不能为空。</li>");
-        result = false;
-    }
-    if($.trim($("#m_bankname").val()) == "" || $("#m_bankname").val() == null){
-        $("#modify_formtip").css("color","red");
-        $("#modify_formtip").append("<li>对不起，开户行不能为空。</li>");
-        result = false;
-    }
-    if($.trim($("#m_bankaccount").val()) == "" || $("#m_bankaccount").val() == null){
-        $("#modify_formtip").css("color","red");
-        $("#modify_formtip").append("<li>对不起，开户卡号不能为空。</li>");
-        result = false;
-    }
-    if($.trim($("#m_accountholder").val()) == "" || $("#m_accountholder").val() == null){
-        $("#modify_formtip").css("color","red");
-        $("#modify_formtip").append("<li>对不起，开户人不能为空。</li>");
-        result = false;
-    }
-    if($.trim($("#m_email").val()) != "" && $("#m_email").val() != null && $("#modify_formtip").attr("email") == "1"){
-        $("#modify_formtip").css("color","red");
-        $("#modify_formtip").append("<li>email格式不正确</li>");
-        result = false;
-    }
-    if(result == true) alert("修改成功 ^_^");
-    return result;
-}*/
-
 function delpic(id,closeSpan,uploadBtn,obj,picpath,picText,fileinputid){
     //delete
     $.post("/delet.html",{'id':id,'picpath':picpath},function(result){
@@ -417,6 +348,6 @@ function delpic(id,closeSpan,uploadBtn,obj,picpath,picText,fileinputid){
             alert("删除失败！");
     },'html');
 
-}
+}*/
 
     

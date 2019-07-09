@@ -21,7 +21,7 @@
 		<a class="layui-btn layui-btn-danger " onclick="revuser()">修改</a>
 	</div>
 	<div class="layui-inline"  onclick="deluser()">
-		<a class="layui-btn layui-btn-danger batchDel delmember" onclick="deluser()">删除</a>
+		<a class="layui-btn layui-btn-danger batchDel delmember" >删除</a>
 	</div>
 
 	<div class="layui-inline">

@@ -1,7 +1,7 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8" %>
 <%@include file="/WEB-INF/pages/common/head.jsp" %>
 
-<div class="fl">
+<div class="fl" style="width: 1000px;margin-left: 100px">
 1.     进入商务区<br>
 
 a)      进入www.sl**.net 网站<br>

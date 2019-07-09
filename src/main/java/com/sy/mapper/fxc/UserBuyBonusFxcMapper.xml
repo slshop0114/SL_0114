@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sy.mapper.fxc.UserBuyBonusFxcMapper">
+
+
+<resultMap id="userBuyBonus" type="com.sy.model.fxc.UserBuyBonusFxc">
+    <id property="buyBonusId" column="BUY_BONUS_ID"/>
+    <result property="bonusMonth" column="BONUS_MONTH"/>
+    <result property="calTime" column="CAL_TIME"/>
+    <result property="bonusUserId" column="BONUS_USER_ID"/>
+    <result property="buyPv" column="BUY_PV"/>
+    <result property="bonusRate" column="BONUS_RATE"/>
+    <result property="bonusPv" column="BONUS_PV"/>
+</resultMap>
+
+<select id="searchUserBuyBonusByUserId" parameterType="int" resultMap="userBuyBonus">
+   SELECT sum(BONUS_PV) BONUS_PV,BONUS_MONTH,CAL_TIME,BONUS_USER_ID
+   from user_buy_bonus where BONUS_USER_ID =#{i} GROUP BY CAL_TIME
+</select>
+
+    <select id="searchUserBuyBonusMonthByUserId" parameterType="int" resultMap="userBuyBonus">
+   SELECT sum(BONUS_PV) BONUS_PV,BONUS_MONTH,CAL_TIME,BONUS_USER_ID
+   from user_buy_bonus where BONUS_USER_ID =#{i} GROUP BY BONUS_MONTH
+</select>
+
+
+
+</mapper>

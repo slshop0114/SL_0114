@@ -14,7 +14,7 @@
 </head>
 <body>
 
-<div class="container-fluid">
+<div class="container-fluid" style="margin-left: 600px">
     <div class="row-fluid">
 
         <div class="row-fluid">

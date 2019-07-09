@@ -124,13 +124,14 @@ function updatea() {
                         "            <input type=\"button\" value=\"关闭\" onclick=\"guangai()\">\n" +
                         "        </form>\n" +
                         "    </div>\n"
-
                 // console.log(str)
                 $("#conte").html(str);
 
-
-
-            }
+            },
+            error : function() {
+                    // view("异常！");
+                         alert("异常！");
+                   }
         })
         document.getElementById('conte').style.display = 'block';
         document.getElementById('alllight').style.display = 'block';
@@ -168,13 +169,14 @@ function deleteid() {
         type: "post",
         data: {"id":checkVal[i]},
         async: true,
-        dataType: "json",
         success: function () {
-
+            alert("公告删除成功")
+        },error : function() {
+            // view("异常！");
+            alert("异常！");
         }
     });
     }
-    alert("公告删除成功")
     selectannouncementsall();
 }
 // 添加公告
@@ -184,7 +186,8 @@ function addaffiche(){
     var endTime =$("#endTime").val();//截止时间
     var content =$("#editor_id").val();//文本内容
     var username= $(".username").val();//获取用户名
-
+    alert("1")
+    console.log(startTime+endTime)
     // console.log("title----"+title+"startTime----"+startTime+"endTime---"+endTime+"content---"+content)
     // alert("title----"+title+"startTime----"+startTime+"endTime---"+endTime+"content---"+content)
     if(title==""||title==null){
@@ -201,10 +204,15 @@ function addaffiche(){
             data: {"title":title,"startTime":startTime,"endTime":endTime,"content":content,"username":username},
             async: true,
             success: function () {
-            }
+                alert("添加成功");
+                selectannouncementsall();
+            },error : function() {
+            // view("异常！");
+            alert("异常！");
+        }
         });
-        alert("添加成功");
-        selectannouncementsall();
+
+
     }
 
 
@@ -240,16 +248,14 @@ function updateaffiche() {
                     data: {"title":title,"startTime":startTime,"endTime":endTime,"content":content,"id":obj[k].id},
                     async: true,
                     success: function () {
+                        alert("修改成功");
+                        selectannouncementsall();
+                    },error : function() {
+                        // view("异常！");
+                        alert("异常！");
                     }
                 });
-                alert("修改成功");
-                selectannouncementsall();
             }
-
-
-
         }
     }
-
-
 }

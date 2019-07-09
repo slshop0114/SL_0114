@@ -1,6 +1,11 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8" %>
 <%@include file="/WEB-INF/pages/common/head.jsp" %>
 
+<div style="width: 1000px;height: 30px;font-size: 20px">
+    权限管理    <i class="layui-icon layui-icon-next"></i>
+</div>
+
+<div style="width: 1000px" class="fl">
 
 <form class="layui-form fromrolesty" action="/backend/functions.html" id="formforauthorith">
     <div class="layui-form-item">
@@ -49,7 +54,7 @@
             </tbody>
         </table>
     </div>
-    <div class="layui-form-item">
+    <div class="layui-form-item" id="authorityfunctioninputfxc">
         <label class="layui-form-label">权限管理:</label>
         <div class="layui-input-block">
             <c:forEach items="${functionlist}" var="function">
@@ -58,7 +63,7 @@
         </div>
     </div>
 </form>
-
+</div>
 
 <%@include file="/WEB-INF/pages/common/foot.jsp" %>
 

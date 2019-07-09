@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sy.mapper.fxc.UserPointFxcMapper">
+
+    <resultMap id="userPoint" type="com.sy.model.fxc.UserPointFxc">
+        <id property="pointId" column="POINT_ID"/>
+        <result property="buytime" column="BUY_TIME"/>
+        <result property="bonusUserId" column="BONUS_USER_ID"/>
+        <result property="userId" column="USER_ID"/>
+        <result property="buyPv" column="BUY_PV"/>
+        <result property="bonusRate" column="BONUS_RATE"/>
+        <result property="bonusPv" column="BONUS_PV"/>
+    </resultMap>
+<select id="serachUserPointByUserId" resultMap="userPoint" parameterType="int">
+    SELECT sum(BONUS_PV) BONUS_PV,BUY_TIME,BONUS_USER_ID
+   from user_point where BONUS_USER_ID =#{i} GROUP BY BUY_TIME
+</select>
+
+
+</mapper>

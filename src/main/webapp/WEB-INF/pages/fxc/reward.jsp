@@ -43,10 +43,30 @@
                     </thead>
                     <tbody>
                     <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
+                        <c:forEach items="${Userpointlist}" var="Userpointlist">
+                            <td><fmt:formatDate value="${Userpointlist.buytime}" pattern="yyyy-MM-dd"/></td>
+                            <td>${Userpointlist.bonusPv}</td>
+
+
+                          <c:forEach items="${UserBuyBonuslist}" var="UserBuyBonuslist">
+                               <c:choose>
+                                <c:when test="${UserBuyBonuslist.calTime==Userpointlist.buytime}">
+                                    <td>
+                                            ${UserBuyBonuslist.bonusPv}
+                                    </td>
+                                    <td>
+                                            ${UserBuyBonuslist.bonusPv+Userpointlist.bonusPv}
+                                    </td>
+
+                                </c:when>
+                                   <c:otherwise>
+                                       <td>0</td>
+                                       <td>${Userpointlist.bonusPv}</td>
+                                   </c:otherwise>
+                               </c:choose>
+                            </c:forEach>
+
+                        </c:forEach>
                     </tr>
 
                     </tbody>
@@ -72,10 +92,12 @@
                     </thead>
                     <tbody>
                     <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
+                        <c:forEach items="${UserBuyMonthBonuslist}" var="UserBuyMonthBonuslist" varStatus="i">
+                        <td>${i.index+1}</td>
+                        <td>0</td>
+                        <td>${UserBuyMonthBonuslist.bonusPv}</td>
+                        <td>${UserBuyMonthBonuslist.bonusPv}</td>
+                        </c:forEach>
                     </tr>
 
                     </tbody>

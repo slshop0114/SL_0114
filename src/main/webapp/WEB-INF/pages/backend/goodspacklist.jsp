@@ -1,7 +1,9 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8" %>
 <%@include file="/WEB-INF/pages/common/head.jsp" %>
 
-
+<div style="width: 1000px;height: 30px;font-size: 20px">
+    商品包管理    <i class="layui-icon layui-icon-next"></i>
+</div>
 <%--商品展示--%>
 <form class="layui-form fromrolesty" action="/backend/goodspacklist.html" id="fromgoodspacklist">
 
@@ -69,7 +71,7 @@
                     <td class="center">${goodsPackList.num}</td>
 
                     <td class="center">
-                        <input type="checkbox" data-rel="tooltip" class="modifyIsStart"
+                        <input disabled type="checkbox" data-rel="tooltip" class="modifyIsStart"
                                isstart="${goodsPackList.state}" roleid="${role.id}"
                                <c:if test="${goodsPackList.state == 1}">checked="true"</c:if>/>
                     </td>

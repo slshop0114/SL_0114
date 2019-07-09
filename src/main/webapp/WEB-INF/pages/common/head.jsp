@@ -17,9 +17,16 @@
         <link rel="stylesheet" href="/statics/localcss/dicmanage.css" media="all">
         <link rel="stylesheet" href="/statics/localcss/goodspacklist.css" media="all">
         <link rel="stylesheet" href="/statics/localcss/authoritymanage.css" media="all">
+        <link rel="stylesheet" href="/statics/localcss/orderPurchase.css" media="all">
         <script src="/statics/js/jQuery3.4.1.js" type="text/javascript"></script>
 
-
+        <script src="/statics/localjs/ztw/orderPurchaseTwo.js"></script>
+        <script src="/statics/localjs/ztw/orderPurchaseThree.js"></script>
+        <script src="/statics/localjs/ztw/confirmActivation.js"></script>
+        <script src="/statics/localjs/ztw/rePurchaseOne.js"></script>
+        <script src="/statics/localjs/ztw/rePurchaseTwo.js"></script>
+        <script src="/statics/localjs/ztw/orderManger.js"></script>
+        <script src="/statics/localjs/ztw/rePurchaseThree.js"></script>
 
 
 

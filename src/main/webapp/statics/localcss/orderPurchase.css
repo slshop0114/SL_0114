@@ -1,0 +1,14 @@
+.orderDiv{
+    width: 1000px;
+    height: 300px;
+    left: 500px;
+    top: 100px;
+    position: absolute;
+}
+.orderDiv p {
+    font-size: larger;
+}
+.orderButton{
+    right: 20px;
+    position: absolute;
+}

@@ -1,6 +1,8 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8" %>
 <%@include file="/WEB-INF/pages/common/head.jsp" %>
-
+<div style="width: 1000px;height: 30px;font-size: 20px">
+ 用户管理    <i class="layui-icon layui-icon-next"></i>
+</div>
 <form action="/backend/loadUserTypeList.html" method="post" class="layui-form fromrolesty" id="formforuser">
     <button type="button" class="layui-btn" onclick="adduser()">添加</button>
     <button type="button" class="layui-btn layui-btn-warm" onclick="updateuser()">修改</button>
@@ -11,7 +13,7 @@
 
     <div class="layui-form-item fl">
         <div class="layui-input-block">
-            <button class="layui-btn" lay-submit="" lay-filter="searchforuser">查询</button>
+            <button class="layui-btn" style="margin-right: 10px" lay-submit="" lay-filter="searchforuser">查询</button>
         </div>
     </div>
 
@@ -102,9 +104,11 @@
         <label class="layui-form-label">用户名</label>
         <div class="layui-input-block">
             <input type="text" name="loginCode" lay-verify="required" autocomplete="off" placeholder="请输入标题"
-                   class="layui-input">
+                   class="layui-input" id="testUsercodyFxc1">
+            <div style="display: none" id="hiddenUsercodyFxc1">用户名重复</div>
         </div>
     </div>
+
     <div class="layui-form-item">
         <label class="layui-form-label">姓名</label>
         <div class="layui-input-block">

@@ -25,7 +25,7 @@ public class AfficheController {
 //    获取有效期内的公告  分页展示
     @RequestMapping("/afficheselect.html")
     @ResponseBody
-    public List<Affiche> getafficheselect (Integer firstResult, Integer maxResults) throws Exception{
+    public List<Affiche> getafficheselect (int firstResult, int maxResults) throws Exception{
         List<Affiche> list = afficheservice.getafficelist(firstResult,maxResults);
         System.out.println(list);
         return list;
@@ -33,9 +33,9 @@ public class AfficheController {
 
     //    新增公告公告
     @RequestMapping("/addaffiche.html")
-         public String addaffiche(Affiche affiche , String username)throws Exception{
-        System.out.println("afficheafficheafficheaffiche");
-        System.out.println(affiche);
+    @ResponseBody
+         public void addaffiche(Affiche affiche , String username)throws Exception{
+        System.out.println(affiche.getEndTime()+"=="+affiche.getStartTime());
         affiche.setPublisher(username);
         SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");//设置日期格式
         Date date=df.parse(df.format(new Date()));//转换当前时间格式
@@ -44,8 +44,6 @@ public class AfficheController {
         if(affiche.getTitle()!=null&&affiche.getTitle()!=""&& affiche.getContent()!=null&&affiche.getContent()!=""){
             afficheservice.addaffice(affiche);
         }
-
-        return "dc/Announcements";
     }
 //修改公告
     @RequestMapping("/updateaffiche.html")
@@ -69,6 +67,7 @@ public class AfficheController {
 
 //    删除公告
     @RequestMapping("/deleteaffiche")
+    @ResponseBody
     public void removeaffiche(Integer id) throws Exception{
         afficheservice.deleteaffiche(id);
     }

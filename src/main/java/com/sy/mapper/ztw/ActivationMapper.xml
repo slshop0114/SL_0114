@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sy.mapper.ztw.ActivationMapper">
+
+    <resultMap type="orderInfoZtw" id="orderInfoResultMap">
+
+        <id column="ORDER_ID" property="orderid"/>
+        <result column="ORDER_TIME" property="ordertime"/>
+        <result column="ORDER_SN" property="ordersn"/>
+        <result column="PICK_USER_ID" property="buyuserid"/>
+        <result column="BUY_USER_ID" property="pickuserid"/>
+        <result column="REPEAT_PV" property="repeatpv"/>
+        <result column="BASE_PV" property="basepv"/>
+        <result column="SERVICE_FEE" property="servicefee"/>
+        <result column="SHIP_FRE" property="shipfre"/>
+        <result column="TAX" property="tax"/>
+        <result column="COUNTRY" property="country"/>
+        <result column="TEL" property="tel"/>
+        <result column="MOBILE" property="mobile"/>
+        <result column="EMAIL" property="email"/>
+        <result column="USER_ADDRESS" property="useraddress"/>
+        <result column="POSTCODE" property="postcode"/>
+        <result column="STAT" property="sata"/>
+        <result column="SHIP_TYPE" property="shiptype"/>
+        <result column="SHIP_NUM" property="shipnum"/>
+        <result column="SHIP_TIME" property="shiptime"/>
+        <result column="SHIP_NOTE" property="shipnote"/>
+    </resultMap>
+    <select id="selectCount" resultType="int">
+        select count(*) from order_info;
+    </select>
+    <select id="selectAllU" resultType="user">
+        select * from au_user;
+    </select>
+    <select id="selectAllO" resultMap="orderInfoResultMap">
+        select * from order_info where REPEAT_PV is null and STAT = 0
+    </select>
+    <update id="updateState" parameterType="int">
+        update order_info set STAT=1 where PICK_USER_ID = #{userid}
+    </update>
+    <select id="selectAll" resultMap="orderInfoResultMap">
+        select * from order_info
+    </select>
+    <insert id="updateBalance" parameterType="userAccountLog">
+        insert into
+        user_account_log_201404
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="userId != null">
+                userId ,
+            </if>
+            <if test="baseOut != null">
+                baseOut ,
+            </if>
+            <if test="baseBalance != null">
+                baseBalance ,
+            </if>
+            <if test="repeatOut != null">
+                repeatOut ,
+            </if>
+            <if test="actionTime != null">
+                actionTime ,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="userId != null">
+                #{userId},
+            </if>
+            <if test="baseOut != null">
+                #{baseOut} ,
+            </if>
+            <if test="baseBalance != null">
+                #{baseBalance} ,
+            </if>
+            <if test="repeatOut != null">
+                #{repeatOut} ,
+            </if>
+            <if test="actionTime != null">
+                #{actionTime} ,
+            </if>
+        </trim>
+    </insert>
+
+    <select id="selectBySearchU" parameterType="searchActivationZtw" resultType="user">
+        select * from au_user
+        <trim prefix="where" prefixOverrides="and|or">
+            <if test="loginCode !=null">
+                and loginCode like CONCAT('%',#{loginCode},'%')
+            </if>
+        </trim>
+    </select>
+    <select id="selectBySearchO" parameterType="searchActivationZtw" resultMap="orderInfoResultMap">
+        select * from order_info
+        <trim prefix="where" prefixOverrides="and|or">
+            <if test="ordersn != null">
+                and ORDER_SN like CONCAT('%',#{ordersn},'%')
+            </if>
+            <if test="date1 != null">
+                and date_format(ORDER_TIME,'%Y-%m-%d')&gt;=#{date1,jdbcType=DATE}
+            </if>
+            <if test="date2 != null">
+                and date_format(ORDER_TIME,'%Y-%m-%d')&lt;=#{date2,jdbcType=DATE}
+            </if>
+        </trim>
+    </select>
+
+    <update id="updateVip" parameterType="int">
+        update au_user set roleName ='会员'where id = #{userid}
+    </update>
+
+</mapper>

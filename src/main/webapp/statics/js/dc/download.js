@@ -47,6 +47,9 @@ function selectstateall() {
             }
             $("#list").html(str);
 
+        },error : function() {
+            // view("异常！");
+            alert("异常！");
         }
     })
 }
@@ -85,10 +88,9 @@ function add(id) {
                     "    </div>"
 
             $("#contes").html(str);
-
-
-
-
+        },error : function() {
+            // view("异常！");
+            alert("异常！");
         }
     })
 }

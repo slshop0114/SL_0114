@@ -85,8 +85,8 @@
 						 isStart,lastUpdateTime,lastLoginTime,bankName,accountHolder,bankAccount,idCardPicPath,bankPicPath) values
 						 (#{loginCode},substr(#{idCard},length(#{idCard})-6+1,6) ,#{password2},#{userName},#{sex},#{birthday},
 						 #{cardType},#{cardTypeName},#{idCard},#{country},#{mobile},#{email},#{userAddress},
-						 #{postCode},NOW(),#{referId},#{referCode},#{roleId},#{roleName},#{userType},
-						 #{userTypeName},#{isStart},#{lastUpdateTime},#{lastLoginTime},#{bankName},#{accountHolder},#{bankAccount},#{idCardPicPath},#{bankPicPath})
+						 #{postCode},NOW(),#{referId},#{referCode},#{roleId},#{roleName},1,
+						 '会员',#{isStart},#{lastUpdateTime},#{lastLoginTime},#{bankName},#{accountHolder},#{bankAccount},#{idCardPicPath},#{bankPicPath})
     </insert>
 
 

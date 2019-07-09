@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sy.mapper.ztw.RePurchaseMapper">
+    <select id="getGoodsPackAll" parameterType="goodsPack" resultType="goodsPack">
+        select * from goods_pack
+        <trim prefix="where" prefixOverrides="and|or">
+            <if test="id != null">
+                and id = #{id}
+            </if>
+            <if test="goodsPackName != null">
+                and goodsPackName like CONCAT('%',#{goodsPackName},'%')
+            </if>
+            <if test="goodsPackCode != null">
+                and goodsPackCode like CONCAT('%',#{goodsPackCode},'%')
+            </if>
+            <if test="typeId != null">
+                and typeId = #{typeId}
+            </if>
+            <if test="typeName != null">
+                and typeName = #{typeName}
+            </if>
+            <if test="totalPrice != null">
+                and totalPrice = #{totalPrice}
+            </if>
+            <if test="state != null">
+                and state = #{state}
+            </if>
+            <if test="note != null">
+                and note = #{note}
+            </if>
+            <if test="num != null">
+                and num = #{num}
+            </if>
+            <if test="createdBy != null">
+                and createdBy = #{createdBy}
+            </if>
+            <if test="createTime != null">
+                and createTime = #{createTime}
+            </if>
+            <if test="lastUpdateTime != null">
+                and lastUpdateTime = #{lastUpdateTime}
+            </if>
+        </trim>
+    </select>
+
+    <select id="selectByGoodsId" parameterType="int" resultType="goodsPack" >
+        select * from goods_pack where id=#{_parameter}
+    </select>
+    <insert id="insertAddGoods" parameterType="orderListZtw">
+        insert order_list
+        (listId,goodsId,goodsName,goodsNum,eachPrice,sumPrice,realPv,buy_userid)
+        values
+        (#{listId},#{goodsId},#{goodsName},#{goodsNum},#{eachPrice},#{sumPrice},#{realPv},#{buy_userid})
+    </insert>
+    <select id="selectAllByUserId" parameterType="int" resultType="orderListZtw">
+        select * from order_list where buy_userid=#{userId}
+    </select>
+
+    <delete id="delByListId" parameterType="string">
+        delete from order_list where listId = #{_parameter}
+    </delete>
+
+    <update id="updateNum" parameterType="orderListZtw">
+        update order_list
+        <trim prefix="set" suffixOverrides="," suffix="where listId= #{listId}">
+            <if test="goodsNum != null"> goodsNum=#{goodsNum} </if>
+        </trim>
+
+    </update>
+
+    <delete id="delByBuyId" parameterType="int">
+        delete from order_list where buy_userid = #{id}
+    </delete>
+
+    <insert id="InsertOrderInformation" parameterType="orderInfoZtw">
+        insert order_Info
+        (ORDER_ID,ORDER_TIME,ORDER_SN,PICK_USER_ID,REPEAT_PV,SERVICE_FEE,COUNTRY,TEL,MOBILE,USER_ADDRESS,POSTCODE,STAT,SHIP_TYPE,SHIP_NUM,buy_user_id)
+        values
+        (#{orderid},#{ordertime},#{ordersn},#{pickuserid},#{repeatpv},#{servicefee},#{country},#{tel},#{mobile},#{useraddress},#{postcode},#{sata},#{shiptype},#{shipnum},#{buyuserid})
+    </insert>
+</mapper>

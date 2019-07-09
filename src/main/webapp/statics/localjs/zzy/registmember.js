@@ -39,21 +39,30 @@ $("#a_uploadbtnBank").click(function(){
 	TajaxFileUpload('0','a_fileInputBank','a_uploadbtnBank','a_bankPic','a_fileInputBankPath');
 });
 
-$("#a_loginCode").blur(function(){
+$("#a_loginCode").change(function(){
 	var alc = $.trim($("#a_loginCode").val());
 	if(alc != ""){
-		$.post("/member/cheakUser.html",{'loginCode':alc},function(result){
-			if(result.code ==400){
-				$("#add_formtip").css("color","red");
-				$("#add_formtip").html("<li>对不起，该用户名已存在。</li>");
-				$("#add_formtip").attr("key","1");;
-				result = false;
-			} else if(result.code == 200){
-				$("#add_formtip").css("color","green");
-				$("#add_formtip").html("<li>该用户名可以正常使用。</li>");
-				$("#add_formtip").attr("key","0");
+		$.ajax({
+			url: "/member/cheakUser.html",
+			type: "post",
+			data: {'loginCode':alc},
+			dataType: "json",
+			success:function (result) {
+				if (result.code == 400) {
+					$("#add_formtip").css("color", "red");
+					$("#add_formtip").html("<li>对不起，该用户名已存在。</li>");
+					$("#add_formtip").attr("key", "1");
+					alert(400)
+					result = false;
+				} else if (result.code == 200) {
+					$("#add_formtip").css("color", "green");
+					$("#add_formtip").html("<li>该用户名可以正常使用。</li>");
+					$("#add_formtip").attr("key", "0");
+					alert(200)
+				}
 			}
-		},'html');
+		});
+		
 	}
 });
 

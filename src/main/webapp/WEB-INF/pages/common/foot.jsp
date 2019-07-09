@@ -1,8 +1,10 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8" %>
 
-<footer style="clear: both">
+<footer style="clear: both; ">
+
     <p class="pull-left">&copy; <a href="#" target="_blank">SYIT</a> 2018</p>
     <p class="pull-right">Powered by: <a href="#">上元IT</a></p>
+
 </footer>
 
 

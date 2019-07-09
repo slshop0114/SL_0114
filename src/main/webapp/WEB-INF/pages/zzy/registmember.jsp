@@ -72,13 +72,19 @@
 									<label>证件号码：</label>
 									<input type="text" id="a_idCard" name="idCard" onkeyup="value=value.replace(/[^\w\.\/]/ig,'')"/>
 									<span style="color:red;font-weight: bold;">*</span>
-								
-									<label>生日：</label>
-									<div class="layui-input-block">
-										<input type="text" name="birthday" id="a_birthday" autocomplete="off" class="layui-input Wdate" width="150px" size="15">
-									</div>
+
+								<label>推荐人：</label>
+								<input type="text" id="a_referCode" name="referCode" value="${userSession.loginCode}"/>
 								
 							</div>
+							<br>
+							<div class="left">
+								<label>生日：</label>
+								<div class="layui-input-block">
+									<input type="text" name="birthday" id="a_birthday" autocomplete="off" class="layui-input Wdate" width="150px" size="15">
+								</div>
+							</div>
+
 							<br>
 							<div class="left">
 								

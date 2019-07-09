@@ -1,3 +1,6 @@
 #formforauthorith{
-    width: 1400px;
+    width: 1000px;
+}
+#authorityfunctioninputfxc input{
+    width: 100px; !important;
 }

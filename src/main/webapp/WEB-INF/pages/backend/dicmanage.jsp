@@ -1,7 +1,9 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8" %>
 <%@include file="/WEB-INF/pages/common/head.jsp" %>
 
-
+<div style="width: 1000px;height: 30px;font-size: 20px">
+    数据字典    <i class="layui-icon layui-icon-next"></i>
+</div>
 <%--数据展示--%>
 <form class="layui-form fromrolesty" action="" id="fromdicmanagelist">
 

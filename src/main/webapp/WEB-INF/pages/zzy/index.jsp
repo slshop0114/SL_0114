@@ -12,14 +12,14 @@
     <script src="/statics/localjs/zzy/index.js"></script>
     <script src="/statics/localjs/zzy/jquery.cookie.js" type="text/javascript"></script>
 </head>
-<body>
+<body background="/statics/images/1.jpg">
 
-<div class="container-fluid" style="margin-left: 600px">
+<div class="container-fluid" style="margin-left: 600px;margin-top: 150px">
     <div class="row-fluid">
 
         <div class="row-fluid">
             <div class="span12 center login-header">
-                <h2>SL会员商城</h2>
+                <h1>SL会员商城</h1>
             </div><!--/span-->
         </div><!--/row-->
 

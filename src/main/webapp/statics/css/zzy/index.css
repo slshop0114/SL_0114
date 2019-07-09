@@ -27,18 +27,19 @@ div.container-fluid{
     height: 371px;
     margin: 0;
     padding: 0;
+  
 }
 div.login-header{
     width: 539px;
     height: 120px;
     padding-top: 30px;
 }
-h2{
+h1{
     margin: 0;
     width: 539px;
     height:36px;
     font-weight: bold;
-    color: #317eac;
+    color: #154889; !important;
 }
 div.login-box{
     width: 539px;
@@ -48,7 +49,7 @@ div.login-box{
 .well{
     padding: 19px;
     margin-bottom:20px;
-    background:#F5F5F5 ;
+    background:#FBD17B ;
 }
 .alert-info {
     background-color: #edebe1;
@@ -115,7 +116,7 @@ p {
     width: 100%;
 }
 .btn-primary{
-    background-color: #43a1da;
+    background-color: #7C97A0;
     color: #ffffff;
     
 }

@@ -118,7 +118,8 @@ layui.use(['form', 'upload'], function () {
                 $("#bankAccount2").val(result.bankAccount)
                 $("#accountHolder2").val(result.accountHolder)
                 $("#useridhidden").val(result.id)
-
+                $("#idcardview2").attr('src', result.idCardPicPath)
+                $("#bankcardview2").attr('src', result.bankPicPath)
             }
         });
     });

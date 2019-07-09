@@ -31,7 +31,7 @@
 
 					
 						<p class="right">
-							<button class="btn btn-large btn-primary nextbtn"><i class="icon-chevron-left icon-white"></i>报单购货</button>
+							<a href="/shopManger/orderPurchaseOne.html" class="btn btn-large btn-primary nextbtn"><i class="icon-chevron-left icon-white"></i>报单购货</a>
 						</p>
 						<div class="clearfix"></div>
 					</div>
